@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:radio_set/presentation/feature/barret/barret_screen.dart';
+import 'package:radio_set/presentation/feature/home/widgets/image_button.dart';
+import 'package:radio_set/presentation/feature/xv/xv_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -6,11 +9,36 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Radio Set"),
-        centerTitle: true,
-      ),
-      body: const Center(child: Text("Hello")),
-    );
+        appBar: AppBar(
+          title: const Text("Radio Set"),
+          centerTitle: true,
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ImageButton(
+                imageUrl: "",
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (ctx) => const BarretScreen()));
+                },
+                title: 'Barret 2090',
+              ),
+              ImageButton(
+                imageUrl: "",
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (ctx) => const XvScreen()));
+                },
+                title: 'XV 3088',
+              ),
+            ],
+          ),
+        ));
   }
 }
