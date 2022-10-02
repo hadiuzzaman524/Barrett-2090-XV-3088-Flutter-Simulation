@@ -2,6 +2,9 @@
 class Assets {
   Assets._();
 
+  static const String imagesComment = 'images/comment.png';
+  static const String imagesDelete = 'images/delete.png';
+  static const String imagesEmail = 'images/email.png';
   static const String imagesFlutter = 'images/flutter.png';
   static const String imagesSell = 'images/sell.png';
   static const String imagesSettings = 'images/settings.png';
