@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:radio_set/presentation/feature/xv_simulate/cv_simulate_screen.dart';
 
 import '../../widgets/card_button.dart';
 import '../../widgets/image_stack.dart';
+import '../xv_tutorial/xv_tutorial.dart';
 
 class XvScreen extends StatelessWidget {
   const XvScreen({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class XvScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const ImageStack(title: "XV 2028", imageUrl: "images/flutter.png"),
+          const ImageStack(title: "XV 3088", imageUrl: "images/flutter.png"),
           const SizedBox(height: 12),
           Expanded(
             child: Container(
@@ -26,12 +28,22 @@ class XvScreen extends StatelessWidget {
                 children: [
                   CardButton(
                       title: "Tutorial",
-                      imageUrl: "images/flutter.png",
-                      onTap: () {}),
+                      imageUrl: "images/tutorial.png",
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (ctx) => const XvTutorialScreen()));
+                      }),
                   CardButton(
                       title: "Simulate",
-                      imageUrl: "images/flutter.png",
-                      onTap: () {}),
+                      imageUrl: "images/simulate.png",
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (ctx) => const XvSimulateScreen()));
+                      }),
                 ],
               ),
             ),

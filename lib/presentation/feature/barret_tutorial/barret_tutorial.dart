@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../widgets/card_button.dart';
 import '../../widgets/common_button.dart';
+import '../../widgets/image_stack.dart';
 
 class BarretTutorialScreen extends StatelessWidget {
   const BarretTutorialScreen({Key? key}) : super(key: key);
@@ -12,28 +14,32 @@ class BarretTutorialScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const ImageStack(
+              title: "XV 3088 Tutorial", imageUrl: "images/flutter.png"),
+          const SizedBox(height: 12),
           Expanded(
-            child: Column(
-              children: [
-                Container(
-                  height: 200,
-                  width: 200,
-                  color: Colors.red,
-                ),
-                const SizedBox(height: 12),
-                const Text("Tutorial"),
-              ],
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                CommonButton(onTap: () {}, title: "Frequency Setting"),
-                const SizedBox(height: 12),
-                CommonButton(onTap: () {}, title: "SEL Call"),
-                const SizedBox(height: 12),
-                CommonButton(onTap: () {}, title: "Power Setup"),
-              ],
+            child: Container(
+              padding: const EdgeInsets.all(12),
+              child: GridView.count(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 2 / 2.1,
+                children: [
+                  CardButton(
+                      title: "Frequency Setting",
+                      imageUrl: "images/tower.png",
+                      onTap: () {}),
+                  CardButton(
+                      title: "SEL Call",
+                      imageUrl: "images/sell.png",
+                      onTap: () {}),
+                  CardButton(
+                      title: "Power Setup",
+                      imageUrl: "images/settings.png",
+                      onTap: () {}),
+                ],
+              ),
             ),
           )
         ],

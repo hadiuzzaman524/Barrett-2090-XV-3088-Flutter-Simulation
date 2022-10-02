@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:radio_set/configuration/colors.dart';
 import 'package:radio_set/configuration/text_style.dart';
 
 class ImageButton extends StatelessWidget {
@@ -22,7 +23,14 @@ class ImageButton extends StatelessWidget {
           Container(
             height: 200,
             width: 200,
-            color: Colors.blue,
+            decoration: BoxDecoration(
+              border: Border.all(color: AppColors.primaryColor, width: 2),
+              borderRadius: const BorderRadius.all(Radius.circular(8)),
+            ),
+            child: Image.asset(
+              imageUrl,
+              fit: BoxFit.cover,
+            ),
           ),
           const SizedBox(height: 8),
           Text(

@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               ImageButton(
-                imageUrl: "",
+                imageUrl: "images/flutter.png",
                 onTap: () {
                   Navigator.push(
                       context,
@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               ImageButton(
-                imageUrl: "",
+                imageUrl: "images/flutter.png",
                 onTap: () {
                   Navigator.push(context,
                       MaterialPageRoute(builder: (ctx) => const XvScreen()));

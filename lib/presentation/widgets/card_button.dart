@@ -23,11 +23,13 @@ class CardButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Image.asset(
                 imageUrl,
-                height: 100,
-                width: 100,
+                height: 90,
+                width: 90,
               ),
               const SizedBox(height: 12),
               Text(
