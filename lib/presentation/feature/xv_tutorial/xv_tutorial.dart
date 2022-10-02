@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/card_button.dart';
-import '../../widgets/common_button.dart';
+import '../../widgets/drugable_bottomsheet.dart';
 import '../../widgets/image_stack.dart';
 
 class XvTutorialScreen extends StatelessWidget {
@@ -14,7 +14,8 @@ class XvTutorialScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const ImageStack(title: "XV 3088 Tutorial", imageUrl: "images/flutter.png"),
+          const ImageStack(
+              title: "XV 3088 Tutorial", imageUrl: "images/flutter.png"),
           const SizedBox(height: 12),
           Expanded(
             child: Container(
@@ -29,16 +30,46 @@ class XvTutorialScreen extends StatelessWidget {
                       title: "Frequency Setting",
                       imageUrl: "images/tower.png",
                       onTap: () {
-                    }),
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(16)),
+                            ),
+                            context: context,
+                            builder: (context) {
+                              return const AppBottomSheet();
+                            });
+                      }),
                   CardButton(
                       title: "SEL Call",
                       imageUrl: "images/sell.png",
                       onTap: () {
-                       }),
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(16)),
+                            ),
+                            context: context,
+                            builder: (context) {
+                              return const AppBottomSheet();
+                            });
+                      }),
                   CardButton(
                       title: "Power Setup",
                       imageUrl: "images/settings.png",
                       onTap: () {
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            shape: const RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(16)),
+                            ),
+                            context: context,
+                            builder: (context) {
+                              return const AppBottomSheet();
+                            });
                       }),
                 ],
               ),
