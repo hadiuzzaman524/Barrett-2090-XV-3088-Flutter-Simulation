@@ -13,8 +13,9 @@ class HomeScreen extends StatelessWidget {
           title: const Text("Radio Set"),
           centerTitle: true,
         ),
-        body: Padding(
+        body: Container(
           padding: const EdgeInsets.all(12.0),
+          width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -29,6 +30,7 @@ class HomeScreen extends StatelessWidget {
                 },
                 title: 'Barret 2090',
               ),
+              const SizedBox(height: 32),
               ImageButton(
                 imageUrl: "",
                 onTap: () {

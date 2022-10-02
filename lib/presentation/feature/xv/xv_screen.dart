@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:radio_set/presentation/feature/xv_simulate/cv_simulate_screen.dart';
-import 'package:radio_set/presentation/feature/xv_tutorial/xv_tutorial.dart';
 
-import '../../widgets/common_button.dart';
+import '../../widgets/card_button.dart';
+import '../../widgets/image_stack.dart';
 
 class XvScreen extends StatelessWidget {
   const XvScreen({Key? key}) : super(key: key);
@@ -14,34 +13,27 @@ class XvScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          const ImageStack(title: "XV 2028", imageUrl: "images/flutter.png"),
+          const SizedBox(height: 12),
           Expanded(
             child: Container(
-              height: 200,
-              width: 200,
-              color: Colors.red,
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: [
-                CommonButton(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (ctx) => const XvTutorialScreen()));
-                    },
-                    title: "Tutorial"),
-                const SizedBox(height: 12),
-                CommonButton(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (ctx) => const XvSimulateScreen()));
-                    },
-                    title: "Simulate"),
-              ],
+              padding: const EdgeInsets.all(12),
+              child: GridView.count(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 2 / 2.1,
+                children: [
+                  CardButton(
+                      title: "Tutorial",
+                      imageUrl: "images/flutter.png",
+                      onTap: () {}),
+                  CardButton(
+                      title: "Simulate",
+                      imageUrl: "images/flutter.png",
+                      onTap: () {}),
+                ],
+              ),
             ),
           )
         ],
