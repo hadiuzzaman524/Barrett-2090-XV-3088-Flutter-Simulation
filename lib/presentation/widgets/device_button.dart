@@ -27,11 +27,12 @@ class _DeviceButtonState extends State<DeviceButton> {
     return InkWell(
       onTap: widget.onTap,
       onLongPress: () {
-        widget.onLogPress(isLongPressed);
+        print("Long Pressed");
         isLongPressed = !isLongPressed;
         setState(() {
-          debugPrint(isLongPressed.toString());
+          widget.onLogPress(isLongPressed);
         });
+        print("Long Pressed end");
       },
       child: Container(
         height: 120,
