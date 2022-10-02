@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:radio_set/presentation/widgets/tutorial_guide.dart';
+
+import '../../services/model/tutorial_model.dart';
 
 class AppBottomSheet extends StatefulWidget {
-  const AppBottomSheet({Key? key}) : super(key: key);
+  final List<TutorialModel> tutorialList;
+
+  const AppBottomSheet({Key? key, required this.tutorialList})
+      : super(key: key);
 
   @override
   State<AppBottomSheet> createState() => _AppBottomSheetState();
@@ -32,13 +38,14 @@ class _AppBottomSheetState extends State<AppBottomSheet> {
                   padding: const EdgeInsets.all(8.0),
                   child: ListView.separated(
                       controller: scrollController,
-                      itemCount: 3,
+                      itemCount: widget.tutorialList.length,
                       separatorBuilder: (context, val) {
                         return const Divider();
                       },
                       itemBuilder: (context, index) {
-                        return const InkWell(
-                          child: Text("hello"),
+                        return TutorialGuide(
+                          title: widget.tutorialList[index].title,
+                          details: widget.tutorialList[index].details,
                         );
                       }),
                 ),

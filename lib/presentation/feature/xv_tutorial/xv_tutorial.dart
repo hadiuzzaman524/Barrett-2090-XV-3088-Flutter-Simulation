@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../configuration/constants.dart';
 import '../../widgets/card_button.dart';
 import '../../widgets/drugable_bottomsheet.dart';
 import '../../widgets/image_stack.dart';
@@ -38,7 +39,9 @@ class XvTutorialScreen extends StatelessWidget {
                             ),
                             context: context,
                             builder: (context) {
-                              return const AppBottomSheet();
+                              return AppBottomSheet(
+                                tutorialList: AppConstant.xvFrequency,
+                              );
                             });
                       }),
                   CardButton(
@@ -53,7 +56,9 @@ class XvTutorialScreen extends StatelessWidget {
                             ),
                             context: context,
                             builder: (context) {
-                              return const AppBottomSheet();
+                              return AppBottomSheet(
+                                tutorialList: AppConstant.xvSellCall,
+                              );
                             });
                       }),
                   CardButton(
@@ -68,7 +73,9 @@ class XvTutorialScreen extends StatelessWidget {
                             ),
                             context: context,
                             builder: (context) {
-                              return const AppBottomSheet();
+                              return AppBottomSheet(
+                                tutorialList: AppConstant.xvPowerSetup,
+                              );
                             });
                       }),
                 ],

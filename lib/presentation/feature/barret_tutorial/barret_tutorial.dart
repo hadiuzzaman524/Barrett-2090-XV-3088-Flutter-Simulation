@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:radio_set/configuration/constants.dart';
 
 import '../../widgets/card_button.dart';
 import '../../widgets/common_button.dart';
@@ -39,7 +40,9 @@ class BarretTutorialScreen extends StatelessWidget {
                             ),
                             context: context,
                             builder: (context) {
-                              return const AppBottomSheet();
+                              return AppBottomSheet(
+                                tutorialList: AppConstant.barretFrequency,
+                              );
                             });
                       }),
                   CardButton(
@@ -54,7 +57,9 @@ class BarretTutorialScreen extends StatelessWidget {
                             ),
                             context: context,
                             builder: (context) {
-                              return const AppBottomSheet();
+                              return AppBottomSheet(
+                                tutorialList: AppConstant.barretSellCall,
+                              );
                             });
                       }),
                   CardButton(
@@ -69,7 +74,9 @@ class BarretTutorialScreen extends StatelessWidget {
                             ),
                             context: context,
                             builder: (context) {
-                              return const AppBottomSheet();
+                              return AppBottomSheet(
+                                tutorialList: AppConstant.barretPowerSetup,
+                              );
                             });
                       }),
                 ],
