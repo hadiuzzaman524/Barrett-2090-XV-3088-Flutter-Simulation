@@ -17,9 +17,10 @@ class BarretSetupScreen extends StatelessWidget {
           Container(
             height: 200,
             width: double.infinity,
-            decoration: const BoxDecoration(
-              color: Color(0xffD3D6D6),
-              borderRadius: BorderRadius.only(
+            decoration: BoxDecoration(
+              color: const Color(0xffD3D6D6),
+              border: Border.all(color: Colors.white30, width: 2),
+              borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(16), topRight: Radius.circular(16)),
             ),
             child: Row(
