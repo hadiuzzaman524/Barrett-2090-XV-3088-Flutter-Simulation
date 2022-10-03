@@ -7,86 +7,114 @@ class BarretSetupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [
-        Container(
-          height: 200,
-          width: double.infinity,
-          color: Colors.blue,
-        ),
-        Expanded(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              BarretButtonRow(
-                firstButtonImageUrl: "images/menu.PNG",
-                secondButtonImageUrl: 'images/clear.PNG',
-                thirdButtonImageUrl: 'images/prog.PNG',
-                onTapFirstButton: () {},
-                onTapSecondButton: () {},
-                onTapThirdButton: () {},
-              ),
-              BarretButtonRow(
-                firstButtonImageUrl: "images/one.PNG",
-                secondButtonImageUrl: 'images/two.PNG',
-                thirdButtonImageUrl: 'images/three.PNG',
-                onTapFirstButton: () {},
-                onTapSecondButton: () {},
-                onTapThirdButton: () {},
-              ),
-              BarretButtonRow(
-                firstButtonImageUrl: "images/four.png",
-                secondButtonImageUrl: 'images/five.png',
-                thirdButtonImageUrl: 'images/six.png',
-                onTapFirstButton: () {},
-                onTapSecondButton: () {},
-                onTapThirdButton: () {},
-              ),
-              BarretButtonRow(
-                firstButtonImageUrl: "images/seven.png",
-                secondButtonImageUrl: 'images/eight.png',
-                thirdButtonImageUrl: 'images/nine.png',
-                onTapFirstButton: () {},
-                onTapSecondButton: () {},
-                onTapThirdButton: () {},
-              ),
-              BarretButtonRow(
-                firstButtonImageUrl: "images/tune.png",
-                secondButtonImageUrl: 'images/zero.png',
-                thirdButtonImageUrl: 'images/chan.png',
-                onTapFirstButton: () {},
-                onTapSecondButton: () {},
-                onTapThirdButton: () {},
-              ),
-              BarretButtonRow(
-                firstButtonImageUrl: "images/lside.png",
-                secondButtonImageUrl: 'images/danger.png',
-                thirdButtonImageUrl: 'images/rside.png',
-                onTapFirstButton: () {},
-                onTapSecondButton: () {},
-                onTapThirdButton: () {},
-              ),
-              BarretButtonRow(
-                firstButtonImageUrl: "images/upper.png",
-                secondButtonImageUrl: 'images/call.png',
-                thirdButtonImageUrl: 'images/volplus.png',
-                onTapFirstButton: () {},
-                onTapSecondButton: () {},
-                onTapThirdButton: () {},
-              ),
-              BarretButtonRow(
-                firstButtonImageUrl: "images/lower.png",
-                secondButtonImageUrl: 'images/enter.png',
-                thirdButtonImageUrl: 'images/volminus.png',
-                onTapFirstButton: () {},
-                onTapSecondButton: () {},
-                onTapThirdButton: () {},
-              ),
-            ],
+        body: Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 30),
+      decoration: BoxDecoration(
+          color: Colors.blueGrey,
+          border: Border.all(width: 3, color: Colors.white30)),
+      child: Column(
+        children: [
+          Container(
+            height: 200,
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              color: Color(0xffD3D6D6),
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(16), topRight: Radius.circular(16)),
+            ),
+            child: Row(
+              children: [
+                Image.asset(
+                  "images/rx.gif",
+                  height: 100,
+                  width: 100,
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+          Expanded(
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white30,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(16),
+                    bottomRight: Radius.circular(16)),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(height: 8),
+                  BarretButtonRow(
+                    firstButtonImageUrl: "images/menu.PNG",
+                    secondButtonImageUrl: 'images/clear.PNG',
+                    thirdButtonImageUrl: 'images/prog.PNG',
+                    onTapFirstButton: () {},
+                    onTapSecondButton: () {},
+                    onTapThirdButton: () {},
+                  ),
+                  BarretButtonRow(
+                    firstButtonImageUrl: "images/one.PNG",
+                    secondButtonImageUrl: 'images/two.PNG',
+                    thirdButtonImageUrl: 'images/three.PNG',
+                    onTapFirstButton: () {},
+                    onTapSecondButton: () {},
+                    onTapThirdButton: () {},
+                  ),
+                  BarretButtonRow(
+                    firstButtonImageUrl: "images/four.png",
+                    secondButtonImageUrl: 'images/five.png',
+                    thirdButtonImageUrl: 'images/six.png',
+                    onTapFirstButton: () {},
+                    onTapSecondButton: () {},
+                    onTapThirdButton: () {},
+                  ),
+                  BarretButtonRow(
+                    firstButtonImageUrl: "images/seven.png",
+                    secondButtonImageUrl: 'images/eight.png',
+                    thirdButtonImageUrl: 'images/nine.png',
+                    onTapFirstButton: () {},
+                    onTapSecondButton: () {},
+                    onTapThirdButton: () {},
+                  ),
+                  BarretButtonRow(
+                    firstButtonImageUrl: "images/tune.png",
+                    secondButtonImageUrl: 'images/zero.png',
+                    thirdButtonImageUrl: 'images/chan.png',
+                    onTapFirstButton: () {},
+                    onTapSecondButton: () {},
+                    onTapThirdButton: () {},
+                  ),
+                  BarretButtonRow(
+                    firstButtonImageUrl: "images/lside.png",
+                    secondButtonImageUrl: 'images/danger.png',
+                    thirdButtonImageUrl: 'images/rside.png',
+                    onTapFirstButton: () {},
+                    onTapSecondButton: () {},
+                    onTapThirdButton: () {},
+                  ),
+                  BarretButtonRow(
+                    firstButtonImageUrl: "images/upper.png",
+                    secondButtonImageUrl: 'images/call.png',
+                    thirdButtonImageUrl: 'images/volplus.png',
+                    onTapFirstButton: () {},
+                    onTapSecondButton: () {},
+                    onTapThirdButton: () {},
+                  ),
+                  BarretButtonRow(
+                    firstButtonImageUrl: "images/lower.png",
+                    secondButtonImageUrl: 'images/enter.png',
+                    thirdButtonImageUrl: 'images/volminus.png',
+                    onTapFirstButton: () {},
+                    onTapSecondButton: () {},
+                    onTapThirdButton: () {},
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     ));
   }
 }

@@ -27,6 +27,7 @@ class Assets {
   static const String imagesProg = 'images/prog.PNG';
   static const String imagesRadio = 'images/radio.PNG';
   static const String imagesRside = 'images/rside.png';
+  static const String imagesRx = 'images/rx.gif';
   static const String imagesSell = 'images/sell.png';
   static const String imagesSettings = 'images/settings.png';
   static const String imagesSeven = 'images/seven.png';
