@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:radio_set/configuration/constants.dart';
+import 'package:radio_set/presentation/feature/xv_setup/xv_setup_screen.dart';
 import 'package:radio_set/presentation/widgets/card_button.dart';
 import 'package:radio_set/presentation/widgets/device_button.dart';
 import 'package:radio_set/presentation/widgets/icon_button.dart';
@@ -43,7 +44,7 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                         debugPrint(result);
                         setState(() {});
                       },
-                      imageUrl: "images/comment.png"),
+                      imageUrl: "images/xv3088.jpg"),
                   if (AppConstant.xvList.isNotEmpty)
                     AppIconButton(
                         title: "Delete",
@@ -81,7 +82,12 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                         DeviceButton(
                           key: Key(DateTime.now().toString()),
                           imageUrl: "images/xv3088.jpg",
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (ctx) => const XvSetupScreen()));
+                          },
                           onLogPress: (bool value) {
                             if (value) {
                               deleteItem = value;
@@ -114,7 +120,12 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                         DeviceButton(
                           key: Key(DateTime.now().toString()),
                           imageUrl: "images/xv3088.jpg",
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (ctx) => const XvSetupScreen()));
+                          },
                           onLogPress: (bool value) {
                             if (value) {
                               deleteItem = value;

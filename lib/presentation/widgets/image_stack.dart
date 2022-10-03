@@ -12,7 +12,7 @@ class ImageStack extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 200,
       width: double.infinity,
       child: Stack(
         children: [
@@ -21,7 +21,7 @@ class ImageStack extends StatelessWidget {
             fit: BoxFit.cover,
           ),
           Positioned(
-            top: 190,
+            top: 150,
             width: MediaQuery.of(context).size.width,
             height: 60,
             child: Container(
