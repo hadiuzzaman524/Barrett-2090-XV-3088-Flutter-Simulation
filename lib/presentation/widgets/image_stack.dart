@@ -37,19 +37,6 @@ class ImageStack extends StatelessWidget {
               ),
             ),
           ),
-          Positioned(
-            top: 20,
-            left: 10,
-            child: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.black,
-              ),
-            ),
-          )
         ],
       ),
     );

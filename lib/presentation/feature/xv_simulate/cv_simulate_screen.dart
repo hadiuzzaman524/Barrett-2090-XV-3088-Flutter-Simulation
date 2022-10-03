@@ -80,7 +80,7 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                       if (AppConstant.xvList.isNotEmpty)
                         DeviceButton(
                           key: Key(DateTime.now().toString()),
-                          imageUrl: "images/delete.png",
+                          imageUrl: "images/xv3088.jpg",
                           onTap: () {},
                           onLogPress: (bool value) {
                             if (value) {
@@ -113,7 +113,7 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                       if (AppConstant.xvList.length > 1)
                         DeviceButton(
                           key: Key(DateTime.now().toString()),
-                          imageUrl: "images/delete.png",
+                          imageUrl: "images/xv3088.jpg",
                           onTap: () {},
                           onLogPress: (bool value) {
                             if (value) {

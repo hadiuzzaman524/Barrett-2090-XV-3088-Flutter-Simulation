@@ -11,11 +11,14 @@ class XvScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("XV 3088"),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const ImageStack(title: "XV 3088", imageUrl: "images/flutter.png"),
+          const ImageStack(title: "XV 3088", imageUrl: "images/xv3088.jpg"),
           const SizedBox(height: 12),
           Expanded(
             child: Container(

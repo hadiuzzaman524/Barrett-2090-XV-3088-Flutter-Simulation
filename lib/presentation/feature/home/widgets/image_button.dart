@@ -27,9 +27,12 @@ class ImageButton extends StatelessWidget {
               border: Border.all(color: AppColors.primaryColor, width: 2),
               borderRadius: const BorderRadius.all(Radius.circular(8)),
             ),
-            child: Image.asset(
-              imageUrl,
-              fit: BoxFit.cover,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(
+                imageUrl,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           const SizedBox(height: 8),

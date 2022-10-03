@@ -12,12 +12,15 @@ class BarretTutorialScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Barret 2090 Tutorial"),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const ImageStack(
-              title: "Barret 2090 Tutorial", imageUrl: "images/flutter.png"),
+              title: "Barret 2090 Tutorial", imageUrl: "images/barret.jpg"),
           const SizedBox(height: 12),
           Expanded(
             child: Container(
