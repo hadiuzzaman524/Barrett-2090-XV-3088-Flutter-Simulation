@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:radio_set/presentation/feature/barret_setup/barret_setup_screen.dart';
 
 import '../../../configuration/constants.dart';
 import '../../widgets/device_button.dart';
@@ -43,7 +44,7 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                         debugPrint(result);
                         setState(() {});
                       },
-                      imageUrl: "images/comment.png"),
+                      imageUrl: "images/barret.jpg"),
                   if (AppConstant.xvList.isNotEmpty)
                     AppIconButton(
                         title: "Delete",
@@ -81,7 +82,13 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                         DeviceButton(
                           key: Key(DateTime.now().toString()),
                           imageUrl: "images/barret.jpg",
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (ctx) =>
+                                        const BarretSetupScreen()));
+                          },
                           onLogPress: (bool value) {
                             if (value) {
                               deleteItem = value;
@@ -114,7 +121,13 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                         DeviceButton(
                           key: Key(DateTime.now().toString()),
                           imageUrl: "images/barret.jpg",
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (ctx) =>
+                                        const BarretSetupScreen()));
+                          },
                           onLogPress: (bool value) {
                             if (value) {
                               deleteItem = value;
