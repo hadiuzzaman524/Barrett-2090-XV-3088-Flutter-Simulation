@@ -8,14 +8,14 @@ class BarretSetupScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 30),
+      padding: const EdgeInsets.only(left: 12, right: 12, top: 30, bottom: 10),
       decoration: BoxDecoration(
           color: Colors.blueGrey,
           border: Border.all(width: 3, color: Colors.white30)),
       child: Column(
         children: [
           Container(
-            height: 200,
+            height: 180,
             width: double.infinity,
             decoration: BoxDecoration(
               color: const Color(0xffDCDCDE),
@@ -50,40 +50,70 @@ class BarretSetupScreen extends StatelessWidget {
                     firstButtonImageUrl: "images/menu.PNG",
                     secondButtonImageUrl: 'images/clear.PNG',
                     thirdButtonImageUrl: 'images/prog.PNG',
+
+                    ///menu
                     onTapFirstButton: () {},
+
+                    ///clear
                     onTapSecondButton: () {},
+
+                    ///prog
                     onTapThirdButton: () {},
                   ),
                   BarretButtonRow(
                     firstButtonImageUrl: "images/one.PNG",
                     secondButtonImageUrl: 'images/two.PNG',
                     thirdButtonImageUrl: 'images/three.PNG',
+
+                    ///one
                     onTapFirstButton: () {},
+
+                    ///two
                     onTapSecondButton: () {},
+
+                    ///three
                     onTapThirdButton: () {},
                   ),
                   BarretButtonRow(
                     firstButtonImageUrl: "images/four.png",
                     secondButtonImageUrl: 'images/five.png',
                     thirdButtonImageUrl: 'images/six.png',
+
+                    ///four
                     onTapFirstButton: () {},
+
+                    ///five
                     onTapSecondButton: () {},
+
+                    ///six
                     onTapThirdButton: () {},
                   ),
                   BarretButtonRow(
                     firstButtonImageUrl: "images/seven.png",
                     secondButtonImageUrl: 'images/eight.png',
                     thirdButtonImageUrl: 'images/nine.png',
+
+                    ///seven
                     onTapFirstButton: () {},
+
+                    ///eight
                     onTapSecondButton: () {},
+
+                    ///nine
                     onTapThirdButton: () {},
                   ),
                   BarretButtonRow(
                     firstButtonImageUrl: "images/tune.png",
                     secondButtonImageUrl: 'images/zero.png',
                     thirdButtonImageUrl: 'images/chan.png',
+
+                    ///tune
                     onTapFirstButton: () {},
+
+                    ///zero
                     onTapSecondButton: () {},
+
+                    ///chan
                     onTapThirdButton: () {},
                   ),
                   BarretButtonRow(

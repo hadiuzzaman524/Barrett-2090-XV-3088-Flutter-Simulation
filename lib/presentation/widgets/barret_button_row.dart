@@ -23,19 +23,19 @@ class BarretButtonRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Flexible(
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           BarretButton(
             onTap: onTapFirstButton,
             imageUrl: firstButtonImageUrl,
           ),
-          const SizedBox(width: 8),
+
           BarretButton(
             onTap: onTapSecondButton,
             imageUrl: secondButtonImageUrl,
           ),
-          const SizedBox(width: 8),
+
           BarretButton(
             onTap: onTapThirdButton,
             imageUrl: thirdButtonImageUrl,

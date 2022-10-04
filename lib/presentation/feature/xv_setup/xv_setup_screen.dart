@@ -71,12 +71,16 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                       XvButtonRow(
                         ///one
                         fifthButton: () {},
+
                         ///two
                         firstButton: () {},
+
                         ///three
                         fourthButton: () {},
+
                         ///four
                         secondButton: () {},
+
                         ///five
                         thirdButton: () {},
                         title1: '1',
@@ -88,12 +92,16 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                       XvButtonRow(
                         ///six
                         fifthButton: () {},
+
                         ///seven
                         firstButton: () {},
+
                         ///eight
                         fourthButton: () {},
+
                         ///nine
                         secondButton: () {},
+
                         ///0 SCAN
                         thirdButton: () {},
                         title1: '6',
@@ -105,12 +113,16 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                       XvButtonRow(
                         ///NO
                         fifthButton: () {},
+
                         ///CALL
                         firstButton: () {},
+
                         ///PROG
                         fourthButton: () {},
+
                         ///PWR
                         secondButton: () {},
+
                         ///YES
                         thirdButton: () {},
                         title1: 'NO',
