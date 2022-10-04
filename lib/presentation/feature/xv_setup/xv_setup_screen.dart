@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:radio_set/presentation/widgets/xv_button.dart';
 
 import '../../widgets/xv_button_row.dart';
 
@@ -40,7 +39,7 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
           children: [
             Container(
               color: const Color(0xff53594D),
-              width: 150,
+              width: 120,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: const [
@@ -68,10 +67,58 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                   ),
                   Expanded(
                       child: Column(
-                    children: const [
-                      XvButtonRow(),
-                      XvButtonRow(),
-                      XvButtonRow(),
+                    children: [
+                      XvButtonRow(
+                        ///one
+                        fifthButton: () {},
+                        ///two
+                        firstButton: () {},
+                        ///three
+                        fourthButton: () {},
+                        ///four
+                        secondButton: () {},
+                        ///five
+                        thirdButton: () {},
+                        title1: '1',
+                        title2: '2',
+                        title3: '3',
+                        title4: '4',
+                        title5: '5',
+                      ),
+                      XvButtonRow(
+                        ///six
+                        fifthButton: () {},
+                        ///seven
+                        firstButton: () {},
+                        ///eight
+                        fourthButton: () {},
+                        ///nine
+                        secondButton: () {},
+                        ///0 SCAN
+                        thirdButton: () {},
+                        title1: '6',
+                        title2: '7',
+                        title3: '8',
+                        title4: '9',
+                        title5: '0 SCAN',
+                      ),
+                      XvButtonRow(
+                        ///NO
+                        fifthButton: () {},
+                        ///CALL
+                        firstButton: () {},
+                        ///PROG
+                        fourthButton: () {},
+                        ///PWR
+                        secondButton: () {},
+                        ///YES
+                        thirdButton: () {},
+                        title1: 'NO',
+                        title2: 'CALL',
+                        title3: 'PROG',
+                        title4: 'PWR',
+                        title5: 'YES',
+                      ),
                     ],
                   ))
                 ],
@@ -79,7 +126,7 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
             )),
             Container(
               color: const Color(0xff53594D),
-              width: 150,
+              width: 120,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: const [
