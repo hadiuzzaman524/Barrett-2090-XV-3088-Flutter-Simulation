@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:radio_set/presentation/cubits/xv_setup/cubit.dart';
+import 'package:radio_set/presentation/feature/xv_setup/left_button.dart';
+import 'package:radio_set/presentation/feature/xv_setup/right_button.dart';
+import 'package:radio_set/presentation/feature/xv_setup/xv_device_screen.dart';
 
 import '../../widgets/xv_button_row.dart';
 
@@ -31,126 +36,179 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
     super.dispose();
   }
 
+  bool setChannel = false;
+  String channelText = "";
+  int pressProg = 1;
+  bool setFreq = false;
+
   @override
   Widget build(BuildContext context) {
+    debugPrint("Press PROG: $pressProg");
+
+    final xvCubit = context.read<XvSetupCubit>();
     return Scaffold(
       body: SafeArea(
         child: Row(
           children: [
-            Container(
-              color: const Color(0xff53594D),
-              width: 120,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  CircleAvatar(
-                    radius: 60,
-                  ),
-                  CircleAvatar(
-                    radius: 60,
-                  ),
-                ],
-              ),
-            ),
+            const LeftButton(),
             Expanded(
-                child: Container(
-              color: const Color(0xff717868),
-              padding: const EdgeInsets.all(8),
-              child: Column(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: const Color(0xff849E93),
-                        border: Border.all(
-                            color: const Color(0xff9EA79E), width: 4)),
-                    height: 120,
-                  ),
-                  Expanded(
-                      child: Column(
-                    children: [
-                      XvButtonRow(
-                        ///one
-                        fifthButton: () {},
+              child: Container(
+                color: const Color(0xff717868),
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  children: [
+                    const XvDeviceScreen(),
+                    Expanded(
+                        child: Column(
+                      children: [
+                        XvButtonRow(
+                          ///five
+                          fifthButton: () {
+                            if (setChannel) {
+                              xvCubit.setChannelNumber(number: "5");
+                            } else if (setFreq) {
+                              xvCubit.setFrequency(number: "5");
+                            }
+                          },
 
-                        ///two
-                        firstButton: () {},
+                          ///one
+                          firstButton: () {
+                            if (setChannel) {
+                              xvCubit.setChannelNumber(number: "1");
+                            } else if (setFreq) {
+                              xvCubit.setFrequency(number: "1");
+                            }
+                          },
 
-                        ///three
-                        fourthButton: () {},
+                          ///four
+                          fourthButton: () {
+                            if (setChannel) {
+                              xvCubit.setChannelNumber(number: "4");
+                            } else if (setFreq) {
+                              xvCubit.setFrequency(number: "4");
+                            }
+                          },
 
-                        ///four
-                        secondButton: () {},
+                          ///two
+                          secondButton: () {
+                            if (setChannel) {
+                              xvCubit.setChannelNumber(number: "2");
+                            } else if (setFreq) {
+                              xvCubit.setFrequency(number: "2");
+                            }
+                          },
 
-                        ///five
-                        thirdButton: () {},
-                        title1: '1',
-                        title2: '2',
-                        title3: '3',
-                        title4: '4',
-                        title5: '5',
-                      ),
-                      XvButtonRow(
-                        ///six
-                        fifthButton: () {},
+                          ///three
+                          thirdButton: () {
+                            if (setChannel) {
+                              xvCubit.setChannelNumber(number: "3");
+                            } else if (setFreq) {
+                              xvCubit.setFrequency(number: "3");
+                            }
+                          },
+                          title1: '1',
+                          title2: '2',
+                          title3: '3',
+                          title4: '4',
+                          title5: '5',
+                        ),
+                        XvButtonRow(
+                          ///O
+                          fifthButton: () {
+                            if (setChannel) {
+                              xvCubit.setChannelNumber(number: "0");
+                            } else if (setFreq) {
+                              xvCubit.setFrequency(number: "0");
+                            }
+                          },
 
-                        ///seven
-                        firstButton: () {},
+                          ///six
+                          firstButton: () {
+                            if (setChannel) {
+                              xvCubit.setChannelNumber(number: "6");
+                            } else if (setFreq) {
+                              xvCubit.setFrequency(number: "6");
+                            }
+                          },
 
-                        ///eight
-                        fourthButton: () {},
+                          ///nine
+                          fourthButton: () {
+                            if (setChannel) {
+                              xvCubit.setChannelNumber(number: "9");
+                            } else if (setFreq) {
+                              xvCubit.setFrequency(number: "9");
+                            }
+                          },
 
-                        ///nine
-                        secondButton: () {},
+                          ///seven
+                          secondButton: () {
+                            if (setChannel) {
+                              xvCubit.setChannelNumber(number: "7");
+                            } else if (setFreq) {
+                              xvCubit.setFrequency(number: "7");
+                            }
+                          },
 
-                        ///0 SCAN
-                        thirdButton: () {},
-                        title1: '6',
-                        title2: '7',
-                        title3: '8',
-                        title4: '9',
-                        title5: '0 SCAN',
-                      ),
-                      XvButtonRow(
-                        ///NO
-                        fifthButton: () {},
+                          ///eight
+                          thirdButton: () {
+                            if (setChannel) {
+                              xvCubit.setChannelNumber(number: "8");
+                            } else if (setFreq) {
+                              xvCubit.setFrequency(number: "8");
+                            }
+                          },
+                          title1: '6',
+                          title2: '7',
+                          title3: '8',
+                          title4: '9',
+                          title5: '0 SCAN',
+                        ),
+                        XvButtonRow(
+                          ///YES
+                          fifthButton: () {
+                            if (setChannel) {
+                              setChannel = false;
+                              setFreq = true;
+                            }
+                          },
 
-                        ///CALL
-                        firstButton: () {},
+                          ///NO
+                          firstButton: () {
+                            if (setChannel) {
+                              xvCubit.setChannelNumber(number: "0");
+                              pressProg = 1;
+                            }
+                            if (setChannel == false && setFreq) {
+                              xvCubit.clearFrequency();
+                            }
+                          },
 
-                        ///PROG
-                        fourthButton: () {},
+                          ///PWR
+                          fourthButton: () {},
 
-                        ///PWR
-                        secondButton: () {},
+                          ///CALL
+                          secondButton: () {},
 
-                        ///YES
-                        thirdButton: () {},
-                        title1: 'NO',
-                        title2: 'CALL',
-                        title3: 'PROG',
-                        title4: 'PWR',
-                        title5: 'YES',
-                      ),
-                    ],
-                  ))
-                ],
-              ),
-            )),
-            Container(
-              color: const Color(0xff53594D),
-              width: 120,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const [
-                  CircleAvatar(
-                    radius: 60,
-                  ),
-                  CircleAvatar(
-                    radius: 60,
-                  ),
-                ],
+                          ///PROG
+                          thirdButton: () {
+                            if (pressProg == 1) {
+                              setChannel = true;
+                              pressProg += 1;
+                            }
+                          },
+                          title1: 'NO',
+                          title2: 'CALL',
+                          title3: 'PROG',
+                          title4: 'PWR',
+                          title5: 'YES',
+                        ),
+                      ],
+                    ))
+                  ],
+                ),
               ),
             ),
+            const RightButton(),
           ],
         ),
       ),
