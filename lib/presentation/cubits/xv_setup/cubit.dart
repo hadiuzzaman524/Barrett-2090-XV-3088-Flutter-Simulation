@@ -13,9 +13,27 @@ class XvSetupCubit extends Cubit<XvSetupState> {
               sdx: false,
               powLow: false,
               powHigh: false,
-              channelName: '0',
+              setChannel: false,
+              channelName: '',
+              setFrequency: false,
               frequency: ''),
         );
+
+  void setInitialState() {
+    emit(
+      XvSetupState(
+          sec: false,
+          sel: false,
+          sq: false,
+          sdx: false,
+          powLow: false,
+          powHigh: false,
+          setChannel: false,
+          channelName: '',
+          setFrequency: false,
+          frequency: ''),
+    );
+  }
 
   void setChannelNumber({required String number}) {
     emit(
@@ -27,7 +45,9 @@ class XvSetupCubit extends Cubit<XvSetupState> {
           powLow: state.powLow,
           powHigh: state.powHigh,
           channelName: number,
-          frequency: state.frequency),
+          setChannel: state.setChannel,
+          frequency: state.frequency,
+          setFrequency: state.setFrequency),
     );
   }
 
@@ -55,6 +75,8 @@ class XvSetupCubit extends Cubit<XvSetupState> {
             sdx: state.sdx,
             powLow: state.powLow,
             powHigh: state.powHigh,
+            setChannel: state.setChannel,
+            setFrequency: state.setFrequency,
             channelName: state.channelName,
             frequency: freq),
       );
@@ -71,7 +93,73 @@ class XvSetupCubit extends Cubit<XvSetupState> {
           powLow: state.powLow,
           powHigh: state.powHigh,
           channelName: state.channelName,
-          frequency: ""),
+          frequency: "",
+          setChannel: state.setChannel,
+          setFrequency: state.setFrequency),
+    );
+  }
+
+  void setSDX(bool setSDX) {
+    emit(
+      XvSetupState(
+          sec: state.sec,
+          sel: state.sel,
+          sq: state.sq,
+          sdx: setSDX,
+          powLow: state.powLow,
+          powHigh: state.powHigh,
+          channelName: state.channelName,
+          frequency: state.frequency,
+          setChannel: state.setChannel,
+          setFrequency: state.setFrequency),
+    );
+  }
+
+  void setSEC(bool value) {
+    emit(
+      XvSetupState(
+          sec: value,
+          sel: state.sel,
+          sq: state.sq,
+          sdx: state.sdx,
+          powLow: state.powLow,
+          powHigh: state.powHigh,
+          channelName: state.channelName,
+          frequency: state.frequency,
+          setChannel: state.setChannel,
+          setFrequency: state.setFrequency),
+    );
+  }
+
+  void setSEL(bool value) {
+    emit(
+      XvSetupState(
+          sec: state.sec,
+          sel: value,
+          sq: state.sq,
+          sdx: state.sdx,
+          powLow: state.powLow,
+          powHigh: state.powHigh,
+          channelName: state.channelName,
+          frequency: state.frequency,
+          setChannel: state.setChannel,
+          setFrequency: state.setFrequency),
+    );
+  }
+
+  void setSQ(bool value) {
+    emit(
+      XvSetupState(
+          sec: state.sec,
+          sel: state.sel,
+          sq: value,
+          sdx: state.sdx,
+          powLow: state.powLow,
+          powHigh: state.powHigh,
+          channelName: state.channelName,
+          frequency: state.frequency,
+          setChannel: state.setChannel,
+          setFrequency: state.setFrequency),
     );
   }
 }

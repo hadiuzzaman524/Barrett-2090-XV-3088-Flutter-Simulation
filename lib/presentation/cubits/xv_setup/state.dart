@@ -8,7 +8,9 @@ class XvSetupState {
   final bool powLow;
   final bool powHigh;
   final String channelName;
+  final bool setChannel;
   final String frequency;
+  final bool setFrequency;
 
   XvSetupState(
       {required this.sec,
@@ -18,5 +20,7 @@ class XvSetupState {
       required this.powLow,
       required this.powHigh,
       required this.channelName,
-      required this.frequency});
+      required this.frequency,
+      required this.setChannel,
+      required this.setFrequency});
 }

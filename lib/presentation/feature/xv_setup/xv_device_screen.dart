@@ -51,7 +51,7 @@ class XvDeviceScreen extends StatelessWidget {
                             width: 8,
                           ),
                           Text(
-                            state.channelName,
+                            state.channelName.isEmpty ? "0" : state.channelName,
                             style: const TextStyle(
                               fontSize: 35,
                               fontWeight: FontWeight.bold,
