@@ -11,7 +11,7 @@ class XvSetupCubit extends Cubit<XvSetupState> {
               sel: false,
               sq: false,
               sdx: false,
-              powLow: false,
+              powLow: true,
               powHigh: false,
               setChannel: false,
               channelName: '',
@@ -26,7 +26,7 @@ class XvSetupCubit extends Cubit<XvSetupState> {
           sel: false,
           sq: false,
           sdx: false,
-          powLow: false,
+          powLow: true,
           powHigh: false,
           setChannel: false,
           channelName: '',
@@ -156,6 +156,37 @@ class XvSetupCubit extends Cubit<XvSetupState> {
           sdx: state.sdx,
           powLow: state.powLow,
           powHigh: state.powHigh,
+          channelName: state.channelName,
+          frequency: state.frequency,
+          setChannel: state.setChannel,
+          setFrequency: state.setFrequency),
+    );
+  }
+
+  void setLowPower(bool value) {
+    emit(
+      XvSetupState(
+          sec: state.sec,
+          sel: state.sel,
+          sq: state.sq,
+          sdx: state.sdx,
+          powLow: value,
+          powHigh: state.powHigh,
+          channelName: state.channelName,
+          frequency: state.frequency,
+          setChannel: state.setChannel,
+          setFrequency: state.setFrequency),
+    );
+  }
+  void setHighPower(bool value) {
+    emit(
+      XvSetupState(
+          sec: state.sec,
+          sel: state.sel,
+          sq: state.sq,
+          sdx: state.sdx,
+          powLow: state.powLow,
+          powHigh: value,
           channelName: state.channelName,
           frequency: state.frequency,
           setChannel: state.setChannel,

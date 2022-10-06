@@ -49,6 +49,12 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
 
   bool setHighPower = false;
   bool setLowPower = false;
+  bool setPower = false;
+  bool initialPower = true;
+
+  bool pressPowerButton = false;
+  bool blinkProg = false;
+  bool setProg = false;
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +94,12 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                                             MainAxisAlignment.spaceAround,
                                         children: [
                                           const Spacer(),
+                                          blinkProg
+                                              ? const BlinkText("PROG")
+                                              : setProg
+                                                  ? Text("")
+                                                  : const Text("PROG"),
+                                          const Spacer(),
                                           setSec
                                               ? const BlinkText("SEC")
                                               : state.sec
@@ -106,7 +118,7 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                                                   ? const Text("SQ 150")
                                                   : const Text(""),
                                           const SizedBox(width: 48),
-                                          !setLowPower
+                                          setHighPower
                                               ? const BlinkText("HI")
                                               : state.powHigh
                                                   ? const Text("HI")
@@ -178,9 +190,10 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                                                   : const Text(""),
                                           // nested condition
                                           const SizedBox(width: 48),
+                                          // if (initialPower) const Text("LOW"),
                                           setLowPower
                                               ? const BlinkText("LOW")
-                                              : state.powLow
+                                              : state.powLow && !setHighPower
                                                   ? const Text("LOW")
                                                   : const Text(""),
                                         ],
@@ -348,8 +361,40 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                                 setSQ) {
                               setState(() {
                                 setSQ = false;
+                                blinkProg = true;
                                 xvCubit.setSQ(true);
                               });
+                            } else if (!setChannel &&
+                                !setFreq &&
+                                !setSdx &&
+                                !setSec &&
+                                !setSel &&
+                                !setSQ &&
+                                blinkProg) {
+                              setState(() {
+                                blinkProg = false;
+                                setProg = true;
+                              });
+                            }
+
+                            if (pressPowerButton) {
+                              if (setHighPower) {
+                                xvCubit.setHighPower(true);
+                                xvCubit.setLowPower(false);
+                                setState(() {
+                                  setHighPower = false;
+                                });
+
+                                print("Set High Power");
+                              }
+                              if (setLowPower) {
+                                xvCubit.setLowPower(true);
+                                xvCubit.setHighPower(false);
+                                setState(() {
+                                  setLowPower = false;
+                                });
+                                print("Set Low Power ");
+                              }
                             }
                           },
 
@@ -381,15 +426,58 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                             } else if (setSQ) {
                               setState(() {
                                 setSQ = false;
+                                blinkProg = true;
                                 xvCubit.setSQ(false);
                               });
+                            } else if (!setChannel &&
+                                !setFreq &&
+                                !setSdx &&
+                                !setSec &&
+                                !setSel &&
+                                !setSQ &&
+                                blinkProg) {
+                              setState(() {
+                                blinkProg = false;
+                                xvCubit.setInitialState();
+                                setChannel = true;
+                                channelText = "";
+                                pressProg = 1;
+                                setFreq = false;
+                                setSdx = false;
+                                setSec = false;
+                                setSel = false;
+                                setSQ = false;
+                                setProg = false;
+                              });
+                            }
+
+                            if (pressPowerButton) {
+                              if (setHighPower) {
+                                xvCubit.setHighPower(false);
+                                xvCubit.setLowPower(true);
+                                setState(() {
+                                  setHighPower = false;
+                                });
+
+                                print("Set High Power");
+                              }
+                              if (setLowPower) {
+                                xvCubit.setLowPower(false);
+                                xvCubit.setHighPower(true);
+                                setState(() {
+                                  setLowPower = false;
+                                });
+                                print("Set Low Power ");
+                              }
                             }
                           },
 
                           ///PWR
                           fourthButton: () {
                             setState(() {
+                              pressPowerButton = true;
                               setLowPower = !setLowPower;
+                              setHighPower = !setLowPower;
                             });
                           },
 
@@ -414,6 +502,7 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                                 setSec = false;
                                 setSel = false;
                                 setSQ = false;
+                                setProg = false;
                               });
                             }
                           },
