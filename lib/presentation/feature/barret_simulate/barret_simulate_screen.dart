@@ -80,6 +80,7 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                     children: [
                       if (AppConstant.xvList.isNotEmpty)
                         DeviceButton(
+                          borderColor: Colors.blue,
                           key: Key(DateTime.now().toString()),
                           imageUrl: "images/barret.jpg",
                           onTap: () {
@@ -96,7 +97,7 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                               debugPrint("value: $value");
                               debugPrint("Delete item: $deleteItem");
                             }
-                          },
+                          }, deviceNumber: '1',
                         )
                     ],
                   ),
@@ -119,6 +120,7 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                     children: [
                       if (AppConstant.xvList.length > 1)
                         DeviceButton(
+                          borderColor: Colors.blue,
                           key: Key(DateTime.now().toString()),
                           imageUrl: "images/barret.jpg",
                           onTap: () {
@@ -135,7 +137,7 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                               debugPrint("value: $value");
                               debugPrint("Delete item: $deleteItem");
                             }
-                          },
+                          }, deviceNumber: '2',
                         )
                     ],
                   ),

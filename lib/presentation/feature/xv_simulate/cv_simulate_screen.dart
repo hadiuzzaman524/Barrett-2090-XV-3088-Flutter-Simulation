@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:radio_set/configuration/constants.dart';
+import 'package:radio_set/presentation/feature/xv_setup/xv_setup_device_two.dart';
 import 'package:radio_set/presentation/feature/xv_setup/xv_setup_screen.dart';
 import 'package:radio_set/presentation/widgets/card_button.dart';
 import 'package:radio_set/presentation/widgets/device_button.dart';
@@ -16,9 +17,13 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
   bool deleteItem = false;
   int deleteIndex = 0;
   bool startTransmit = false;
+  bool isConfiguredFirstDevice = false;
+  bool isConfiguredSecondDevice = false;
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(AppConstant.xvSetupList[0].toString());
+    debugPrint(AppConstant.xvSetupList[1].toString());
     return Scaffold(
       appBar: AppBar(
         title: const Text("Simulate"),
@@ -54,6 +59,8 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                             setState(() {
                               deleteItem = false;
                               startTransmit = false;
+                              isConfiguredSecondDevice = false;
+                              isConfiguredFirstDevice = false;
                             });
                           }
                         },
@@ -66,6 +73,13 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                             setState(() {
                               startTransmit = true;
                             });
+                            if (!isConfiguredFirstDevice ||
+                                !isConfiguredSecondDevice) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          "Please Configure those device first")));
+                            }
                           },
                           imageUrl: "images/email.png"),
                 ],
@@ -80,13 +94,28 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                     children: [
                       if (AppConstant.xvList.isNotEmpty)
                         DeviceButton(
+                          borderColor: startTransmit &&
+                                  AppConstant.xvList.length > 1 &&
+                                  isConfiguredFirstDevice &&
+                                  isConfiguredSecondDevice &&
+                                  (AppConstant.xvSetupList[0] !=
+                                      AppConstant.xvSetupList[1])
+                              ? Colors.red
+                              : Colors.blue,
                           key: Key(DateTime.now().toString()),
                           imageUrl: "images/xv3088.jpg",
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (ctx) => const XvSetupScreen()));
+                                    builder: (ctx) => XvSetupScreen(
+                                          isConfigured: () {
+                                            setState(() {
+                                              isConfiguredFirstDevice = true;
+                                              startTransmit = false;
+                                            });
+                                          },
+                                        )));
                           },
                           onLogPress: (bool value) {
                             if (value) {
@@ -96,6 +125,7 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                               debugPrint("Delete item: $deleteItem");
                             }
                           },
+                          deviceNumber: '1',
                         )
                     ],
                   ),
@@ -103,12 +133,23 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                       child: Container(
                     margin: const EdgeInsets.only(left: 60, right: 15),
                     decoration: BoxDecoration(
-                      border: startTransmit && AppConstant.xvList.length > 1
-                          ? const Border(
+                      border: startTransmit &&
+                              AppConstant.xvList.length > 1 &&
+                              isConfiguredFirstDevice &&
+                              isConfiguredSecondDevice
+                          ? Border(
                               left: BorderSide(
-                                  width: 2.0, color: Colors.lightBlue),
+                                  width: 2.0,
+                                  color: (AppConstant.xvSetupList[0] ==
+                                          AppConstant.xvSetupList[1])
+                                      ? Colors.lightBlue
+                                      : Colors.red),
                               bottom: BorderSide(
-                                  width: 2.0, color: Colors.lightBlue),
+                                  width: 2.0,
+                                  color: (AppConstant.xvSetupList[0] ==
+                                          AppConstant.xvSetupList[1])
+                                      ? Colors.lightBlue
+                                      : Colors.red),
                             )
                           : null,
                     ),
@@ -118,13 +159,29 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                     children: [
                       if (AppConstant.xvList.length > 1)
                         DeviceButton(
+                          borderColor: startTransmit &&
+                                  AppConstant.xvList.length > 1 &&
+                                  isConfiguredFirstDevice &&
+                                  isConfiguredSecondDevice &&
+                                  (AppConstant.xvSetupList[0] !=
+                                      AppConstant.xvSetupList[1])
+                              ? Colors.red
+                              : Colors.blue,
                           key: Key(DateTime.now().toString()),
                           imageUrl: "images/xv3088.jpg",
+                          deviceNumber: "2",
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (ctx) => const XvSetupScreen()));
+                                    builder: (ctx) => XvSetupDeviceTwoScreen(
+                                          isConfigured: () {
+                                            setState(() {
+                                              startTransmit = false;
+                                              isConfiguredSecondDevice = true;
+                                            });
+                                          },
+                                        )));
                           },
                           onLogPress: (bool value) {
                             if (value) {

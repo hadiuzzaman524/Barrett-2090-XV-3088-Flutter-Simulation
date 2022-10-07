@@ -1,4 +1,6 @@
-class XvSetupModel {
+import 'package:equatable/equatable.dart';
+
+class XvSetupModel extends Equatable {
   final bool sec;
   final bool sel;
   final bool sq;
@@ -8,7 +10,7 @@ class XvSetupModel {
   final String channelName;
   final String frequency;
 
-  XvSetupModel(
+  const XvSetupModel(
       {required this.sec,
       required this.sel,
       required this.sq,
@@ -17,4 +19,8 @@ class XvSetupModel {
       required this.powHigh,
       required this.channelName,
       required this.frequency});
+
+  @override
+  List<Object?> get props =>
+      [sec, sel, sq, sdx, powLow, powHigh, channelName, frequency];
 }

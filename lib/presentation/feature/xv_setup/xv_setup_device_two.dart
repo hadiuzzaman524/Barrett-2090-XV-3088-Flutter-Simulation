@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:radio_set/configuration/constants.dart';
 import 'package:radio_set/presentation/cubits/xv_setup/cubit.dart';
+import 'package:radio_set/presentation/cubits/xv_setup_device_two/cubit.dart';
+import 'package:radio_set/presentation/cubits/xv_setup_device_two/state.dart';
 import 'package:radio_set/presentation/feature/xv_setup/left_button.dart';
 import 'package:radio_set/presentation/feature/xv_setup/right_button.dart';
 import 'package:radio_set/presentation/feature/xv_setup/xv_device_screen.dart';
@@ -12,16 +14,17 @@ import 'package:radio_set/services/model/xv_setup.dart';
 import '../../cubits/xv_setup/state.dart';
 import '../../widgets/xv_button_row.dart';
 
-class XvSetupScreen extends StatefulWidget {
+class XvSetupDeviceTwoScreen extends StatefulWidget {
   final VoidCallback isConfigured;
 
-  const XvSetupScreen({Key? key, required this.isConfigured}) : super(key: key);
+  const XvSetupDeviceTwoScreen({Key? key, required this.isConfigured})
+      : super(key: key);
 
   @override
-  State<XvSetupScreen> createState() => _XvSetupScreenState();
+  State<XvSetupDeviceTwoScreen> createState() => _XvSetupDeviceTwoScreenState();
 }
 
-class _XvSetupScreenState extends State<XvSetupScreen> {
+class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
   // Step 2
   @override
   void initState() {
@@ -62,7 +65,7 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
   Widget build(BuildContext context) {
     debugPrint("Press PROG: $pressProg");
 
-    final xvCubit = context.read<XvSetupCubit>();
+    final xvCubit = context.read<XvSetupDeviceTwoCubit>();
     return Scaffold(
       body: SafeArea(
         child: Row(
@@ -83,7 +86,8 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                       height: 120,
                       child: Row(
                         children: [
-                          BlocBuilder<XvSetupCubit, XvSetupState>(
+                          BlocBuilder<XvSetupDeviceTwoCubit,
+                              XvSetupDeviceTwoState>(
                             builder: (context, state) {
                               return Column(
                                 children: [
@@ -485,8 +489,9 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
 
                           ///CALL
                           secondButton: () {
-                            final state = context.read<XvSetupCubit>().state;
-                            AppConstant.addXvFirstDeviceSetup(
+                            final state =
+                                context.read<XvSetupDeviceTwoCubit>().state;
+                            AppConstant.addXvSecondDeviceSetup(
                                 setupModel: XvSetupModel(
                                     sec: state.sec,
                                     sel: state.sel,

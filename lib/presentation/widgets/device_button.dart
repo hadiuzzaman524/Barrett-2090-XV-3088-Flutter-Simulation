@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:radio_set/configuration/colors.dart';
-
-import '../../configuration/text_style.dart';
 
 class DeviceButton extends StatefulWidget {
   final String imageUrl;
   final VoidCallback onTap;
   final Function(bool isDelete) onLogPress;
+  final String deviceNumber;
+  final Color borderColor;
 
   const DeviceButton(
       {Key? key,
       required this.onLogPress,
       required this.imageUrl,
-      required this.onTap})
+      required this.onTap,
+      required this.deviceNumber,
+      required this.borderColor})
       : super(key: key);
 
   @override
@@ -35,13 +36,12 @@ class _DeviceButtonState extends State<DeviceButton> {
         print("Long Pressed end");
       },
       child: Container(
-        height: 120,
+        height: 140,
         width: 120,
         decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(Radius.circular(16)),
           border: Border.all(
-              width: 2,
-              color: isLongPressed ? Colors.red : AppColors.primaryColor),
+              width: 2, color: isLongPressed ? Colors.redAccent : widget.borderColor),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -54,6 +54,8 @@ class _DeviceButtonState extends State<DeviceButton> {
                 height: 90,
                 width: 90,
               ),
+              const SizedBox(height: 12),
+              Text("Device ${widget.deviceNumber}")
             ],
           ),
         ),
