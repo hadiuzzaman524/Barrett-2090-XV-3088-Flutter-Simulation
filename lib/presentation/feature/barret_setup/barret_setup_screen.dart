@@ -1,7 +1,12 @@
 import 'package:blinking_text/blinking_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:radio_set/presentation/feature/barret_setup/operating_mode.dart';
+import 'package:radio_set/presentation/feature/barret_setup/power_setting.dart';
 import 'package:radio_set/presentation/feature/barret_setup/rx_frequency.dart';
+import 'package:radio_set/presentation/feature/barret_setup/sell_call.dart';
+import 'package:radio_set/presentation/feature/barret_setup/success_program.dart';
+import 'package:radio_set/presentation/feature/barret_setup/text_container.dart';
 import 'package:radio_set/presentation/feature/barret_setup/tx_frequency.dart';
 import 'package:radio_set/presentation/widgets/barret_button_row.dart';
 
@@ -24,6 +29,9 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
   bool clearTxFrequency = true;
 
   int channelIndex = 0;
+  int operatingModeIndex = 0;
+  int powerSettingIndex = 0;
+  int sellCallFormatIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -54,61 +62,144 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                     ? GetTxFrequency(
                         pressProgramButton: pressProgramButton,
                       )
-                    : (pressProgramButton >= 7 && pressProgramButton <= 8)
+                    : (pressProgramButton == 7)
                         ? ChannelName(
                             pressProgramButton: pressProgramButton,
                           )
-                        : Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  const Text(
-                                    "Channel:",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 25,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    width: 8,
-                                  ),
-                                  BlocBuilder<BarretSetupCubit,
-                                      BarretSetupState>(
-                                    builder: (context, state) {
-                                      return Text(
-                                        state.channelNumber!,
-                                        style: const TextStyle(
-                                          fontSize: 24,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      );
-                                    },
-                                  ),
-                                  setChannel
-                                      ? const BlinkText(
-                                          "_",
-                                          style: TextStyle(
-                                            fontSize: 24,
-                                            fontWeight: FontWeight.bold,
+                        : (pressProgramButton == 8)
+                            ? BarretOperatingMode(
+                                pressProgramButton: pressProgramButton)
+                            : (pressProgramButton == 9)
+                                ? PowerSetting(
+                                    pressProgramButton: pressProgramButton)
+                                : (pressProgramButton == 10)
+                                    ? SellCallFormat(
+                                        pressProgramButton: pressProgramButton,
+                                      )
+                                    : (pressProgramButton == 11)
+                                        ? const SuccessProgram()
+                                        : BlocBuilder<BarretSetupCubit,
+                                            BarretSetupState>(
+                                            builder: (context, state) {
+                                              return Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Row(
+                                                    children: [
+                                                      const Text(
+                                                        "Channel:",
+                                                        style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 25,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(
+                                                        width: 8,
+                                                      ),
+                                                      Text(
+                                                        state.channelNumber,
+                                                        style: const TextStyle(
+                                                          fontSize: 24,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                      setChannel
+                                                          ? const BlinkText(
+                                                              "_",
+                                                              style: TextStyle(
+                                                                fontSize: 24,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                              ),
+                                                            )
+                                                          : const Text(""),
+                                                    ],
+                                                  ),
+                                                  Expanded(
+                                                    child: Row(
+                                                      children: [
+                                                        Image.asset(
+                                                          "images/rx.gif",
+                                                          height: 100,
+                                                          width: 100,
+                                                        ),
+                                                        const SizedBox(
+                                                            width: 8),
+                                                        Expanded(
+                                                          child: Column(
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              const SizedBox(
+                                                                  height: 12),
+                                                              Text(
+                                                                state.rxFrequency
+                                                                        .isEmpty
+                                                                    ? "00000.000 KHz"
+                                                                    : state
+                                                                        .rxFrequency,
+                                                                style:
+                                                                    const TextStyle(
+                                                                  fontSize: 24,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                              ),
+                                                              const SizedBox(
+                                                                height: 12,
+                                                              ),
+                                                              Text(
+                                                                state
+                                                                    .channelName,
+                                                                style:
+                                                                    const TextStyle(
+                                                                  fontSize: 26,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                ),
+                                                              ),
+                                                              const SizedBox(
+                                                                height: 8,
+                                                              ),
+                                                              Row(
+                                                                children: [
+                                                                  TextContainer(
+                                                                    title: state
+                                                                        .operatingMode,
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    width: 8,
+                                                                  ),
+                                                                  TextContainer(
+                                                                    title: state
+                                                                        .powerSetting,
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    width: 8,
+                                                                  ),
+                                                                  TextContainer(
+                                                                    title: state
+                                                                        .cellCallFormat,
+                                                                  ),
+                                                                ],
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              );
+                                            },
                                           ),
-                                        )
-                                      : const Text(""),
-                                ],
-                              ),
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    Image.asset(
-                                      "images/rx.gif",
-                                      height: 100,
-                                      width: 100,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
           ),
           Expanded(
             child: Container(
@@ -484,6 +575,43 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                             channelName: AppConstant
                                 .barretChannelNameList[channelIndex]);
                       }
+                      // operating mode
+                      if (pressProgramButton == 8) {
+                        operatingModeIndex += 1;
+                        if (operatingModeIndex >=
+                            AppConstant.operatingMode.length) {
+                          setState(() {
+                            operatingModeIndex = 0;
+                          });
+                        }
+                        barretCubit.setOperatingMode(
+                            operatingMode:
+                                AppConstant.operatingMode[operatingModeIndex]);
+                      }
+                      if (pressProgramButton == 9) {
+                        powerSettingIndex += 1;
+                        if (powerSettingIndex >=
+                            AppConstant.powerSetting.length) {
+                          setState(() {
+                            powerSettingIndex = 0;
+                          });
+                        }
+                        barretCubit.setPowerSettingMode(
+                            pwr: AppConstant.powerSetting[powerSettingIndex]);
+                      }
+
+                      if (pressProgramButton == 10) {
+                        sellCallFormatIndex += 1;
+                        if (sellCallFormatIndex >=
+                            AppConstant.cellCallFormat.length) {
+                          setState(() {
+                            sellCallFormatIndex = 0;
+                          });
+                        }
+                        barretCubit.setSellCallFormat(
+                            fmt: AppConstant
+                                .cellCallFormat[sellCallFormatIndex]);
+                      }
                     },
 
                     onTapSecondButton: () {},
@@ -506,6 +634,43 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         barretCubit.setChannelName(
                             channelName: AppConstant
                                 .barretChannelNameList[channelIndex]);
+                      }
+                      // operating mode
+                      if (pressProgramButton == 8) {
+                        operatingModeIndex += 1;
+                        if (operatingModeIndex >=
+                            AppConstant.operatingMode.length) {
+                          setState(() {
+                            operatingModeIndex = 0;
+                          });
+                        }
+                        barretCubit.setOperatingMode(
+                            operatingMode:
+                                AppConstant.operatingMode[operatingModeIndex]);
+                      }
+                      // power setting
+                      if (pressProgramButton == 9) {
+                        powerSettingIndex += 1;
+                        if (powerSettingIndex >=
+                            AppConstant.powerSetting.length) {
+                          setState(() {
+                            powerSettingIndex = 0;
+                          });
+                        }
+                        barretCubit.setPowerSettingMode(
+                            pwr: AppConstant.powerSetting[powerSettingIndex]);
+                      }
+                      if (pressProgramButton == 10) {
+                        sellCallFormatIndex += 1;
+                        if (sellCallFormatIndex >=
+                            AppConstant.cellCallFormat.length) {
+                          setState(() {
+                            sellCallFormatIndex = 0;
+                          });
+                        }
+                        barretCubit.setSellCallFormat(
+                            fmt: AppConstant
+                                .cellCallFormat[sellCallFormatIndex]);
                       }
                     },
                     onTapSecondButton: () {},

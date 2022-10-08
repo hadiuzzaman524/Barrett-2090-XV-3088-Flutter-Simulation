@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../cubits/barret_setup/cubit.dart';
 import '../../cubits/barret_setup/state.dart';
 
-class ChannelName extends StatelessWidget {
+class SellCallFormat extends StatelessWidget {
   final int pressProgramButton;
 
-  const ChannelName({Key? key, required this.pressProgramButton})
+  const SellCallFormat({Key? key, required this.pressProgramButton})
       : super(key: key);
 
   @override
@@ -19,7 +19,7 @@ class ChannelName extends StatelessWidget {
         children: [
           const FittedBox(
             child: Text(
-              "===== Channel Label =====",
+              "===== Sell Call Format =====",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24,
@@ -35,7 +35,7 @@ class ChannelName extends StatelessWidget {
                   BlocBuilder<BarretSetupCubit, BarretSetupState>(
                     builder: (context, state) {
                       return Text(
-                        state.channelName,
+                        state.cellCallFormat,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 26,

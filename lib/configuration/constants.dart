@@ -117,4 +117,23 @@ class AppConstant {
     "Private",
     "Hadi",
   ];
+
+  static final List<String> operatingMode = [
+    "USB",
+    "CW",
+    "LSB",
+    "FSK",
+    "AM",
+  ];
+  static final List<String> powerSetting = [
+    "High",
+    "Medium",
+    "Low",
+  ];
+  static final List<String> cellCallFormat = [
+    "International",
+    "None",
+    "OEM",
+    "CCIR",
+  ];
 }

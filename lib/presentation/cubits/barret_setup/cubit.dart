@@ -9,9 +9,9 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
           rxFrequency: '',
           txFrequency: '',
           channelName: "Public",
-          operatingMode: "",
-          powerSetting: "",
-          cellCallFormat: "",
+          operatingMode: "USB",
+          powerSetting: "High",
+          cellCallFormat: "International",
         ));
 
   void setChannelNumber({required String channelNumber}) {
@@ -140,6 +140,47 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         operatingMode: state.operatingMode,
         powerSetting: state.powerSetting,
         cellCallFormat: state.cellCallFormat,
+      ),
+    );
+  }
+
+  void setOperatingMode({required String operatingMode}) {
+    emit(
+      BarretSetupState(
+        rxFrequency: state.rxFrequency,
+        channelNumber: state.channelNumber,
+        txFrequency: state.txFrequency,
+        channelName: state.channelName,
+        operatingMode: operatingMode,
+        powerSetting: state.powerSetting,
+        cellCallFormat: state.cellCallFormat,
+      ),
+    );
+  }
+
+  void setPowerSettingMode({required String pwr}) {
+    emit(
+      BarretSetupState(
+        rxFrequency: state.rxFrequency,
+        channelNumber: state.channelNumber,
+        txFrequency: state.txFrequency,
+        channelName: state.channelName,
+        operatingMode: state.operatingMode,
+        powerSetting: pwr,
+        cellCallFormat: state.cellCallFormat,
+      ),
+    );
+  }
+  void setSellCallFormat({required String fmt}) {
+    emit(
+      BarretSetupState(
+        rxFrequency: state.rxFrequency,
+        channelNumber: state.channelNumber,
+        txFrequency: state.txFrequency,
+        channelName: state.channelName,
+        operatingMode: state.operatingMode,
+        powerSetting: state.powerSetting,
+        cellCallFormat: fmt,
       ),
     );
   }
