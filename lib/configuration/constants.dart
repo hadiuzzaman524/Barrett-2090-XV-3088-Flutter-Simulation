@@ -111,4 +111,10 @@ class AppConstant {
     }
     return "Device removed";
   }
+
+  static final List<String> barretChannelNameList = [
+    "Public",
+    "Private",
+    "Hadi",
+  ];
 }
