@@ -141,8 +141,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                                                                 state.rxFrequency
                                                                         .isEmpty
                                                                     ? "00000.000 KHz"
-                                                                    : state
-                                                                        .rxFrequency,
+                                                                    : "${state.rxFrequency} KHz",
                                                                 style:
                                                                     const TextStyle(
                                                                   fontSize: 24,
