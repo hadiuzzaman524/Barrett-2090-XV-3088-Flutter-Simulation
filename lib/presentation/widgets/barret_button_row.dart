@@ -3,6 +3,7 @@ import 'package:radio_set/presentation/widgets/barret_button.dart';
 
 class BarretButtonRow extends StatelessWidget {
   final VoidCallback onTapFirstButton;
+  final VoidCallback? onLongTapFirstButton;
   final VoidCallback onTapSecondButton;
   final VoidCallback onTapThirdButton;
   final String firstButtonImageUrl;
@@ -16,7 +17,7 @@ class BarretButtonRow extends StatelessWidget {
       required this.onTapSecondButton,
       required this.onTapThirdButton,
       required this.secondButtonImageUrl,
-      required this.thirdButtonImageUrl})
+      required this.thirdButtonImageUrl, this.onLongTapFirstButton})
       : super(key: key);
 
   @override
@@ -28,6 +29,7 @@ class BarretButtonRow extends StatelessWidget {
         children: [
           BarretButton(
             onTap: onTapFirstButton,
+            onLongTap: onLongTapFirstButton,
             imageUrl: firstButtonImageUrl,
           ),
 

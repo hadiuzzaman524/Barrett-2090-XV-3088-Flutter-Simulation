@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:radio_set/presentation/feature/barret_setup/operating_mode.dart';
 import 'package:radio_set/presentation/feature/barret_setup/power_setting.dart';
 import 'package:radio_set/presentation/feature/barret_setup/rx_frequency.dart';
+import 'package:radio_set/presentation/feature/barret_setup/second_menu_option.dart';
 import 'package:radio_set/presentation/feature/barret_setup/sell_call.dart';
 import 'package:radio_set/presentation/feature/barret_setup/success_program.dart';
 import 'package:radio_set/presentation/feature/barret_setup/text_container.dart';
@@ -14,6 +15,8 @@ import '../../cubits/barret_setup/cubit.dart';
 import '../../cubits/barret_setup/state.dart';
 import 'channel_name.dart';
 import 'package:radio_set/configuration/constants.dart';
+
+import 'menu_option.dart';
 
 class BarretSetupScreen extends StatefulWidget {
   const BarretSetupScreen({Key? key}) : super(key: key);
@@ -32,6 +35,12 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
   int operatingModeIndex = 0;
   int powerSettingIndex = 0;
   int sellCallFormatIndex = 0;
+
+  bool showFirstMenu = false;
+  bool showSecondMenu = false;
+
+  int firstMenuIndex = 0;
+  int secondMenuIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -78,70 +87,36 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                                       )
                                     : (pressProgramButton == 11)
                                         ? const SuccessProgram()
-                                        : BlocBuilder<BarretSetupCubit,
-                                            BarretSetupState>(
-                                            builder: (context, state) {
-                                              return Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      const Text(
-                                                        "Channel:",
-                                                        style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 25,
-                                                        ),
-                                                      ),
-                                                      const SizedBox(
-                                                        width: 8,
-                                                      ),
-                                                      Text(
-                                                        state.channelNumber,
-                                                        style: const TextStyle(
-                                                          fontSize: 24,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
-                                                      ),
-                                                      setChannel
-                                                          ? const BlinkText(
-                                                              "_",
-                                                              style: TextStyle(
-                                                                fontSize: 24,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                              ),
-                                                            )
-                                                          : const Text(""),
-                                                    ],
-                                                  ),
-                                                  Expanded(
-                                                    child: Row(
-                                                      children: [
-                                                        Image.asset(
-                                                          "images/rx.gif",
-                                                          height: 100,
-                                                          width: 100,
-                                                        ),
-                                                        const SizedBox(
-                                                            width: 8),
-                                                        Expanded(
-                                                          child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
+                                        : showFirstMenu
+                                            ? const MenuOption()
+                                            : showSecondMenu
+                                                ? const SecondMenuOption()
+                                                : BlocBuilder<BarretSetupCubit,
+                                                    BarretSetupState>(
+                                                    builder: (context, state) {
+                                                      return Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Row(
                                                             children: [
+                                                              const Text(
+                                                                "Channel:",
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize: 25,
+                                                                ),
+                                                              ),
                                                               const SizedBox(
-                                                                  height: 12),
+                                                                width: 8,
+                                                              ),
                                                               Text(
-                                                                state.rxFrequency
-                                                                        .isEmpty
-                                                                    ? "00000.000 KHz"
-                                                                    : "${state.rxFrequency} KHz",
+                                                                state
+                                                                    .channelNumber,
                                                                 style:
                                                                     const TextStyle(
                                                                   fontSize: 24,
@@ -150,55 +125,105 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                                                                           .bold,
                                                                 ),
                                                               ),
-                                                              const SizedBox(
-                                                                height: 12,
-                                                              ),
-                                                              Text(
-                                                                state
-                                                                    .channelName,
-                                                                style:
-                                                                    const TextStyle(
-                                                                  fontSize: 26,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                              ),
-                                                              const SizedBox(
-                                                                height: 8,
-                                                              ),
-                                                              Row(
-                                                                children: [
-                                                                  TextContainer(
-                                                                    title: state
-                                                                        .operatingMode,
-                                                                  ),
-                                                                  const SizedBox(
-                                                                    width: 8,
-                                                                  ),
-                                                                  TextContainer(
-                                                                    title: state
-                                                                        .powerSetting,
-                                                                  ),
-                                                                  const SizedBox(
-                                                                    width: 8,
-                                                                  ),
-                                                                  TextContainer(
-                                                                    title: state
-                                                                        .cellCallFormat,
-                                                                  ),
-                                                                ],
-                                                              )
+                                                              setChannel
+                                                                  ? const BlinkText(
+                                                                      "_",
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontSize:
+                                                                            24,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
+                                                                    )
+                                                                  : const Text(
+                                                                      ""),
                                                             ],
                                                           ),
-                                                        ),
-                                                      ],
-                                                    ),
+                                                          Expanded(
+                                                            child: Row(
+                                                              children: [
+                                                                Image.asset(
+                                                                  "images/rx.gif",
+                                                                  height: 100,
+                                                                  width: 100,
+                                                                ),
+                                                                const SizedBox(
+                                                                    width: 8),
+                                                                Expanded(
+                                                                  child: Column(
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      const SizedBox(
+                                                                          height:
+                                                                              12),
+                                                                      Text(
+                                                                        state.rxFrequency.isEmpty
+                                                                            ? "00000.000 KHz"
+                                                                            : "${state.rxFrequency} KHz",
+                                                                        style:
+                                                                            const TextStyle(
+                                                                          fontSize:
+                                                                              24,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
+                                                                      ),
+                                                                      const SizedBox(
+                                                                        height:
+                                                                            12,
+                                                                      ),
+                                                                      Text(
+                                                                        state
+                                                                            .channelName,
+                                                                        style:
+                                                                            const TextStyle(
+                                                                          fontSize:
+                                                                              26,
+                                                                          fontWeight:
+                                                                              FontWeight.bold,
+                                                                        ),
+                                                                      ),
+                                                                      const SizedBox(
+                                                                        height:
+                                                                            8,
+                                                                      ),
+                                                                      Row(
+                                                                        children: [
+                                                                          TextContainer(
+                                                                            title:
+                                                                                state.operatingMode,
+                                                                          ),
+                                                                          const SizedBox(
+                                                                            width:
+                                                                                8,
+                                                                          ),
+                                                                          TextContainer(
+                                                                            title:
+                                                                                state.powerSetting,
+                                                                          ),
+                                                                          const SizedBox(
+                                                                            width:
+                                                                                8,
+                                                                          ),
+                                                                          TextContainer(
+                                                                            title:
+                                                                                state.cellCallFormat,
+                                                                          ),
+                                                                        ],
+                                                                      )
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
                                                   ),
-                                                ],
-                                              );
-                                            },
-                                          ),
           ),
           Expanded(
             child: Container(
@@ -218,8 +243,21 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                     secondButtonImageUrl: 'images/clear.PNG',
                     thirdButtonImageUrl: 'images/prog.PNG',
 
+                    /// menu long press
+                    onLongTapFirstButton: () {
+                      setState(() {
+                        showSecondMenu = true;
+                        showFirstMenu = false;
+                      });
+                    },
+
                     ///menu
-                    onTapFirstButton: () {},
+                    onTapFirstButton: () {
+                      setState(() {
+                        showFirstMenu = true;
+                        showSecondMenu = false;
+                      });
+                    },
 
                     ///clear
                     onTapSecondButton: () {},
@@ -611,6 +649,26 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                             fmt: AppConstant
                                 .cellCallFormat[sellCallFormatIndex]);
                       }
+                      if (showFirstMenu) {
+                        firstMenuIndex += 1;
+                        if (firstMenuIndex >= AppConstant.standardMenu.length) {
+                          setState(() {
+                            firstMenuIndex = 0;
+                          });
+                        }
+                        barretCubit.setStandardMenu(
+                            menu: AppConstant.standardMenu[firstMenuIndex]);
+                      }
+                      if (showSecondMenu) {
+                        secondMenuIndex += 1;
+                        if (secondMenuIndex >= AppConstant.secondMenu.length) {
+                          setState(() {
+                            secondMenuIndex = 0;
+                          });
+                        }
+                        barretCubit.setSecondMenu(
+                            menu: AppConstant.secondMenu[secondMenuIndex]);
+                      }
                     },
 
                     onTapSecondButton: () {},
@@ -670,6 +728,26 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         barretCubit.setSellCallFormat(
                             fmt: AppConstant
                                 .cellCallFormat[sellCallFormatIndex]);
+                      }
+                      if (showFirstMenu) {
+                        firstMenuIndex += 1;
+                        if (firstMenuIndex >= AppConstant.standardMenu.length) {
+                          setState(() {
+                            firstMenuIndex = 0;
+                          });
+                        }
+                        barretCubit.setStandardMenu(
+                            menu: AppConstant.standardMenu[firstMenuIndex]);
+                      }
+                      if (showSecondMenu) {
+                        secondMenuIndex += 1;
+                        if (secondMenuIndex >= AppConstant.secondMenu.length) {
+                          setState(() {
+                            secondMenuIndex = 0;
+                          });
+                        }
+                        barretCubit.setSecondMenu(
+                            menu: AppConstant.secondMenu[secondMenuIndex]);
                       }
                     },
                     onTapSecondButton: () {},

@@ -8,6 +8,8 @@ class BarretSetupState {
   final String operatingMode;
   final String powerSetting;
   final String cellCallFormat;
+  final String standardMenu;
+  final String secondMenu;
 
   BarretSetupState({
     required this.channelNumber,
@@ -17,6 +19,8 @@ class BarretSetupState {
     required this.operatingMode,
     required this.powerSetting,
     required this.cellCallFormat,
+    required this.secondMenu,
+    required this.standardMenu,
   });
 }
 

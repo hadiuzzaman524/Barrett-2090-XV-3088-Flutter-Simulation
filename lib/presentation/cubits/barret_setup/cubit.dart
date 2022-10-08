@@ -12,6 +12,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
           operatingMode: "USB",
           powerSetting: "High",
           cellCallFormat: "International",
+          secondMenu: '',
+          standardMenu: 'Identification',
         ));
 
   void setChannelNumber({required String channelNumber}) {
@@ -25,6 +27,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
           operatingMode: state.operatingMode,
           powerSetting: state.powerSetting,
           cellCallFormat: state.cellCallFormat,
+          secondMenu: state.secondMenu,
+          standardMenu: state.standardMenu,
         ),
       );
     }
@@ -40,6 +44,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         operatingMode: state.operatingMode,
         powerSetting: state.powerSetting,
         cellCallFormat: state.cellCallFormat,
+        secondMenu: state.secondMenu,
+        standardMenu: state.standardMenu,
       ),
     );
   }
@@ -68,6 +74,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
           operatingMode: state.operatingMode,
           powerSetting: state.powerSetting,
           cellCallFormat: state.cellCallFormat,
+          secondMenu: state.secondMenu,
+          standardMenu: state.standardMenu,
         ),
       );
     }
@@ -83,6 +91,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         operatingMode: state.operatingMode,
         powerSetting: state.powerSetting,
         cellCallFormat: state.cellCallFormat,
+        secondMenu: state.secondMenu,
+        standardMenu: state.standardMenu,
       ),
     );
   }
@@ -111,6 +121,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
           operatingMode: state.operatingMode,
           powerSetting: state.powerSetting,
           cellCallFormat: state.cellCallFormat,
+          secondMenu: state.secondMenu,
+          standardMenu: state.standardMenu,
         ),
       );
     }
@@ -126,6 +138,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         operatingMode: state.operatingMode,
         powerSetting: state.powerSetting,
         cellCallFormat: state.cellCallFormat,
+        secondMenu: state.secondMenu,
+        standardMenu: state.standardMenu,
       ),
     );
   }
@@ -140,6 +154,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         operatingMode: state.operatingMode,
         powerSetting: state.powerSetting,
         cellCallFormat: state.cellCallFormat,
+        secondMenu: state.secondMenu,
+        standardMenu: state.standardMenu,
       ),
     );
   }
@@ -154,6 +170,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         operatingMode: operatingMode,
         powerSetting: state.powerSetting,
         cellCallFormat: state.cellCallFormat,
+        secondMenu: state.secondMenu,
+        standardMenu: state.standardMenu,
       ),
     );
   }
@@ -168,9 +186,12 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         operatingMode: state.operatingMode,
         powerSetting: pwr,
         cellCallFormat: state.cellCallFormat,
+        secondMenu: state.secondMenu,
+        standardMenu: state.standardMenu,
       ),
     );
   }
+
   void setSellCallFormat({required String fmt}) {
     emit(
       BarretSetupState(
@@ -181,6 +202,40 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         operatingMode: state.operatingMode,
         powerSetting: state.powerSetting,
         cellCallFormat: fmt,
+        secondMenu: state.secondMenu,
+        standardMenu: state.standardMenu,
+      ),
+    );
+  }
+
+  void setStandardMenu({required String menu}) {
+    emit(
+      BarretSetupState(
+        rxFrequency: state.rxFrequency,
+        channelNumber: state.channelNumber,
+        txFrequency: state.txFrequency,
+        channelName: state.channelName,
+        operatingMode: state.operatingMode,
+        powerSetting: state.powerSetting,
+        cellCallFormat: state.cellCallFormat,
+        secondMenu: state.secondMenu,
+        standardMenu: menu,
+      ),
+    );
+  }
+
+  void setSecondMenu({required String menu}) {
+    emit(
+      BarretSetupState(
+        rxFrequency: state.rxFrequency,
+        channelNumber: state.channelNumber,
+        txFrequency: state.txFrequency,
+        channelName: state.channelName,
+        operatingMode: state.operatingMode,
+        powerSetting: state.powerSetting,
+        cellCallFormat: state.cellCallFormat,
+        secondMenu: menu,
+        standardMenu: state.standardMenu,
       ),
     );
   }

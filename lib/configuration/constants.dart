@@ -136,4 +136,23 @@ class AppConstant {
     "OEM",
     "CCIR",
   ];
+
+  static final List<String> standardMenu=[
+    "Identification",
+    "Address Book",
+    "Call History",
+    "Display Option",
+  ];
+  static final List<String> secondMenu=[
+    "General",
+    "ALE Setting",
+    "I/O Setting",
+    "RF Setting",
+    "Audio Setting",
+    "Selcall Setting",
+    "Mute Setting",
+    "Scan Setting",
+    "Scan Tables",
+
+  ];
 }
