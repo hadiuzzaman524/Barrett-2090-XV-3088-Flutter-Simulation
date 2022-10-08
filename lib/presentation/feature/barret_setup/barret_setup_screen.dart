@@ -1,11 +1,24 @@
+import 'package:blinking_text/blinking_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:radio_set/presentation/widgets/barret_button_row.dart';
 
-class BarretSetupScreen extends StatelessWidget {
+import '../../cubits/barret_setup/cubit.dart';
+import '../../cubits/barret_setup/state.dart';
+
+class BarretSetupScreen extends StatefulWidget {
   const BarretSetupScreen({Key? key}) : super(key: key);
 
   @override
+  State<BarretSetupScreen> createState() => _BarretSetupScreenState();
+}
+
+class _BarretSetupScreenState extends State<BarretSetupScreen> {
+  bool setChannel = false;
+
+  @override
   Widget build(BuildContext context) {
+    final barretCubit= context.read<BarretSetupCubit>();
     return Scaffold(
         body: Container(
       padding: const EdgeInsets.only(left: 12, right: 12, top: 30, bottom: 10),
@@ -16,6 +29,7 @@ class BarretSetupScreen extends StatelessWidget {
         children: [
           Container(
             height: 180,
+            padding: const EdgeInsets.all(12),
             width: double.infinity,
             decoration: BoxDecoration(
               color: const Color(0xffDCDCDE),
@@ -23,12 +37,53 @@ class BarretSetupScreen extends StatelessWidget {
               borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(16), topRight: Radius.circular(16)),
             ),
-            child: Row(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  "images/rx.gif",
-                  height: 100,
-                  width: 100,
+                Row(
+                  children: [
+                    const Text(
+                      "Channel:",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    BlocBuilder<BarretSetupCubit, BarretSetupState>(
+                      builder: (context, state) {
+                        return Text(
+                          state.channelNumber,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
+                      },
+                    ),
+                    setChannel
+                        ? const BlinkText(
+                            "_",
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )
+                        : const Text(""),
+                  ],
+                ),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "images/rx.gif",
+                        height: 100,
+                        width: 100,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -66,13 +121,25 @@ class BarretSetupScreen extends StatelessWidget {
                     thirdButtonImageUrl: 'images/three.PNG',
 
                     ///one
-                    onTapFirstButton: () {},
+                    onTapFirstButton: () {
+                      if(setChannel){
+                        barretCubit.setChannelNumber(channelNumber: "1");
+                      }
+                    },
 
                     ///two
-                    onTapSecondButton: () {},
+                    onTapSecondButton: () {
+                      if(setChannel){
+                        barretCubit.setChannelNumber(channelNumber: "2");
+                      }
+                    },
 
                     ///three
-                    onTapThirdButton: () {},
+                    onTapThirdButton: () {
+                      if(setChannel){
+                        barretCubit.setChannelNumber(channelNumber: "3");
+                      }
+                    },
                   ),
                   BarretButtonRow(
                     firstButtonImageUrl: "images/four.png",
@@ -80,13 +147,25 @@ class BarretSetupScreen extends StatelessWidget {
                     thirdButtonImageUrl: 'images/six.png',
 
                     ///four
-                    onTapFirstButton: () {},
+                    onTapFirstButton: () {
+                      if(setChannel){
+                        barretCubit.setChannelNumber(channelNumber: "4");
+                      }
+                    },
 
                     ///five
-                    onTapSecondButton: () {},
+                    onTapSecondButton: () {
+                      if(setChannel){
+                        barretCubit.setChannelNumber(channelNumber: "5");
+                      }
+                    },
 
                     ///six
-                    onTapThirdButton: () {},
+                    onTapThirdButton: () {
+                      if(setChannel){
+                        barretCubit.setChannelNumber(channelNumber: "6");
+                      }
+                    },
                   ),
                   BarretButtonRow(
                     firstButtonImageUrl: "images/seven.png",
@@ -94,13 +173,25 @@ class BarretSetupScreen extends StatelessWidget {
                     thirdButtonImageUrl: 'images/nine.png',
 
                     ///seven
-                    onTapFirstButton: () {},
+                    onTapFirstButton: () {
+                      if(setChannel){
+                        barretCubit.setChannelNumber(channelNumber: "7");
+                      }
+                    },
 
                     ///eight
-                    onTapSecondButton: () {},
+                    onTapSecondButton: () {
+                      if(setChannel){
+                        barretCubit.setChannelNumber(channelNumber: "8");
+                      }
+                    },
 
                     ///nine
-                    onTapThirdButton: () {},
+                    onTapThirdButton: () {
+                      if(setChannel){
+                        barretCubit.setChannelNumber(channelNumber: "9");
+                      }
+                    },
                   ),
                   BarretButtonRow(
                     firstButtonImageUrl: "images/tune.png",
@@ -111,10 +202,20 @@ class BarretSetupScreen extends StatelessWidget {
                     onTapFirstButton: () {},
 
                     ///zero
-                    onTapSecondButton: () {},
-
-                    ///chan
-                    onTapThirdButton: () {},
+                    onTapSecondButton: () {
+                      if(setChannel){
+                        barretCubit.setChannelNumber(channelNumber: "0");
+                      }
+                    },
+                    ///channnel
+                    onTapThirdButton: () {
+                      setState(() {
+                        setChannel = !setChannel;
+                      });
+                    if(setChannel){
+                      barretCubit.clearChannelNumber();
+                    }
+                    },
                   ),
                   BarretButtonRow(
                     firstButtonImageUrl: "images/lside.png",
