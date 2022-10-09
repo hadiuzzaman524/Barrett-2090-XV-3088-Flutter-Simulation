@@ -12,6 +12,7 @@ class BarretSetupState {
   final String secondMenu;
   final String ioSetting;
   final String antennaType;
+  final String generalOption;
 
   BarretSetupState({
     required this.channelNumber,
@@ -24,7 +25,8 @@ class BarretSetupState {
     required this.secondMenu,
     required this.standardMenu,
     required this.antennaType,
-    required this.ioSetting
+    required this.ioSetting,
+    required this.generalOption,
   });
 }
 

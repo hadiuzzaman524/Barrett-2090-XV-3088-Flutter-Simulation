@@ -18,6 +18,7 @@ import 'antenna_type.dart';
 import 'channel_name.dart';
 import 'package:radio_set/configuration/constants.dart';
 
+import 'general_option.dart';
 import 'menu_option.dart';
 
 class BarretSetupScreen extends StatefulWidget {
@@ -41,16 +42,17 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
   int antennaTypeIndex = 0;
   int firstMenuIndex = 0;
   int secondMenuIndex = 0;
+  int generalOptionIndex = 0;
 
   bool showFirstMenu = false;
   bool showSecondMenu = false;
 
   bool showIoSetting = false;
   bool isSettingIo = false;
-
+  bool isGeneralOption = false;
+  bool showGeneralOption = false;
   bool showAntennaType = false;
   bool isAntennaType = false;
-
   bool selectAntenna = false;
 
   @override
@@ -102,131 +104,122 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                                             ? const MenuOption()
                                             : showSecondMenu
                                                 ? const SecondMenuOption()
-                                                : showIoSetting
-                                                    ? const IoSetting()
-                                                    : showAntennaType
-                                                        ? AntennaType(
-                                                            success:
-                                                                selectAntenna)
-                                                        : BlocBuilder<
-                                                            BarretSetupCubit,
-                                                            BarretSetupState>(
-                                                            builder: (context,
-                                                                state) {
-                                                              return Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Row(
+                                                : showGeneralOption
+                                                    ? const GeneralOption()
+                                                    : showIoSetting
+                                                        ? const IoSetting()
+                                                        : showAntennaType
+                                                            ? AntennaType(
+                                                                success:
+                                                                    selectAntenna)
+                                                            : BlocBuilder<
+                                                                BarretSetupCubit,
+                                                                BarretSetupState>(
+                                                                builder:
+                                                                    (context,
+                                                                        state) {
+                                                                  return Column(
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
                                                                     children: [
-                                                                      const Text(
-                                                                        "Channel:",
-                                                                        style:
-                                                                            TextStyle(
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          fontSize:
-                                                                              25,
-                                                                        ),
-                                                                      ),
-                                                                      const SizedBox(
-                                                                        width:
-                                                                            8,
-                                                                      ),
-                                                                      Text(
-                                                                        state
-                                                                            .channelNumber,
-                                                                        style:
-                                                                            const TextStyle(
-                                                                          fontSize:
-                                                                              24,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                        ),
-                                                                      ),
-                                                                      setChannel
-                                                                          ? const BlinkText(
-                                                                              "_",
-                                                                              style: TextStyle(
-                                                                                fontSize: 24,
-                                                                                fontWeight: FontWeight.bold,
-                                                                              ),
-                                                                            )
-                                                                          : const Text(
-                                                                              ""),
-                                                                    ],
-                                                                  ),
-                                                                  Expanded(
-                                                                    child: Row(
-                                                                      children: [
-                                                                        Image
-                                                                            .asset(
-                                                                          "images/rx.gif",
-                                                                          height:
-                                                                              100,
-                                                                          width:
-                                                                              100,
-                                                                        ),
-                                                                        const SizedBox(
-                                                                            width:
-                                                                                8),
-                                                                        Expanded(
-                                                                          child:
-                                                                              Column(
-                                                                            crossAxisAlignment:
-                                                                                CrossAxisAlignment.start,
-                                                                            children: [
-                                                                              const SizedBox(height: 12),
-                                                                              Text(
-                                                                                state.rxFrequency.isEmpty ? "00000.000 KHz" : "${state.rxFrequency} KHz",
-                                                                                style: const TextStyle(
-                                                                                  fontSize: 24,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                ),
-                                                                              ),
-                                                                              const SizedBox(
-                                                                                height: 12,
-                                                                              ),
-                                                                              Text(
-                                                                                state.channelName,
-                                                                                style: const TextStyle(
-                                                                                  fontSize: 26,
-                                                                                  fontWeight: FontWeight.bold,
-                                                                                ),
-                                                                              ),
-                                                                              const SizedBox(
-                                                                                height: 8,
-                                                                              ),
-                                                                              Row(
-                                                                                children: [
-                                                                                  TextContainer(
-                                                                                    title: state.operatingMode,
-                                                                                  ),
-                                                                                  const SizedBox(
-                                                                                    width: 8,
-                                                                                  ),
-                                                                                  TextContainer(
-                                                                                    title: state.powerSetting,
-                                                                                  ),
-                                                                                  const SizedBox(
-                                                                                    width: 8,
-                                                                                  ),
-                                                                                  TextContainer(
-                                                                                    title: state.cellCallFormat,
-                                                                                  ),
-                                                                                ],
-                                                                              )
-                                                                            ],
+                                                                      Row(
+                                                                        children: [
+                                                                          const Text(
+                                                                            "Channel:",
+                                                                            style:
+                                                                                TextStyle(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontSize: 25,
+                                                                            ),
                                                                           ),
+                                                                          const SizedBox(
+                                                                            width:
+                                                                                8,
+                                                                          ),
+                                                                          Text(
+                                                                            state.channelNumber,
+                                                                            style:
+                                                                                const TextStyle(
+                                                                              fontSize: 24,
+                                                                              fontWeight: FontWeight.bold,
+                                                                            ),
+                                                                          ),
+                                                                          setChannel
+                                                                              ? const BlinkText(
+                                                                                  "_",
+                                                                                  style: TextStyle(
+                                                                                    fontSize: 24,
+                                                                                    fontWeight: FontWeight.bold,
+                                                                                  ),
+                                                                                )
+                                                                              : const Text(""),
+                                                                        ],
+                                                                      ),
+                                                                      Expanded(
+                                                                        child:
+                                                                            Row(
+                                                                          children: [
+                                                                            Image.asset(
+                                                                              "images/rx.gif",
+                                                                              height: 100,
+                                                                              width: 100,
+                                                                            ),
+                                                                            const SizedBox(width: 8),
+                                                                            Expanded(
+                                                                              child: Column(
+                                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                children: [
+                                                                                  const SizedBox(height: 12),
+                                                                                  Text(
+                                                                                    state.rxFrequency.isEmpty ? "00000.000 KHz" : "${state.rxFrequency} KHz",
+                                                                                    style: const TextStyle(
+                                                                                      fontSize: 24,
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                    ),
+                                                                                  ),
+                                                                                  const SizedBox(
+                                                                                    height: 12,
+                                                                                  ),
+                                                                                  Text(
+                                                                                    state.channelName,
+                                                                                    style: const TextStyle(
+                                                                                      fontSize: 26,
+                                                                                      fontWeight: FontWeight.bold,
+                                                                                    ),
+                                                                                  ),
+                                                                                  const SizedBox(
+                                                                                    height: 8,
+                                                                                  ),
+                                                                                  Row(
+                                                                                    children: [
+                                                                                      TextContainer(
+                                                                                        title: state.operatingMode,
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        width: 8,
+                                                                                      ),
+                                                                                      TextContainer(
+                                                                                        title: state.powerSetting,
+                                                                                      ),
+                                                                                      const SizedBox(
+                                                                                        width: 8,
+                                                                                      ),
+                                                                                      TextContainer(
+                                                                                        title: state.cellCallFormat,
+                                                                                      ),
+                                                                                    ],
+                                                                                  )
+                                                                                ],
+                                                                              ),
+                                                                            ),
+                                                                          ],
                                                                         ),
-                                                                      ],
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          ),
+                                                                      ),
+                                                                    ],
+                                                                  );
+                                                                },
+                                                              ),
           ),
           Expanded(
             child: Container(
@@ -271,6 +264,29 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                       } else if (showAntennaType) {
                         setState(() {
                           showAntennaType = false;
+                          showIoSetting = true;
+                        });
+                      }
+                      if (showGeneralOption) {
+                        setState(() {
+                          showGeneralOption = false;
+                          showSecondMenu = true;
+                        });
+                      }
+                      if (showIoSetting) {
+                        setState(() {
+                          showSecondMenu = true;
+                        });
+                      }
+                      if (showSecondMenu || showFirstMenu) {
+                        setState(() {
+                          showFirstMenu = false;
+                          showSecondMenu = false;
+                          showIoSetting = false;
+                          isSettingIo = false;
+                          showAntennaType = false;
+                          isAntennaType = false;
+                          selectAntenna = false;
                         });
                       }
                     },
@@ -705,6 +721,19 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         barretCubit.setAntennaType(
                             antenna: AppConstant.antennaType[antennaTypeIndex]);
                       }
+
+                      if (showGeneralOption) {
+                        generalOptionIndex += 1;
+                        if (generalOptionIndex >=
+                            AppConstant.generalOption.length) {
+                          setState(() {
+                            generalOptionIndex = 0;
+                          });
+                        }
+                        barretCubit.setGeneralOption(
+                            general:
+                                AppConstant.generalOption[generalOptionIndex]);
+                      }
                     },
 
                     onTapSecondButton: () {},
@@ -716,11 +745,21 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                       if (state.secondMenu == "I/O Setting") {
                         setState(() {
                           isSettingIo = true;
+                          isGeneralOption = false;
+                          isAntennaType = false;
+                        });
+                      }
+                      if (state.secondMenu == "General") {
+                        setState(() {
+                          isGeneralOption = true;
+                          isSettingIo = false;
+                          isAntennaType = false;
                         });
                       }
                       if (state.ioSetting == "Antenna Type") {
                         setState(() {
                           isAntennaType = true;
+                          isGeneralOption = false;
                         });
                       }
                     },
@@ -825,20 +864,31 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                               antenna:
                                   AppConstant.antennaType[antennaTypeIndex]);
                         }
+
+                        if (showGeneralOption) {
+                          generalOptionIndex += 1;
+                          if (generalOptionIndex >=
+                              AppConstant.generalOption.length) {
+                            setState(() {
+                              generalOptionIndex = 0;
+                            });
+                          }
+                          barretCubit.setGeneralOption(
+                              general: AppConstant
+                                  .generalOption[generalOptionIndex]);
+                        }
                       },
 
                       ///enter button
                       onTapSecondButton: () {
+                        setState(() {
+                          selectAntenna = false;
+                        });
                         if (isSettingIo) {
                           setState(() {
                             showIoSetting = true;
                             showSecondMenu = false;
-                          });
-                        }
-                        if (isAntennaType) {
-                          setState(() {
-                            showIoSetting = false;
-                            showAntennaType = true;
+                            showGeneralOption = false;
                           });
                         }
                         if (showAntennaType) {
@@ -846,6 +896,22 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                             selectAntenna = true;
                           });
                         }
+                        if (isAntennaType) {
+                          setState(() {
+                            showIoSetting = false;
+                            showAntennaType = true;
+                            showGeneralOption = false;
+                          });
+                        }
+
+                        if (isGeneralOption) {
+                          setState(() {
+                            showGeneralOption = true;
+                            showSecondMenu = false;
+                            showIoSetting = false;
+                          });
+                        }
+                        print(showGeneralOption);
                         print("press enter");
                       },
                       onTapThirdButton: () {},

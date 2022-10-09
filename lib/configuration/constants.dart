@@ -172,4 +172,20 @@ class AppConstant {
     "Linear Amplifier",
     "911 Automatic Tuner"
   ];
+
+  static final List<String> generalOption=[
+    "Mic Up/ Down Keys",
+    "Internal Modem",
+    "Upload Pack",
+    "Security Level",
+    "Source Call Code",
+    "Hopping Pin",
+    "Option Installation",
+    "B.I.T.E Test",
+    "Set Date",
+    "Set Clock",
+    "Channel Labels",
+    "Transmit Timeout",
+    "Tx Over Beep",
+  ];
 }
