@@ -153,6 +153,23 @@ class AppConstant {
     "Mute Setting",
     "Scan Setting",
     "Scan Tables",
-
+  ];
+  static final List<String> ioSettingOptions=[
+    "RS232Out",
+    "Line Level",
+    "Line Out Level",
+    "GPS",
+    "Antenna Type",
+    "Ext Alarm Type"
+  ];
+  static final List<String> antennaType=[
+    "910 Mobile Antenna",
+    "Base Station",
+    "2017 Automatic Tuner",
+    " Linear with ATU",
+    "Loop Antenna",
+    "2019 Mobile Antenna",
+    "Linear Amplifier",
+    "911 Automatic Tuner"
   ];
 }

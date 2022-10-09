@@ -10,6 +10,8 @@ class BarretSetupState {
   final String cellCallFormat;
   final String standardMenu;
   final String secondMenu;
+  final String ioSetting;
+  final String antennaType;
 
   BarretSetupState({
     required this.channelNumber,
@@ -21,6 +23,8 @@ class BarretSetupState {
     required this.cellCallFormat,
     required this.secondMenu,
     required this.standardMenu,
+    required this.antennaType,
+    required this.ioSetting
   });
 }
 

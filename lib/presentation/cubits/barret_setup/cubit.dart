@@ -12,8 +12,10 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
           operatingMode: "USB",
           powerSetting: "High",
           cellCallFormat: "International",
-          secondMenu: '',
+          secondMenu: 'General',
           standardMenu: 'Identification',
+          antennaType: '910 Mobile Antenna',
+          ioSetting: 'RS232Out',
         ));
 
   void setChannelNumber({required String channelNumber}) {
@@ -29,6 +31,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
           cellCallFormat: state.cellCallFormat,
           secondMenu: state.secondMenu,
           standardMenu: state.standardMenu,
+          antennaType: state.antennaType,
+          ioSetting: state.ioSetting,
         ),
       );
     }
@@ -46,6 +50,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         cellCallFormat: state.cellCallFormat,
         secondMenu: state.secondMenu,
         standardMenu: state.standardMenu,
+        antennaType: state.antennaType,
+        ioSetting: state.ioSetting,
       ),
     );
   }
@@ -76,6 +82,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
           cellCallFormat: state.cellCallFormat,
           secondMenu: state.secondMenu,
           standardMenu: state.standardMenu,
+          antennaType: state.antennaType,
+          ioSetting: state.ioSetting,
         ),
       );
     }
@@ -93,6 +101,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         cellCallFormat: state.cellCallFormat,
         secondMenu: state.secondMenu,
         standardMenu: state.standardMenu,
+        antennaType: state.antennaType,
+        ioSetting: state.ioSetting,
       ),
     );
   }
@@ -123,6 +133,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
           cellCallFormat: state.cellCallFormat,
           secondMenu: state.secondMenu,
           standardMenu: state.standardMenu,
+          antennaType: state.antennaType,
+          ioSetting: state.ioSetting,
         ),
       );
     }
@@ -140,6 +152,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         cellCallFormat: state.cellCallFormat,
         secondMenu: state.secondMenu,
         standardMenu: state.standardMenu,
+        antennaType: state.antennaType,
+        ioSetting: state.ioSetting,
       ),
     );
   }
@@ -156,6 +170,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         cellCallFormat: state.cellCallFormat,
         secondMenu: state.secondMenu,
         standardMenu: state.standardMenu,
+        antennaType: state.antennaType,
+        ioSetting: state.ioSetting,
       ),
     );
   }
@@ -172,6 +188,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         cellCallFormat: state.cellCallFormat,
         secondMenu: state.secondMenu,
         standardMenu: state.standardMenu,
+        antennaType: state.antennaType,
+        ioSetting: state.ioSetting,
       ),
     );
   }
@@ -188,6 +206,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         cellCallFormat: state.cellCallFormat,
         secondMenu: state.secondMenu,
         standardMenu: state.standardMenu,
+        antennaType: state.antennaType,
+        ioSetting: state.ioSetting,
       ),
     );
   }
@@ -204,6 +224,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         cellCallFormat: fmt,
         secondMenu: state.secondMenu,
         standardMenu: state.standardMenu,
+        antennaType: state.antennaType,
+        ioSetting: state.ioSetting,
       ),
     );
   }
@@ -220,6 +242,8 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         cellCallFormat: state.cellCallFormat,
         secondMenu: state.secondMenu,
         standardMenu: menu,
+        antennaType: state.antennaType,
+        ioSetting: state.ioSetting,
       ),
     );
   }
@@ -236,6 +260,44 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
         cellCallFormat: state.cellCallFormat,
         secondMenu: menu,
         standardMenu: state.standardMenu,
+        antennaType: state.antennaType,
+        ioSetting: state.ioSetting,
+      ),
+    );
+  }
+
+  void setIoSetting({required String io}) {
+    emit(
+      BarretSetupState(
+        rxFrequency: state.rxFrequency,
+        channelNumber: state.channelNumber,
+        txFrequency: state.txFrequency,
+        channelName: state.channelName,
+        operatingMode: state.operatingMode,
+        powerSetting: state.powerSetting,
+        cellCallFormat: state.cellCallFormat,
+        secondMenu: state.secondMenu,
+        standardMenu: state.standardMenu,
+        antennaType: state.antennaType,
+        ioSetting: io,
+      ),
+    );
+  }
+
+  void setAntennaType({required String antenna}) {
+    emit(
+      BarretSetupState(
+        rxFrequency: state.rxFrequency,
+        channelNumber: state.channelNumber,
+        txFrequency: state.txFrequency,
+        channelName: state.channelName,
+        operatingMode: state.operatingMode,
+        powerSetting: state.powerSetting,
+        cellCallFormat: state.cellCallFormat,
+        secondMenu: state.secondMenu,
+        standardMenu: state.standardMenu,
+        antennaType: antenna,
+        ioSetting: state.ioSetting,
       ),
     );
   }
