@@ -13,6 +13,7 @@ class BarretSetupState {
   final String ioSetting;
   final String antennaType;
   final String generalOption;
+  final String callOption;
 
   BarretSetupState({
     required this.channelNumber,
@@ -27,6 +28,7 @@ class BarretSetupState {
     required this.antennaType,
     required this.ioSetting,
     required this.generalOption,
+    required this.callOption,
   });
 }
 

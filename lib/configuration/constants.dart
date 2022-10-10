@@ -137,13 +137,13 @@ class AppConstant {
     "CCIR",
   ];
 
-  static final List<String> standardMenu=[
+  static final List<String> standardMenu = [
     "Identification",
     "Address Book",
     "Call History",
     "Display Option",
   ];
-  static final List<String> secondMenu=[
+  static final List<String> secondMenu = [
     "General",
     "ALE Setting",
     "I/O Setting",
@@ -154,7 +154,7 @@ class AppConstant {
     "Scan Setting",
     "Scan Tables",
   ];
-  static final List<String> ioSettingOptions=[
+  static final List<String> ioSettingOptions = [
     "RS232Out",
     "Line Level",
     "Line Out Level",
@@ -162,7 +162,7 @@ class AppConstant {
     "Antenna Type",
     "Ext Alarm Type"
   ];
-  static final List<String> antennaType=[
+  static final List<String> antennaType = [
     "910 Mobile Antenna",
     "Base Station",
     "2017 Automatic Tuner",
@@ -173,7 +173,7 @@ class AppConstant {
     "911 Automatic Tuner"
   ];
 
-  static final List<String> generalOption=[
+  static final List<String> generalOption = [
     "Mic Up/ Down Keys",
     "Internal Modem",
     "Upload Pack",
@@ -187,5 +187,16 @@ class AppConstant {
     "Channel Labels",
     "Transmit Timeout",
     "Tx Over Beep",
+  ];
+
+  static final List<String> callOptions = [
+    "Source Call",
+    "Beacon Call",
+    "Sel Call",
+    "Tel Call",
+    "Hang Call",
+    "Page Call",
+    "GPS Call",
+    "Status Call",
   ];
 }
