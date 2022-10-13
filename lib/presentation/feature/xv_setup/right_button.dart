@@ -10,7 +10,7 @@ class RightButton extends StatelessWidget {
       width: 120,
       height: MediaQuery.of(context).size.width,
       child: Image.asset("images/left.jpeg",
-        fit: BoxFit.cover,),
+        fit: BoxFit.fill,),
     );
   }
 }

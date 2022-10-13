@@ -10,7 +10,7 @@ class LeftButton extends StatelessWidget {
       width: 120,
       height: MediaQuery.of(context).size.width,
       child: Image.asset("images/right.jpeg",
-      fit: BoxFit.cover,),
+      fit: BoxFit.fill,),
     );
   }
 }

@@ -61,6 +61,8 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
   bool blinkProg = false;
   bool setProg = false;
 
+  bool pressCallButton = false;
+
   @override
   Widget build(BuildContext context) {
     debugPrint("Press PROG: $pressProg");
@@ -133,53 +135,83 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
                                       ),
                                     ),
                                   ),
-                                  Expanded(
-                                    child: Center(
-                                      child: Row(
-                                        children: [
-                                          setChannel
-                                              ? const BlinkText(
-                                                  "CH",
-                                                )
-                                              : const Text("CH"),
-                                          const SizedBox(
-                                            width: 8,
+                                  pressCallButton
+                                      ? Expanded(
+                                          child: Row(
+                                            children: [
+                                              const Text("CH"),
+                                              const SizedBox(
+                                                width: 18,
+                                              ),
+                                              Text(
+                                                state.channelName.isEmpty
+                                                    ? "0"
+                                                    : state.channelName,
+                                                style: const TextStyle(
+                                                  fontSize: 35,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: 16,
+                                              ),
+                                              const Text(
+                                                "72.377",
+                                                style: TextStyle(
+                                                  fontSize: 35,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          Text(
-                                            state.channelName.isEmpty
-                                                ? "0"
-                                                : state.channelName,
-                                            style: const TextStyle(
-                                              fontSize: 35,
-                                              fontWeight: FontWeight.bold,
+                                        )
+                                      : Expanded(
+                                          child: Center(
+                                            child: Row(
+                                              children: [
+                                                setChannel
+                                                    ? const BlinkText(
+                                                        "CH",
+                                                      )
+                                                    : const Text("CH"),
+                                                const SizedBox(
+                                                  width: 8,
+                                                ),
+                                                Text(
+                                                  state.channelName.isEmpty
+                                                      ? "0"
+                                                      : state.channelName,
+                                                  style: const TextStyle(
+                                                    fontSize: 35,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 8,
+                                                ),
+                                                setFreq
+                                                    ? const BlinkText("F")
+                                                    : const Text("F"),
+                                                const SizedBox(
+                                                  width: 8,
+                                                ),
+                                                Text(
+                                                  state.frequency.isEmpty
+                                                      ? "00.000"
+                                                      : state.frequency,
+                                                  style: const TextStyle(
+                                                    fontSize: 35,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  width: 8,
+                                                ),
+                                                const Text("MHZ")
+                                              ],
                                             ),
                                           ),
-                                          const SizedBox(
-                                            width: 8,
-                                          ),
-                                          setFreq
-                                              ? const BlinkText("F")
-                                              : const Text("F"),
-                                          const SizedBox(
-                                            width: 8,
-                                          ),
-                                          Text(
-                                            state.frequency.isEmpty
-                                                ? "00.000"
-                                                : state.frequency,
-                                            style: const TextStyle(
-                                              fontSize: 35,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 8,
-                                          ),
-                                          const Text("MHZ")
-                                        ],
-                                      ),
-                                    ),
-                                  ),
+                                        ),
                                   SizedBox(
                                     width:
                                         MediaQuery.of(context).size.width - 280,
@@ -188,6 +220,10 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceAround,
                                         children: [
+                                          const Spacer(),
+                                          const Spacer(),
+                                          if (pressCallButton)
+                                            const BlinkText("ADDR CODE"),
                                           const Spacer(),
                                           setSdx
                                               ? const BlinkText("SDX")
@@ -402,6 +438,29 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
                                 print("Set Low Power ");
                               }
                             }
+                            if (pressCallButton) {
+                              final state =
+                                  context.read<XvSetupDeviceTwoCubit>().state;
+
+                              setState(() {
+                                pressCallButton = false;
+                              });
+                              AppConstant.addXvSecondDeviceSetup(
+                                  setupModel: XvSetupModel(
+                                      sec: state.sec,
+                                      sel: state.sel,
+                                      sq: state.sq,
+                                      sdx: state.sdx,
+                                      powLow: state.powLow,
+                                      powHigh: state.powHigh,
+                                      channelName: state.channelName,
+                                      frequency: state.frequency));
+                              widget.isConfigured();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          "Information Saved! Please Back Now")));
+                            }
                           },
 
                           ///NO
@@ -476,6 +535,12 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
                                 print("Set Low Power ");
                               }
                             }
+
+                            if (pressCallButton) {
+                              setState(() {
+                                pressCallButton = false;
+                              });
+                            }
                           },
 
                           ///PWR
@@ -489,20 +554,9 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
 
                           ///CALL
                           secondButton: () {
-                            final state =
-                                context.read<XvSetupDeviceTwoCubit>().state;
-                            AppConstant.addXvSecondDeviceSetup(
-                                setupModel: XvSetupModel(
-                                    sec: state.sec,
-                                    sel: state.sel,
-                                    sq: state.sq,
-                                    sdx: state.sdx,
-                                    powLow: state.powLow,
-                                    powHigh: state.powHigh,
-                                    channelName: state.channelName,
-                                    frequency: state.frequency));
-                            widget.isConfigured();
-                            Navigator.of(context).pop();
+                            setState(() {
+                              pressCallButton = true;
+                            });
                           },
 
                           ///PROG
