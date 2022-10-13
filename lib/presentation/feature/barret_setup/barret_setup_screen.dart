@@ -77,7 +77,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
       child: Column(
         children: [
           Container(
-            height: 180,
+            height: 200,
             padding: const EdgeInsets.all(12),
             width: double.infinity,
             decoration: BoxDecoration(
@@ -696,7 +696,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
 
                     // up
                     onTapFirstButton: () {
-                      if (pressProgramButton == 7) {
+                      if (pressProgramButton == 3) {
                         channelIndex += 1;
                         if (channelIndex >=
                             AppConstant.barretChannelNameList.length) {
@@ -709,7 +709,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                                 .barretChannelNameList[channelIndex]);
                       }
                       // operating mode
-                      if (pressProgramButton == 8) {
+                      if (pressProgramButton == 4) {
                         operatingModeIndex += 1;
                         if (operatingModeIndex >=
                             AppConstant.operatingMode.length) {
@@ -721,7 +721,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                             operatingMode:
                                 AppConstant.operatingMode[operatingModeIndex]);
                       }
-                      if (pressProgramButton == 9) {
+                      if (pressProgramButton == 5) {
                         powerSettingIndex += 1;
                         if (powerSettingIndex >=
                             AppConstant.powerSetting.length) {
@@ -733,7 +733,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                             pwr: AppConstant.powerSetting[powerSettingIndex]);
                       }
 
-                      if (pressProgramButton == 10) {
+                      if (pressProgramButton == 6) {
                         sellCallFormatIndex += 1;
                         if (sellCallFormatIndex >=
                             AppConstant.cellCallFormat.length) {
@@ -866,7 +866,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                       thirdButtonImageUrl: 'images/volminus.png',
                       // down
                       onTapFirstButton: () {
-                        if (pressProgramButton == 7) {
+                        if (pressProgramButton == 3) {
                           channelIndex += 1;
                           if (channelIndex >=
                               AppConstant.barretChannelNameList.length) {
@@ -879,7 +879,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                                   .barretChannelNameList[channelIndex]);
                         }
                         // operating mode
-                        if (pressProgramButton == 8) {
+                        if (pressProgramButton == 4) {
                           operatingModeIndex += 1;
                           if (operatingModeIndex >=
                               AppConstant.operatingMode.length) {
@@ -892,7 +892,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                                   .operatingMode[operatingModeIndex]);
                         }
                         // power setting
-                        if (pressProgramButton == 9) {
+                        if (pressProgramButton == 5) {
                           powerSettingIndex += 1;
                           if (powerSettingIndex >=
                               AppConstant.powerSetting.length) {
@@ -903,7 +903,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                           barretCubit.setPowerSettingMode(
                               pwr: AppConstant.powerSetting[powerSettingIndex]);
                         }
-                        if (pressProgramButton == 10) {
+                        if (pressProgramButton == 6) {
                           sellCallFormatIndex += 1;
                           if (sellCallFormatIndex >=
                               AppConstant.cellCallFormat.length) {
