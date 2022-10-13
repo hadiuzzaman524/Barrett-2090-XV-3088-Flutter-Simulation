@@ -1,7 +1,21 @@
 import 'package:flutter/material.dart';
 
-class SuccessProgram extends StatelessWidget {
-  const SuccessProgram({Key? key}) : super(key: key);
+class SuccessProgram extends StatefulWidget {
+  final VoidCallback back;
+
+  const SuccessProgram({Key? key, required this.back}) : super(key: key);
+
+  @override
+  State<SuccessProgram> createState() => _SuccessProgramState();
+}
+
+class _SuccessProgramState extends State<SuccessProgram> {
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(seconds: 2))
+        .then((value) => {widget.back()});
+  }
 
   @override
   Widget build(BuildContext context) {

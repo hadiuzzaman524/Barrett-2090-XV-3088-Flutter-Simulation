@@ -33,7 +33,7 @@ class GetTxFrequency extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    color: pressProgramButton == 5 ? Colors.white : null,
+                    color: pressProgramButton == 2 ? Colors.white : null,
                     child: BlocBuilder<BarretSetupCubit, BarretSetupState>(
                       builder: (context, state) {
                         return state.txFrequency.isEmpty
