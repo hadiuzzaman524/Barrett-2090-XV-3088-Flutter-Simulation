@@ -18,6 +18,7 @@ class Assets {
   static const String imagesFlutter = 'images/flutter.png';
   static const String imagesFour = 'images/four.png';
   static const String imagesFrontpage = 'images/frontpage.png';
+  static const String imagesLeft = 'images/left.jpeg';
   static const String imagesLogo = 'images/logo.png';
   static const String imagesLower = 'images/lower.png';
   static const String imagesLside = 'images/lside.png';
@@ -26,6 +27,7 @@ class Assets {
   static const String imagesOne = 'images/one.PNG';
   static const String imagesProg = 'images/prog.PNG';
   static const String imagesRadio = 'images/radio.PNG';
+  static const String imagesRight = 'images/right.jpeg';
   static const String imagesRside = 'images/rside.png';
   static const String imagesRx = 'images/rx.gif';
   static const String imagesSell = 'images/sell.png';

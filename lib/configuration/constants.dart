@@ -198,5 +198,6 @@ class AppConstant {
     "Page Call",
     "GPS Call",
     "Status Call",
+    "ALE Call"
   ];
 }

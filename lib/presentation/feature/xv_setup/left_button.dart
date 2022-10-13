@@ -8,17 +8,9 @@ class LeftButton extends StatelessWidget {
     return Container(
       color: const Color(0xff53594D),
       width: 120,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: const [
-          CircleAvatar(
-            radius: 60,
-          ),
-          CircleAvatar(
-            radius: 60,
-          ),
-        ],
-      ),
+      height: MediaQuery.of(context).size.width,
+      child: Image.asset("images/right.jpeg",
+      fit: BoxFit.cover,),
     );
   }
 }
