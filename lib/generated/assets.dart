@@ -20,6 +20,7 @@ class Assets {
   static const String imagesFrontpage = 'images/frontpage.png';
   static const String imagesLeft = 'images/left.jpeg';
   static const String imagesLogo = 'images/logo.png';
+  static const String imagesLogo1 = 'images/logo1.png';
   static const String imagesLower = 'images/lower.png';
   static const String imagesLside = 'images/lside.png';
   static const String imagesMenu = 'images/menu.PNG';
