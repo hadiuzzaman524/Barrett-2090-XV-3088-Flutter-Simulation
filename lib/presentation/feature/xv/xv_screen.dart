@@ -18,7 +18,7 @@ class XvScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const ImageStack(title: "XV 3088", imageUrl: "images/xv3088.jpg"),
+          const ImageStack(title: "XV 3088", imageUrl: "images/xv30.jpeg"),
           const SizedBox(height: 12),
           Expanded(
             child: Container(

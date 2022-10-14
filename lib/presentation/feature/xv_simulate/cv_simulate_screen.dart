@@ -49,7 +49,7 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                         debugPrint(result);
                         setState(() {});
                       },
-                      imageUrl: "images/xv3088.jpg"),
+                      imageUrl: "images/xv30.jpeg"),
                   if (AppConstant.xvList.isNotEmpty)
                     AppIconButton(
                         title: "Delete",
@@ -103,7 +103,7 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                               ? Colors.red
                               : Colors.blue,
                           key: Key(DateTime.now().toString()),
-                          imageUrl: "images/xv3088.jpg",
+                          imageUrl: "images/xv30.jpeg",
                           onTap: () {
                             Navigator.push(
                                 context,
@@ -168,7 +168,7 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                               ? Colors.red
                               : Colors.blue,
                           key: Key(DateTime.now().toString()),
-                          imageUrl: "images/xv3088.jpg",
+                          imageUrl: "images/xv30.jpeg",
                           deviceNumber: "2",
                           onTap: () {
                             Navigator.push(

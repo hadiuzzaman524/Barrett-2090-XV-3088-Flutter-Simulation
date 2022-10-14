@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 32),
             ImageButton(
-              imageUrl: "images/xv3088.jpg",
+              imageUrl: "images/xv30.jpeg",
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (ctx) => const XvScreen()));

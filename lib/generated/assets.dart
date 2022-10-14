@@ -44,6 +44,7 @@ class Assets {
   static const String imagesUpper = 'images/upper.png';
   static const String imagesVolminus = 'images/volminus.png';
   static const String imagesVolplus = 'images/volplus.png';
+  static const String imagesXv30 = 'images/xv30.jpeg';
   static const String imagesXv3088 = 'images/xv3088.jpg';
   static const String imagesZero = 'images/zero.png';
 

@@ -18,7 +18,8 @@ class ImageStack extends StatelessWidget {
         children: [
           Image.asset(
             imageUrl,
-            fit: BoxFit.cover,
+            fit: BoxFit.fill,
+            width: double.infinity,
           ),
           Positioned(
             top: 150,

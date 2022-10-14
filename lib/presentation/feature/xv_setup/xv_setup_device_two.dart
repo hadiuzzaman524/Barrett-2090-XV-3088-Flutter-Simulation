@@ -9,6 +9,7 @@ import 'package:radio_set/presentation/cubits/xv_setup_device_two/state.dart';
 import 'package:radio_set/presentation/feature/xv_setup/left_button.dart';
 import 'package:radio_set/presentation/feature/xv_setup/right_button.dart';
 import 'package:radio_set/presentation/feature/xv_setup/xv_device_screen.dart';
+import 'package:radio_set/presentation/feature/xv_setup/xv_light.dart';
 import 'package:radio_set/services/model/xv_setup.dart';
 
 import '../../cubits/xv_setup/state.dart';
@@ -62,6 +63,7 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
   bool setProg = false;
 
   bool pressCallButton = false;
+  bool deviceOn = false;
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,14 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
       body: SafeArea(
         child: Row(
           children: [
-            const LeftButton(),
+            LeftButton(
+              onTap: () {
+                setState(() {
+                  deviceOn = !deviceOn;
+                });
+              },
+            ),
+            XVLight(deviceOn: deviceOn),
             Expanded(
               child: Container(
                 color: const Color(0xff717868),

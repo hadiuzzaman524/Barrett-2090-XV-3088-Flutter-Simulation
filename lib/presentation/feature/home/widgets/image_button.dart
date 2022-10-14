@@ -21,8 +21,8 @@ class ImageButton extends StatelessWidget {
       child: Column(
         children: [
           Container(
-            height: 200,
-            width: 200,
+            height: 230,
+            width: 250,
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.primaryColor, width: 2),
               borderRadius: const BorderRadius.all(Radius.circular(8)),
@@ -31,7 +31,7 @@ class ImageButton extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Image.asset(
                 imageUrl,
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
               ),
             ),
           ),
