@@ -193,4 +193,70 @@ class XvSetupDeviceTwoCubit extends Cubit<XvSetupDeviceTwoState> {
           setFrequency: state.setFrequency),
     );
   }
+
+  String frequencyConversion(String freq) {
+    String firstHalf = "";
+    String secondHalf = "";
+    for (int i = 0; i < freq.length; i++) {
+      if (i < 2) {
+        firstHalf += freq[i];
+      } else if (i > 2) {
+        secondHalf += freq[i];
+      }
+    }
+
+    int firstFreq = 0;
+    int secondFreq = 0;
+
+    if (firstHalf.isNotEmpty) {
+      firstFreq = int.parse(firstHalf);
+    }
+    if (secondHalf.isNotEmpty) {
+      secondFreq = int.parse(secondHalf);
+    }
+
+    if (firstFreq < 30) {
+      firstFreq = 30;
+      if (secondFreq > 975) {
+        secondFreq = 975;
+      }
+    } else if (firstFreq > 89) {
+      firstFreq = 89;
+      if (secondFreq > 975) {
+        secondFreq = 975;
+      }
+    }
+    int finalFrequency = 1;
+    if (secondHalf.isNotEmpty) {
+      int result = 0;
+      result = secondFreq ~/ 25;
+      int remaining = secondFreq % 25;
+      if (remaining > 0) {
+        result += 1;
+      }
+      if (remaining == 0) {
+        finalFrequency = secondFreq;
+      } else {
+        finalFrequency = 25 * result;
+      }
+    }
+    freq = "$firstFreq.$finalFrequency";
+    return freq;
+  }
+
+  void setConvertedFrequency({required String freq}) {
+    emit(
+      XvSetupDeviceTwoState(
+          sec: state.sec,
+          sel: state.sel,
+          sq: state.sq,
+          sdx: state.sdx,
+          powLow: state.powLow,
+          powHigh: state.powHigh,
+          channelName: state.channelName,
+          frequency: freq,
+          setChannel: state.setChannel,
+          setFrequency: state.setFrequency),
+    );
+  }
 }

@@ -397,6 +397,11 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
                                 setFreq = false;
                                 setSdx = true;
                               });
+                              final state =
+                                  context.read<XvSetupDeviceTwoCubit>().state;
+                              final String r =
+                                  xvCubit.frequencyConversion(state.frequency);
+                              xvCubit.setConvertedFrequency(freq: r);
                               //success set freq
                             } else if (!setChannel && !setFreq && setSdx) {
                               setState(() {
