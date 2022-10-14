@@ -461,7 +461,7 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
                                       sdx: state.sdx,
                                       powLow: state.powLow,
                                       powHigh: state.powHigh,
-                                      channelName: state.channelName,
+                                      channelName: "",
                                       frequency: state.frequency));
                               widget.isConfigured();
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -498,7 +498,7 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
                                       sdx: state.sdx,
                                       powLow: state.powLow,
                                       powHigh: state.powHigh,
-                                      channelName: state.channelName,
+                                      channelName: "",
                                       frequency: state.frequency));
                               widget.isConfigured();
                               ScaffoldMessenger.of(context).showSnackBar(

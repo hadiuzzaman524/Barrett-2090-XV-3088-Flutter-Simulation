@@ -455,7 +455,7 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                                       sdx: state.sdx,
                                       powLow: state.powLow,
                                       powHigh: state.powHigh,
-                                      channelName: state.channelName,
+                                      channelName: "",
                                       frequency: state.frequency));
                               widget.isConfigured();
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -491,7 +491,7 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                                       sdx: state.sdx,
                                       powLow: state.powLow,
                                       powHigh: state.powHigh,
-                                      channelName: state.channelName,
+                                      channelName: "",
                                       frequency: state.frequency));
                               widget.isConfigured();
                               ScaffoldMessenger.of(context).showSnackBar(
