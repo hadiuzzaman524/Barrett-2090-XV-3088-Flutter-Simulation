@@ -64,9 +64,7 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
 
   void setRxFrequency({required String rx}) {
     String freq = "";
-
     String temp = state.rxFrequency + rx;
-
     for (int i = 0; i < temp.length; i++) {
       if (temp.length <= 9) {
         freq += temp[i];
@@ -97,6 +95,93 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
     }
   }
 
+  String frequencyConversion(String freq) {
+    String firstHalf = "";
+    String secondHalf = "";
+    for (int i = 0; i < freq.length; i++) {
+      if (i < 5) {
+        firstHalf += freq[i];
+      } else if (i > 5) {
+        secondHalf += freq[i];
+      }
+    }
+
+    int firstFreq = 0;
+    int secondFreq = 0;
+    print("First Half: $firstHalf");
+    print("Second Half: $secondHalf");
+
+    if (firstHalf.isNotEmpty) {
+      firstFreq = int.parse(firstHalf);
+    }
+    if (secondHalf.isNotEmpty) {
+      secondFreq = int.parse(secondHalf);
+    }
+
+    if (firstFreq < 1600) {
+      firstFreq = 1600;
+    } else if (firstFreq > 30000) {
+      firstFreq = 30000;
+    }
+    int finalFrequency = 1;
+    if (secondHalf.isNotEmpty) {
+      int result = 0;
+      result = secondFreq ~/ 10;
+      int remaining = secondFreq % 10;
+      if (remaining > 0) {
+        result += 1;
+      }
+      if (remaining == 0) {
+        finalFrequency = secondFreq;
+      } else {
+        finalFrequency = 10 * result;
+      }
+    }
+    if (firstFreq == 30000) {
+      finalFrequency = 0;
+    }
+    freq = "$firstFreq.$finalFrequency";
+    print("Converted freq: $firstFreq $finalFrequency");
+
+    return freq;
+  }
+
+  void setRxConvertedFrequency({required String freq}) {
+    emit(BarretSetupState(
+      rxFrequency: freq,
+      channelNumber: state.channelNumber,
+      txFrequency: state.txFrequency,
+      channelName: state.channelName,
+      operatingMode: state.operatingMode,
+      powerSetting: state.powerSetting,
+      cellCallFormat: state.cellCallFormat,
+      secondMenu: state.secondMenu,
+      standardMenu: state.standardMenu,
+      antennaType: state.antennaType,
+      ioSetting: state.ioSetting,
+      generalOption: state.generalOption,
+      callOption: state.callOption,
+    ));
+  }
+
+  void setTxConvertedFrequency({required String freq}) {
+    emit(BarretSetupState(
+      rxFrequency: state.rxFrequency,
+      channelNumber: state.channelNumber,
+      txFrequency: freq,
+      channelName: state.channelName,
+      operatingMode: state.operatingMode,
+      powerSetting: state.powerSetting,
+      cellCallFormat: state.cellCallFormat,
+      secondMenu: state.secondMenu,
+      standardMenu: state.standardMenu,
+      antennaType: state.antennaType,
+      ioSetting: state.ioSetting,
+      generalOption: state.generalOption,
+      callOption: state.callOption,
+    ));
+  }
+
   void clearRxFrequency() {
     emit(
       BarretSetupState(
@@ -119,7 +204,6 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
 
   void setTxFrequency({required String tx}) {
     String freq = "";
-
     String temp = state.txFrequency + tx;
 
     for (int i = 0; i < temp.length; i++) {
@@ -372,7 +456,7 @@ class BarretSetupCubit extends Cubit<BarretSetupState> {
     );
   }
 
-  void clearMenu(){
+  void clearMenu() {
     emit(
       BarretSetupState(
         rxFrequency: state.rxFrequency,

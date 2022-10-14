@@ -344,10 +344,14 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         pressProgramButton += 1;
                       });
                       if (pressProgramButton == 2) {
-                        barretCubit.setTxFrequency(tx: state.rxFrequency);
-                        print(state.rxFrequency);
-                        print(state.txFrequency);
+                        final String r =
+                            barretCubit.frequencyConversion(state.rxFrequency);
+                        //converted freq
+                        barretCubit.setRxConvertedFrequency(freq: r);
+                        barretCubit.setTxFrequency(tx: r);
                       }
+                      print("Rx: ${state.rxFrequency}");
+                      print("Tx: ${state.txFrequency}");
                     },
                   ),
                   BarretButtonRow(
