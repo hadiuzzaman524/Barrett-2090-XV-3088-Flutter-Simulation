@@ -445,6 +445,23 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
                                 blinkProg = false;
                                 setProg = true;
                               });
+                              final state =
+                                  context.read<XvSetupDeviceTwoCubit>().state;
+
+                              AppConstant.addXvSecondDeviceSetup(
+                                  setupModel: XvSetupModel(
+                                      sec: state.sec,
+                                      sel: state.sel,
+                                      sq: state.sq,
+                                      sdx: state.sdx,
+                                      powLow: state.powLow,
+                                      powHigh: state.powHigh,
+                                      channelName: state.channelName,
+                                      frequency: state.frequency));
+                              widget.isConfigured();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text("Information Saved!")));
                             }
 
                             if (pressPowerButton) {
@@ -465,14 +482,9 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
                                 });
                                 print("Set Low Power ");
                               }
-                            }
-                            if (pressCallButton) {
                               final state =
                                   context.read<XvSetupDeviceTwoCubit>().state;
 
-                              setState(() {
-                                pressCallButton = false;
-                              });
                               AppConstant.addXvSecondDeviceSetup(
                                   setupModel: XvSetupModel(
                                       sec: state.sec,
@@ -486,8 +498,12 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
                               widget.isConfigured();
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                      content: Text(
-                                          "Information Saved! Please Back Now")));
+                                      content: Text("Information Saved!")));
+                            }
+                            if (pressCallButton) {
+                              setState(() {
+                                pressCallButton = false;
+                              });
                             }
                           },
 

@@ -440,6 +440,22 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                                 blinkProg = false;
                                 setProg = true;
                               });
+                              final state = context.read<XvSetupCubit>().state;
+
+                              AppConstant.addXvFirstDeviceSetup(
+                                  setupModel: XvSetupModel(
+                                      sec: state.sec,
+                                      sel: state.sel,
+                                      sq: state.sq,
+                                      sdx: state.sdx,
+                                      powLow: state.powLow,
+                                      powHigh: state.powHigh,
+                                      channelName: state.channelName,
+                                      frequency: state.frequency));
+                              widget.isConfigured();
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text("Information Saved!")));
                             }
 
                             if (pressPowerButton) {
@@ -460,13 +476,8 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                                 });
                                 print("Set Low Power ");
                               }
-                            }
-                            if (pressCallButton) {
                               final state = context.read<XvSetupCubit>().state;
 
-                              setState(() {
-                                pressCallButton = false;
-                              });
                               AppConstant.addXvFirstDeviceSetup(
                                   setupModel: XvSetupModel(
                                       sec: state.sec,
@@ -480,8 +491,12 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                               widget.isConfigured();
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                      content: Text(
-                                          "Information Saved! Please Back Now")));
+                                      content: Text("Information Saved!")));
+                            }
+                            if (pressCallButton) {
+                              setState(() {
+                                pressCallButton = false;
+                              });
                             }
                           },
 
