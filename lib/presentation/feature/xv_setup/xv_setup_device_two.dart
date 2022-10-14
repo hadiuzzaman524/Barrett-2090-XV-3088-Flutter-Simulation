@@ -567,7 +567,6 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
                                 setState(() {
                                   setHighPower = false;
                                 });
-
                                 print("Set High Power");
                               }
                               if (setLowPower) {

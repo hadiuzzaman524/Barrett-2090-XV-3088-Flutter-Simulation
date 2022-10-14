@@ -392,6 +392,11 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                                 setFreq = false;
                                 setSdx = true;
                               });
+                              final state = context.read<XvSetupCubit>().state;
+                              final String r =
+                                  xvCubit.frequencyConversion(state.frequency);
+                              xvCubit.setConvertedFrequency(freq: r);
+
                               //success set freq
                             } else if (!setChannel && !setFreq && setSdx) {
                               setState(() {
