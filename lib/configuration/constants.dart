@@ -5,13 +5,149 @@ import '../services/model/tutorial_model.dart';
 
 class AppConstant {
   static final List<TutorialModel> barretFrequency = [
-    TutorialModel(
-        details:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.",
-        title: "Lorem Ipsum is simply dummy text"),
+    TutorialModel(details: """
+ক. পাওয়ার অন/অফ বাটনটি প্রেস করলে রেডিও অন হবে।
+খ. অনুরুপভাবে পাওয়ার অন/অফ বাটনটি প্রেস করলে রেডিও অফ হবে।
+""", title: "রেডিও অন/অফ করার নিয়মঃ"),
+    TutorialModel(details: """
+ক. 	Channel বাটন দ্বারাঃ
+  (১)	Channel বাটন একবার প্রেস করি।কার্সর ডিসপ্লেতে দেখার পর কাঙ্ক্ষিত চ্যানেল নম্বর টাইপ করি।
+  (২)	পুনরায় Channel বাটন একবার প্রেস করি।
+খ. 	হান্ডসেটের চ্যানেল Up/Down  বাটন প্রেস করে কাঙ্ক্ষিত নম্বরে যেতে পারি।
+""", title: "চ্যানেল পরিবরতন (দুই ভাবে করা যায়)"),
+    TutorialModel(details: """
+ক.	প্রথমে কাঙ্ক্ষিত চ্যানেল নম্বর আনিঃ
+  (১)	Program বাটন প্রেস করি।
+  (২)	Rx Freq দেই।
+  (৩)	Program বাটন 2 বার প্রেস করি।
+  (৪)	Tx Freq দেই(Ts  এবং Rx Freq  যদি একই হয় তাহলে ফ্রিকয়েন্সি দেয়ার প্রয়োজন নাই)
+  (৫) 	Program বাটন প্রেস করি।
+  (৬)	Up/Down বাটন দিয়ে Channel Label (চ্যানেলের নাম) সিলেক্ট করি 
+  (৭) 	Program বাটন প্রেস করি।
+  (৮)	Up/Down বাটন দিয়ে Operating Mode USB/LSB?AM/CW/FSK দিয়ে সিলেক্ট করি। 
+  (৯)	Program বাটন প্রেস করি।
+  (১০)	Up/Down বাটন দিয়ে Power Setting- High/Medium/Low Power  সিলেক্ট করি।
+  (১১)	Program বাটন প্রেস করি এবং Up/Down বাটন দিয়ে International সিলেক্ট করি।
+  (১২)	Program বাটন প্রেস করি।
+খ.	এই ভাবে Step by Step Freq/Level/Mode/Power Setting/SellCall Format     (International) ইত্যাদি সম্পন্ন করি।
+
+নোটঃ Tx Freq যদি ভিন্ন হয়, তাহলে Tx Freq দেওয়ার পর program বাটন ২ বার প্রেস করতে হবে।
+
+""", title: "ফ্রিকয়েন্সি প্রোগ্রামিংঃ"),
+    TutorialModel(details: """
+ক.	Radio এর Manu বাটনে একবার প্রেস করি(Standard Menu Select করি)
+খ.	Display তে  Identification আসবে।
+গ.	Down বাটনে একবার প্রেস করি।
+ঘ.	Enter বাটনে দুইবার প্রেস করি।	
+ঙ.	Up/Down বাটন দিএ Antenna সিলেক্ট করি।যেমন Manpack এর জন্য                                                                                                                                             Whip/Long Wire Antenna সিলেক্ট করি। 
+চ. 	Base Station(End Fed Dipole Antenna) এর জন্য 50 Ohm সিলেক্ট করি।
+ছ.	Enter বাটনে প্রেস করি।	
+জ.	Clear বাটনে দুইবার প্রেস করি।
+""", title: "এন্টিনা সিলেকশনঃ  ম্যানপ্যাক রেডিও এর ক্ষেত্রে এন্টিনা সিলেকশনঃ"),
+    TutorialModel(details: """
+ক.	Manu বাটনে দুই সেকেন্ট চাপ দিয়ে রাখি
+খ. 	Display তে General আসবে
+গ. 	Up/Dawn বাটন দিয়ে I/O সেটিং অপশনে যাই
+ঘ. 	Enter বাটন প্রেস করি
+ঙ.	Up/Dawn বাটন দিয়ে Antenna Type অপশনে যাই
+চ. 	Enter বাটন প্রেস করি
+ছ. 	Up/Dawn বাটন দিয়ে 2019 Mobile Antenna Select করি
+জ. 	Enter বাটন প্রেস করি
+ঝ. 	Clear বাটন দুইবার প্রেস করে বেরিয়ে আসি
+Note: গারিতে রেডিও শুধুমাত্র ১২ ভোল্ট সেকেন্ডারি ব্যাটারি দ্বারা চলবে
+
+""", title: "ভেহিক্যাল এন্টিনা সিলেকশনঃ"),
   ];
-  static final List<TutorialModel> barretSellCall = [];
-  static final List<TutorialModel> barretPowerSetup = [];
+  static final List<TutorialModel> barretSellCall = [
+    TutorialModel(details: """
+ক. 	Call বাটনে একবার প্রেস করি
+খ. 	Up/Dawn বাটনের মাধ্যমে Sell Call/Beacons/Status Request/Page call- etc এর 
+মধ্যে যে কলটি চাই সেই কলটি সিলেক্ট করি
+গ. 	Enter বাটন প্রেস করি
+ঘ. 	কলটি যে স্টেশনের করতে চাই সেই স্টেশনের( গন্তব্বস্থলের) ID দেই
+ঙ. 	Call বাটন প্রেস করি
+ Note: উপরের সবগুলো একই নিয়মে করা যাবে
+""", title: "বিভিন্ন কল করার পদ্ধতি"),
+    TutorialModel(details: """
+ক. 	Call বাটন প্রেস করি
+খ. 	Up/Dawn বাটন দিয়ে Sel Select করি
+গ. 	Call বাটন প্রেস করি
+ঘ. 	ডেসন্টিনেশন ( গন্তব্বস্থল) ID দেই
+ঙ. 	Call বাটন প্রেস করি
+(Revwetive Tone) এর জন্য অপেক্ষা করি ।Tone শোনা গেলে বোঝা যাবে Select সম্পন্ন হয়েছে)
+
+""", title: "Sel Call করার নিয়মঃ"),
+    TutorialModel(details: """
+ক. 	Call বাটন প্রেস করি
+খ. 	Up/Dawn বাটন দিয়ে Beacon কল সিলেক্ট করি
+গ. 	Call বাটন প্রেস করি
+ঘ. 	ডেসন্টিনেশন ( গন্তব্বস্থল) ID দেই
+ঙ. 	Call বাটন প্রেস করি
+""", title: "বিকন (Beacon) কল করার নিয়মঃ"),
+    TutorialModel(details: """
+ক. 	Call বাটন প্রেস করি
+খ. 	Up/Dawn বাটন দিয়ে Page Call সিলেক্ট করি
+গ. 	Call বাটন প্রেস করে কাঙ্ক্ষিত ( গন্তব্বস্থলের) নম্বর দেই
+ঘ. 	Call বাটন প্রেস করি
+ঙ. 	ডিসপ্লে তে প্রয়োজনীয় Message টাইপ করি।
+চ. 	Call বাটন প্রেস করি
+""", title: "Page Call(SMS) কল করার নিয়মঃ"),
+    TutorialModel(details: """
+ক. 	Call বাটন প্রেস করি
+খ. 	Up/Dawn বাটন দিয়ে Status reques সিলেক্ট করি
+গ. 	Enter বাটন প্রেস করি
+ঘ. 	কলটি যে স্টেশনের করতে চাই সেই স্টেশনের( গন্তব্বস্থলের) ID দেই
+ঙ. 	Call বাটন প্রেস করি
+""", title: "Status request Call করার নিয়মঃ	"),
+  ];
+  static final List<TutorialModel> barretPowerSetup = [
+    TutorialModel(details: """
+ক.	Menu বাটনে একবার প্রেস করি
+খ. 	Display তে Identification দেখাবে
+গ. 	Enter একবারপ্রেস করি
+ঘ. 	Display তে রেডিও এর বিভন্ন অপশন দেখাবে( Left Ges Right Scroll Key এর সাহায্যে)
+যেমন: Txcvr Type: 2090 
+S/N: 20900---- 
+Options:123---- 
+Software Version: 2.01 
+DSP Version: 2.00 
+Core Version: 2.00 
+ATU Version: 1.04 
+Antenna: Whip/L. Wire 
+Sel Call IDs 
+INT1: 1234 OME1:9876 
+INT2: 123456 OME2:876543 
+Battery Rx:15.2 
+Battery Tx:14.0 
+PA Temparature: 20° 
+Charge: 86% 
+Estimted Chargering Time 1 hr 57 Mins 
+GPS Corrdinates 
+Lat: 32° 05.727S 
+Long: 115° 48.043E 
+
+Press Clear to Return 
+""", title: "Standard Menu  এর Identification:"),
+    TutorialModel(details: """
+ক. Menu বাটন একবার প্রেস  করি 
+খ. Enter বাটন একবার প্রেস করি।
+গ. Display-তে রেডিও এর বিভিন্ন অপশন দেখাবে। কিপ্যাডে > ৩ নং বাটনটি পর পর প্রেস করতে থাকলে গুরুত্বপূর্ণ দুই টি অপশন দেখাবে। 
+(১) রেডিও এর Self ID (নিজের Selcall ID) 
+(২) ব্যাটারীর Rx ও Tx ভোল্টেজ। 
+(৩)ব্যাটারী কত সময় চলবে। 
+Note: এ পদ্ধতিতে কোন মিটার ছাড়াই ব্যাটারী কন্ডিশন পরীক্ষা করা যাবে। 
+""", title: "Battery Condition/ Self ID (নিজের আইডি) জানার নিয়মঃ "),
+    TutorialModel(details: """
+ক. 	Menu বাটন দুই সেকেন্ড চাপ দিয়ে ধরে রাখি। 
+খ. 	Display তে  General অপশন দেখাবে।
+গ. 	 Enter বাটন একবার প্রেস করি 
+ঘ. 	Up/Dawn বাটন দিয়ে BITE অপশনে যাই
+ঙ. 	Enter বাটন একবার প্রেস করি
+চ. 	BITE Test Passed না আসা পর্যন্ত অপেক্ষা করি
+ছ. 	কোন সমস্যা থাকলে Failed দেখাবেক
+জ।	Clear বাটন দুই বার প্রেস করে বের হয়ে আসি।
+""", title: "Built-in Test Equipment (BITE) পরীক্ষা করার নিয়ম ।"),
+  ];
 
   static final List<TutorialModel> xvFrequency = [
     TutorialModel(details: """
