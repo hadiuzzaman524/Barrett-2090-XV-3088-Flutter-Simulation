@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                   Text(
-                    "Hadi",
+                    "Gp-6",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,

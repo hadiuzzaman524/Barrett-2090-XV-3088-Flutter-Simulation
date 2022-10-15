@@ -244,7 +244,7 @@ Note: এ পদ্ধতিতে কোন মিটার ছাড়াই 
   static final List<String> barretChannelNameList = [
     "Public",
     "Private",
-    "Hadi",
+    "Munif",
   ];
 
   static final List<String> operatingMode = [

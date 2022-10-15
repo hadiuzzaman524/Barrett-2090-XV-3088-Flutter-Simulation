@@ -20,12 +20,15 @@ class Assets {
   static const String imagesFlutter = 'images/flutter.png';
   static const String imagesFour = 'images/four.png';
   static const String imagesFrontpage = 'images/frontpage.png';
+  static const String imagesIlham = 'images/ilham.JPG';
   static const String imagesLeft = 'images/left.jpeg';
   static const String imagesLogo = 'images/logo.png';
   static const String imagesLogo1 = 'images/logo1.png';
   static const String imagesLower = 'images/lower.png';
   static const String imagesLside = 'images/lside.png';
   static const String imagesMenu = 'images/menu.PNG';
+  static const String imagesMunif = 'images/munif.jpg';
+  static const String imagesNayma = 'images/nayma.jpg';
   static const String imagesNine = 'images/nine.png';
   static const String imagesOne = 'images/one.PNG';
   static const String imagesPowerbutton = 'images/powerbutton.jpeg';
@@ -43,6 +46,7 @@ class Assets {
   static const String imagesSimulate = 'images/simulate.png';
   static const String imagesSix = 'images/six.png';
   static const String imagesThree = 'images/three.PNG';
+  static const String imagesTouhid = 'images/touhid.jpg';
   static const String imagesTower = 'images/tower.png';
   static const String imagesTune = 'images/tune.png';
   static const String imagesTutorial = 'images/tutorial.png';

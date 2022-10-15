@@ -17,8 +17,10 @@ import '../../widgets/xv_button_row.dart';
 
 class XvSetupDeviceTwoScreen extends StatefulWidget {
   final VoidCallback isConfigured;
+  final bool configured;
 
-  const XvSetupDeviceTwoScreen({Key? key, required this.isConfigured})
+  const XvSetupDeviceTwoScreen(
+      {Key? key, required this.isConfigured, required this.configured})
       : super(key: key);
 
   @override
@@ -33,6 +35,10 @@ class _XvSetupDeviceTwoScreenState extends State<XvSetupDeviceTwoScreen> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
     ]);
+
+    setState(() {
+      deviceOn = widget.configured;
+    });
   }
 
   @override

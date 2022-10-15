@@ -139,6 +139,7 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                                               startTransmit = false;
                                             });
                                           },
+                                          configured: isConfiguredFirstDevice,
                                         )));
                           },
                           onLogPress: (bool value) {
@@ -205,6 +206,7 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                                               isConfiguredSecondDevice = true;
                                             });
                                           },
+                                          configured: isConfiguredSecondDevice,
                                         )));
                           },
                           onLogPress: (bool value) {

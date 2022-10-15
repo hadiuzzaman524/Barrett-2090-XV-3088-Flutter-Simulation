@@ -15,8 +15,9 @@ import '../../widgets/xv_button_row.dart';
 
 class XvSetupScreen extends StatefulWidget {
   final VoidCallback isConfigured;
+  final bool configured;
 
-  const XvSetupScreen({Key? key, required this.isConfigured}) : super(key: key);
+  const XvSetupScreen({Key? key, required this.isConfigured, required this.configured}) : super(key: key);
 
   @override
   State<XvSetupScreen> createState() => _XvSetupScreenState();
@@ -30,6 +31,9 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
     ]);
+    setState(() {
+      deviceOn=widget.configured;
+    });
   }
 
   @override
@@ -61,6 +65,7 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
   bool pressCallButton = false;
   bool deviceOn = false;
   bool isAntennaTap=false;
+
 
   @override
   Widget build(BuildContext context) {

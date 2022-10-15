@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:radio_set/presentation/feature/about_us.dart';
 import 'package:radio_set/presentation/feature/barret/barret_screen.dart';
 import 'package:radio_set/presentation/feature/home/widgets/image_button.dart';
 import 'package:radio_set/presentation/feature/xv/xv_screen.dart';
-import 'package:radio_set/presentation/feature/xv_setup/xv_setup_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Radio Set"),
+        title: const Text("RadioGram"),
         centerTitle: true,
       ),
       body: Container(
@@ -44,6 +44,7 @@ class HomeScreen extends StatelessWidget {
       ),
       drawer: Drawer(
         child: Column(
+
           children: [
             const SizedBox(
               height: 20,
@@ -72,6 +73,15 @@ class HomeScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (ctx) => const XvScreen()));
+              },
+            ),
+            const Divider(),
+            ListTile(
+              title: const Text("Our Team"),
+              leading: const Icon(Icons.group),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (ctx) => const AboutUs()));
               },
             ),
           ],
