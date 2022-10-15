@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (ctx) => const BarretScreen()));
               },
-              title: 'Barret 2090',
+              title: 'Barrett 2090',
             ),
             const SizedBox(height: 32),
             ImageButton(
@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const Divider(),
             ListTile(
-              title: const Text("Barret 2090"),
+              title: const Text("Barrett 2090"),
               leading: const Icon(Icons.device_hub_outlined),
               onTap: () {
                 Navigator.push(context,

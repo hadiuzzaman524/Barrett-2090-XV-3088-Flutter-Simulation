@@ -15,14 +15,14 @@ class BarretScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Barret 2090"),
+        title: const Text("Barrett 2090"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const ImageStack(
-              title: "Barret 2090", imageUrl: "images/barret.jpg"),
+              title: "Barrett 2090", imageUrl: "images/barret.jpg"),
           const SizedBox(height: 12),
           Expanded(
             child: Container(
