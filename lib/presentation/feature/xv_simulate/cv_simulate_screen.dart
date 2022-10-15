@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:radio_set/configuration/constants.dart';
 import 'package:radio_set/presentation/feature/xv_setup/xv_setup_device_two.dart';
 import 'package:radio_set/presentation/feature/xv_setup/xv_setup_screen.dart';
-import 'package:radio_set/presentation/widgets/card_button.dart';
 import 'package:radio_set/presentation/widgets/device_button.dart';
 import 'package:radio_set/presentation/widgets/icon_button.dart';
 

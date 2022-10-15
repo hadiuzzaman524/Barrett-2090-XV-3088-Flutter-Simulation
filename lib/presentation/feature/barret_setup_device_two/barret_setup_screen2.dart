@@ -1,41 +1,43 @@
 import 'package:blinking_text/blinking_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:radio_set/presentation/feature/barret_setup/io_setting.dart';
-import 'package:radio_set/presentation/feature/barret_setup/operating_mode.dart';
-import 'package:radio_set/presentation/feature/barret_setup/power_setting.dart';
-import 'package:radio_set/presentation/feature/barret_setup/rx_frequency.dart';
-import 'package:radio_set/presentation/feature/barret_setup/second_menu_option.dart';
-import 'package:radio_set/presentation/feature/barret_setup/sell_call.dart';
-import 'package:radio_set/presentation/feature/barret_setup/success_program.dart';
-import 'package:radio_set/presentation/feature/barret_setup/text_container.dart';
-import 'package:radio_set/presentation/feature/barret_setup/tx_frequency.dart';
-import 'package:radio_set/presentation/widgets/barret_button_row.dart';
-import 'package:radio_set/services/model/barret_setup_model.dart';
 
-import '../../cubits/barret_setup/cubit.dart';
-import '../../cubits/barret_setup/state.dart';
-import 'antenna_type.dart';
-import 'call_option.dart';
-import 'calling_number.dart';
-import 'channel_name.dart';
+import '../../../services/model/barret_setup_model.dart';
+import '../../cubits/barret_setup_device_two/cubit.dart';
+import '../../cubits/barret_setup_device_two/state.dart';
+import '../../widgets/barret_button_row.dart';
+import 'antenna_type2.dart';
+import 'call_option2.dart';
+import 'calling_number2.dart';
+import 'channel_name2.dart';
 import 'package:radio_set/configuration/constants.dart';
 
-import 'general_option.dart';
-import 'identification.dart';
-import 'menu_option.dart';
+import 'general_option2.dart';
+import 'identification2.dart';
+import 'io_setting2.dart';
+import 'menu_option2.dart';
+import 'operating_mode2.dart';
+import 'power_setting2.dart';
+import 'rx_frequency2.dart';
+import 'second_menu_option2.dart';
+import 'sell_call2.dart';
+import 'success_program2.dart';
+import 'text_container2.dart';
+import 'tx_frequency2.dart';
 
-class BarretSetupScreen extends StatefulWidget {
+class BarretSetupDeviceTwoScreen extends StatefulWidget {
   final VoidCallback isConfigured;
 
-  const BarretSetupScreen({Key? key, required this.isConfigured})
+  const BarretSetupDeviceTwoScreen({Key? key, required this.isConfigured})
       : super(key: key);
 
   @override
-  State<BarretSetupScreen> createState() => _BarretSetupScreenState();
+  State<BarretSetupDeviceTwoScreen> createState() =>
+      _BarretSetupDeviceTwoScreenState();
 }
 
-class _BarretSetupScreenState extends State<BarretSetupScreen> {
+class _BarretSetupDeviceTwoScreenState
+    extends State<BarretSetupDeviceTwoScreen> {
   bool setChannel = false;
   int pressProgramButton = 0;
   bool clearRxFrequency = true;
@@ -71,7 +73,8 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final barretCubit = context.read<BarretSetupCubit>();
+    print("Screen 2");
+    final barretCubit = context.read<BarretSetupDeviceTwoCubit>();
     return Scaffold(
         body: Container(
       padding: const EdgeInsets.only(top: 30),
@@ -146,8 +149,8 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                                                                         ? const CallOption()
                                                                         : showCallingNumberTaker
                                                                             ? const CallingNumberTaker()
-                                                                            : BlocBuilder<BarretSetupCubit,
-                                                                                BarretSetupState>(
+                                                                            : BlocBuilder<BarretSetupDeviceTwoCubit,
+                                                                                BarretSetupDeviceTwoState>(
                                                                                 builder: (context, state) {
                                                                                   return Column(
                                                                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -355,7 +358,8 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
 
                       ///prog
                       onTapThirdButton: () {
-                        final state = context.read<BarretSetupCubit>().state;
+                        final state =
+                            context.read<BarretSetupDeviceTwoCubit>().state;
                         setState(() {
                           pressProgramButton += 1;
                         });
@@ -369,10 +373,10 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         }
                         print("Rx: ${state.rxFrequency}");
                         print("Tx: ${state.txFrequency}");
-
                         if (pressProgramButton == 7) {
-                          final state = context.read<BarretSetupCubit>().state;
-                          AppConstant.addBarretFirstDeviceSetup(
+                          final state =
+                              context.read<BarretSetupDeviceTwoCubit>().state;
+                          AppConstant.addBarretSecondDeviceSetup(
                               setupModel: BarretSetupModel(
                                   operatingMode: state.operatingMode,
                                   callFormat: state.cellCallFormat,
@@ -392,7 +396,8 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
 
                       ///one
                       onTapFirstButton: () {
-                        final state = context.read<BarretSetupCubit>().state;
+                        final state =
+                            context.read<BarretSetupDeviceTwoCubit>().state;
 
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "1");
@@ -882,7 +887,8 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                       },
                       onTapThirdButton: () {},
                     ),
-                    BlocListener<BarretSetupCubit, BarretSetupState>(
+                    BlocListener<BarretSetupDeviceTwoCubit,
+                        BarretSetupDeviceTwoState>(
                       listener: (context, state) {
                         // TODO: implement listener}
                         if (state.standardMenu == "Identification") {

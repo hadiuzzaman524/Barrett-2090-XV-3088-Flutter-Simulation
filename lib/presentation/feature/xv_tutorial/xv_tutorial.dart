@@ -60,7 +60,7 @@ class XvTutorialScreen extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return AppBottomSheet(
-                                tutorialList: AppConstant.xvSellCall,
+                                tutorialList: AppConstant.xvFrequency,
                               );
                             });
                       }),
@@ -77,7 +77,7 @@ class XvTutorialScreen extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return AppBottomSheet(
-                                tutorialList: AppConstant.xvPowerSetup,
+                                tutorialList: AppConstant.xvFrequency,
                               );
                             });
                       }),

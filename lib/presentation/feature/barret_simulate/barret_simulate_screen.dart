@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:radio_set/configuration/constants.dart';
 import 'package:radio_set/presentation/feature/barret_setup/barret_setup_screen.dart';
-
-import '../../../configuration/constants.dart';
-import '../../widgets/device_button.dart';
-import '../../widgets/icon_button.dart';
+import 'package:radio_set/presentation/feature/barret_setup_device_two/barret_setup_screen2.dart';
+import 'package:radio_set/presentation/widgets/device_button.dart';
+import 'package:radio_set/presentation/widgets/icon_button.dart';
 
 class BarretSimulateScreen extends StatefulWidget {
   const BarretSimulateScreen({Key? key}) : super(key: key);
@@ -16,9 +16,13 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
   bool deleteItem = false;
   int deleteIndex = 0;
   bool startTransmit = false;
+  bool isConfiguredFirstDevice = false;
+  bool isConfiguredSecondDevice = false;
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(AppConstant.barretSetupList[0].toString());
+    debugPrint(AppConstant.barretSetupList[1].toString());
     return Scaffold(
       appBar: AppBar(
         title: const Text("Simulate"),
@@ -35,39 +39,48 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  if (AppConstant.xvList.length < 2) Container(),
+                  if (AppConstant.barretList.length < 2) Container(),
                   AppIconButton(
                       title: "Add",
                       onTap: () {
                         final String result =
-                            AppConstant.addXvDevice(title: "hello");
+                        AppConstant.addBarretDevice(title: "hello");
                         debugPrint(result);
                         setState(() {});
                       },
-                      imageUrl: "images/barret.jpg"),
-                  if (AppConstant.xvList.isNotEmpty)
+                      imageUrl: "images/xv30.jpeg"),
+                  if (AppConstant.barretList.isNotEmpty)
                     AppIconButton(
                         title: "Delete",
                         onTap: () {
                           if (deleteItem) {
-                            AppConstant.deleteXvDevice(index: deleteIndex);
+                            AppConstant.deleteBarretDevice(index: deleteIndex);
                             setState(() {
                               deleteItem = false;
                               startTransmit = false;
+                              isConfiguredSecondDevice = false;
+                              isConfiguredFirstDevice = false;
                             });
                           }
                         },
                         imageUrl: "images/delete.png"),
-                  AppConstant.xvList.length < 2
+                  AppConstant.barretList.length < 2
                       ? Container()
                       : AppIconButton(
-                          title: "Transmit",
-                          onTap: () {
-                            setState(() {
-                              startTransmit = true;
-                            });
-                          },
-                          imageUrl: "images/email.png"),
+                      title: "Transmit",
+                      onTap: () {
+                        setState(() {
+                          startTransmit = true;
+                        });
+                        if (!isConfiguredFirstDevice ||
+                            !isConfiguredSecondDevice) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text(
+                                      "Please Configure those device first")));
+                        }
+                      },
+                      imageUrl: "images/email.png"),
                 ],
               ),
             ),
@@ -78,17 +91,30 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                 children: [
                   Row(
                     children: [
-                      if (AppConstant.xvList.isNotEmpty)
+                      if (AppConstant.barretList.isNotEmpty)
                         DeviceButton(
-                          borderColor: Colors.blue,
+                          borderColor: startTransmit &&
+                              AppConstant.barretList.length > 1 &&
+                              isConfiguredFirstDevice &&
+                              isConfiguredSecondDevice &&
+                              (AppConstant.barretSetupList[0] !=
+                                  AppConstant.barretSetupList[1])
+                              ? Colors.red
+                              : Colors.blue,
                           key: Key(DateTime.now().toString()),
-                          imageUrl: "images/barret.jpg",
+                          imageUrl: "images/xv30.jpeg",
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (ctx) =>
-                                        const BarretSetupScreen()));
+                                    builder: (ctx) => BarretSetupScreen(
+                                      isConfigured: () {
+                                        setState(() {
+                                          isConfiguredFirstDevice = true;
+                                          startTransmit = false;
+                                        });
+                                      },
+                                    )));
                           },
                           onLogPress: (bool value) {
                             if (value) {
@@ -97,38 +123,64 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                               debugPrint("value: $value");
                               debugPrint("Delete item: $deleteItem");
                             }
-                          }, deviceNumber: '1',
+                          },
+                          deviceNumber: '1',
                         )
                     ],
                   ),
                   Expanded(
                       child: Container(
-                    margin: const EdgeInsets.only(left: 60, right: 15),
-                    decoration: BoxDecoration(
-                      border: startTransmit && AppConstant.xvList.length > 1
-                          ? const Border(
-                              left: BorderSide(
-                                  width: 2.0, color: Colors.lightBlue),
-                              bottom: BorderSide(
-                                  width: 2.0, color: Colors.lightBlue),
-                            )
-                          : null,
-                    ),
-                  )),
+                        margin: const EdgeInsets.only(left: 60, right: 15),
+                        decoration: BoxDecoration(
+                          border: startTransmit &&
+                              AppConstant.barretList.length > 1 &&
+                              isConfiguredFirstDevice &&
+                              isConfiguredSecondDevice
+                              ? Border(
+                            left: BorderSide(
+                                width: 2.0,
+                                color: (AppConstant.barretSetupList[0] ==
+                                    AppConstant.barretSetupList[1])
+                                    ? Colors.lightBlue
+                                    : Colors.red),
+                            bottom: BorderSide(
+                                width: 2.0,
+                                color: (AppConstant.barretSetupList[0] ==
+                                    AppConstant.barretSetupList[1])
+                                    ? Colors.lightBlue
+                                    : Colors.red),
+                          )
+                              : null,
+                        ),
+                      )),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      if (AppConstant.xvList.length > 1)
+                      if (AppConstant.barretList.length > 1)
                         DeviceButton(
-                          borderColor: Colors.blue,
+                          borderColor: startTransmit &&
+                              AppConstant.barretList.length > 1 &&
+                              isConfiguredFirstDevice &&
+                              isConfiguredSecondDevice &&
+                              (AppConstant.barretSetupList[0] !=
+                                  AppConstant.barretSetupList[1])
+                              ? Colors.red
+                              : Colors.blue,
                           key: Key(DateTime.now().toString()),
-                          imageUrl: "images/barret.jpg",
+                          imageUrl: "images/xv30.jpeg",
+                          deviceNumber: "2",
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (ctx) =>
-                                        const BarretSetupScreen()));
+                                    builder: (ctx) => BarretSetupDeviceTwoScreen(
+                                      isConfigured: () {
+                                        setState(() {
+                                          startTransmit = false;
+                                          isConfiguredSecondDevice = true;
+                                        });
+                                      },
+                                    )));
                           },
                           onLogPress: (bool value) {
                             if (value) {
@@ -137,7 +189,7 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                               debugPrint("value: $value");
                               debugPrint("Delete item: $deleteItem");
                             }
-                          }, deviceNumber: '2',
+                          },
                         )
                     ],
                   ),

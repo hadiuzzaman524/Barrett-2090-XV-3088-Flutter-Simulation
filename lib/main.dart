@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:radio_set/configuration/colors.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:radio_set/presentation/cubits/barret_setup/cubit.dart';
+import 'package:radio_set/presentation/cubits/barret_setup_device_two/cubit.dart';
 import 'package:radio_set/presentation/cubits/xv_setup/cubit.dart';
 import 'package:radio_set/presentation/cubits/xv_setup_device_two/cubit.dart';
 import 'package:radio_set/presentation/feature/splash/splash_screen.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (ctx) => XvSetupCubit()),
         BlocProvider(create: (ctx) => XvSetupDeviceTwoCubit()),
         BlocProvider(create: (ctx) => BarretSetupCubit()),
+        BlocProvider(create: (ctx) => BarretSetupDeviceTwoCubit()),
       ],
       child: MaterialApp(
         theme: ThemeData(
