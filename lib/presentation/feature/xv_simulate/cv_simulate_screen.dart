@@ -5,6 +5,8 @@ import 'package:radio_set/presentation/feature/xv_setup/xv_setup_screen.dart';
 import 'package:radio_set/presentation/widgets/device_button.dart';
 import 'package:radio_set/presentation/widgets/icon_button.dart';
 
+import '../../widgets/transmission_success.dart';
+
 class XvSimulateScreen extends StatefulWidget {
   const XvSimulateScreen({Key? key}) : super(key: key);
 
@@ -78,6 +80,29 @@ class _XvSimulateScreenState extends State<XvSimulateScreen> {
                                   const SnackBar(
                                       content: Text(
                                           "Please Configure those device first")));
+                            }
+                            if (startTransmit &&
+                                AppConstant.xvList.length > 1 &&
+                                isConfiguredFirstDevice &&
+                                isConfiguredSecondDevice &&
+                                (AppConstant.xvSetupList[0] !=
+                                    AppConstant.xvSetupList[1])) {
+                              showModalBottomSheet(
+                                  context: context,
+                                  builder: (ctx) =>
+                                      const TransmissionSuccessDialog(
+                                          success: false));
+                            } else if (startTransmit &&
+                                AppConstant.xvList.length > 1 &&
+                                isConfiguredFirstDevice &&
+                                isConfiguredSecondDevice &&
+                                (AppConstant.xvSetupList[0] ==
+                                    AppConstant.xvSetupList[1])) {
+                              showModalBottomSheet(
+                                  context: context,
+                                  builder: (ctx) =>
+                                      const TransmissionSuccessDialog(
+                                          success: true));
                             }
                           },
                           imageUrl: "images/email.png"),

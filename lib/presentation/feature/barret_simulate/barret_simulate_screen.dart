@@ -4,6 +4,9 @@ import 'package:radio_set/presentation/feature/barret_setup/barret_setup_screen.
 import 'package:radio_set/presentation/feature/barret_setup_device_two/barret_setup_screen2.dart';
 import 'package:radio_set/presentation/widgets/device_button.dart';
 import 'package:radio_set/presentation/widgets/icon_button.dart';
+import 'package:radio_set/services/model/barret_setup_model.dart';
+
+import '../../widgets/transmission_success.dart';
 
 class BarretSimulateScreen extends StatefulWidget {
   const BarretSimulateScreen({Key? key}) : super(key: key);
@@ -20,14 +23,36 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
   bool isConfiguredSecondDevice = false;
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    /*   Future.delayed(Duration.zero, () async {
+      showModalBottomSheet(
+          context: context,
+          builder: (ctx) => startTransmit &&
+                  AppConstant.barretList.length > 1 &&
+                  isConfiguredFirstDevice &&
+                  isConfiguredSecondDevice &&
+                  (list[0].rxFrequency == list[1].txFrequency &&
+                      list[0].txFrequency == list[1].rxFrequency &&
+                      list[0].operatingMode == list[1].operatingMode &&
+                      list[0].callFormat == "International" &&
+                      list[1].callFormat == "International")
+              ? const TransmissionSuccessDialog(
+                  success: true,
+                )
+              : const TransmissionSuccessDialog(
+                  success: false,
+                ));
+    });*/
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final list = AppConstant.barretSetupList;
+   final list = AppConstant.barretSetupList;
     debugPrint(AppConstant.barretSetupList[0].toString());
     debugPrint(AppConstant.barretSetupList[1].toString());
-    print(list[0].rxFrequency);
-    print(list[1].rxFrequency);
-    print(list[0].txFrequency);
-    print(list[1].txFrequency);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Simulate"),
@@ -84,6 +109,39 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                                       content: Text(
                                           "Please Configure those device first")));
                             }
+                            if (startTransmit &&
+                                AppConstant.barretList.length > 1 &&
+                                isConfiguredFirstDevice &&
+                                isConfiguredSecondDevice &&
+                                !(list[0].rxFrequency == list[1].txFrequency &&
+                                    list[0].txFrequency ==
+                                        list[1].rxFrequency &&
+                                    list[0].operatingMode ==
+                                        list[1].operatingMode &&
+                                    list[0].callFormat == "International" &&
+                                    list[1].callFormat == "International")) {
+                              showModalBottomSheet(
+                                  context: context,
+                                  builder: (ctx) =>
+                                      const TransmissionSuccessDialog(
+                                          success: false));
+                            } else if (startTransmit &&
+                                AppConstant.barretList.length > 1 &&
+                                isConfiguredFirstDevice &&
+                                isConfiguredSecondDevice &&
+                                (list[0].rxFrequency == list[1].txFrequency &&
+                                    list[0].txFrequency ==
+                                        list[1].rxFrequency &&
+                                    list[0].operatingMode ==
+                                        list[1].operatingMode &&
+                                    list[0].callFormat == "International" &&
+                                    list[1].callFormat == "International")) {
+                              showModalBottomSheet(
+                                  context: context,
+                                  builder: (ctx) =>
+                                      const TransmissionSuccessDialog(
+                                          success: true));
+                            }
                           },
                           imageUrl: "images/email.png"),
                 ],
@@ -102,13 +160,14 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                                   AppConstant.barretList.length > 1 &&
                                   isConfiguredFirstDevice &&
                                   isConfiguredSecondDevice &&
-                              !(list[0].rxFrequency == list[1].txFrequency &&
-                                  list[0].txFrequency ==
-                                      list[1].rxFrequency &&
-                                  list[0].operatingMode ==
-                                      list[1].operatingMode &&
-                                  list[0].callFormat == "International" &&
-                                  list[1].callFormat == "International")
+                                  !(list[0].rxFrequency ==
+                                          list[1].txFrequency &&
+                                      list[0].txFrequency ==
+                                          list[1].rxFrequency &&
+                                      list[0].operatingMode ==
+                                          list[1].operatingMode &&
+                                      list[0].callFormat == "International" &&
+                                      list[1].callFormat == "International")
                               ? Colors.red
                               : Colors.blue,
                           key: Key(DateTime.now().toString()),
@@ -149,24 +208,28 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                           ? Border(
                               left: BorderSide(
                                   width: 2.0,
-                                  color: (list[0].rxFrequency == list[1].txFrequency &&
-                                      list[0].txFrequency ==
-                                          list[1].rxFrequency &&
-                                      list[0].operatingMode ==
-                                          list[1].operatingMode &&
-                                      list[0].callFormat == "International" &&
-                                      list[1].callFormat == "International")
+                                  color: (list[0].rxFrequency ==
+                                              list[1].txFrequency &&
+                                          list[0].txFrequency ==
+                                              list[1].rxFrequency &&
+                                          list[0].operatingMode ==
+                                              list[1].operatingMode &&
+                                          list[0].callFormat ==
+                                              "International" &&
+                                          list[1].callFormat == "International")
                                       ? Colors.lightBlue
                                       : Colors.red),
                               bottom: BorderSide(
                                   width: 2.0,
-                                  color: (list[0].rxFrequency == list[1].txFrequency &&
-                                      list[0].txFrequency ==
-                                          list[1].rxFrequency &&
-                                      list[0].operatingMode ==
-                                          list[1].operatingMode &&
-                                      list[0].callFormat == "International" &&
-                                      list[1].callFormat == "International")
+                                  color: (list[0].rxFrequency ==
+                                              list[1].txFrequency &&
+                                          list[0].txFrequency ==
+                                              list[1].rxFrequency &&
+                                          list[0].operatingMode ==
+                                              list[1].operatingMode &&
+                                          list[0].callFormat ==
+                                              "International" &&
+                                          list[1].callFormat == "International")
                                       ? Colors.lightBlue
                                       : Colors.red),
                             )
@@ -182,7 +245,8 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                                   AppConstant.barretList.length > 1 &&
                                   isConfiguredFirstDevice &&
                                   isConfiguredSecondDevice &&
-                                  !(list[0].rxFrequency == list[1].txFrequency &&
+                                  !(list[0].rxFrequency ==
+                                          list[1].txFrequency &&
                                       list[0].txFrequency ==
                                           list[1].rxFrequency &&
                                       list[0].operatingMode ==
@@ -229,3 +293,18 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
     );
   }
 }
+
+/*
+ startTransmit &&
+                              AppConstant.barretList.length > 1 &&
+                              isConfiguredFirstDevice &&
+                              isConfiguredSecondDevice && (list[0].rxFrequency ==
+                                              list[1].txFrequency &&
+                                          list[0].txFrequency ==
+                                              list[1].rxFrequency &&
+                                          list[0].operatingMode ==
+                                              list[1].operatingMode &&
+                                          list[0].callFormat ==
+                                              "International" &&
+                                          list[1].callFormat == "International")
+ */
