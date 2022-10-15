@@ -129,6 +129,9 @@ class XvSetupCubit extends Cubit<XvSetupState> {
         finalFrequency = 25 * result;
       }
     }
+    if (firstFreq == 30) {
+      finalFrequency = 0;
+    }
     freq = "$firstFreq.$finalFrequency";
     return freq;
   }

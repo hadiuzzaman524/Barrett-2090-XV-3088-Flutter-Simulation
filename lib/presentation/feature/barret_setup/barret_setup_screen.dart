@@ -70,805 +70,661 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
     final barretCubit = context.read<BarretSetupCubit>();
     return Scaffold(
         body: Container(
-      padding: const EdgeInsets.only(left: 12, right: 12, top: 30, bottom: 10),
-      decoration: BoxDecoration(
-          color: Colors.blueGrey,
-          border: Border.all(width: 3, color: Colors.white30)),
+      padding: const EdgeInsets.only(top: 30),
+      decoration: const BoxDecoration(
+        color: Colors.black54,
+      ),
       child: Column(
         children: [
-          Container(
-            height: 200,
-            padding: const EdgeInsets.all(12),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: const Color(0xffDCDCDE),
-              border: Border.all(color: Colors.white30, width: 2),
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(16), topRight: Radius.circular(16)),
-            ),
-            child: pressProgramButton == 1
-                ? GetRxFrequency(
-                    pressProgramButton: pressProgramButton,
-                  )
-                : (pressProgramButton == 2)
-                    ? GetTxFrequency(
+          Card(
+            elevation: 7,
+            child: Container(
+              color: Colors.blueGrey,
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+              child: Container(
+                height: 220,
+                padding: const EdgeInsets.all(12),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: const Color(0xffDCDCDE),
+                  border: Border.all(color: Colors.white30, width: 2),
+                  borderRadius: const BorderRadius.all(Radius.circular(16)),
+                ),
+                child: pressProgramButton == 1
+                    ? GetRxFrequency(
                         pressProgramButton: pressProgramButton,
                       )
-                    : (pressProgramButton == 3)
-                        ? ChannelName(
+                    : (pressProgramButton == 2)
+                        ? GetTxFrequency(
                             pressProgramButton: pressProgramButton,
                           )
-                        : (pressProgramButton == 4)
-                            ? BarretOperatingMode(
-                                pressProgramButton: pressProgramButton)
-                            : (pressProgramButton == 5)
-                                ? PowerSetting(
+                        : (pressProgramButton == 3)
+                            ? ChannelName(
+                                pressProgramButton: pressProgramButton,
+                              )
+                            : (pressProgramButton == 4)
+                                ? BarretOperatingMode(
                                     pressProgramButton: pressProgramButton)
-                                : (pressProgramButton == 6)
-                                    ? SellCallFormat(
-                                        pressProgramButton: pressProgramButton,
-                                      )
-                                    : (pressProgramButton == 7)
-                                        ? SuccessProgram(
-                                            back: () {
-                                              setState(() {
-                                                pressProgramButton += 1;
-                                              });
-                                            },
+                                : (pressProgramButton == 5)
+                                    ? PowerSetting(
+                                        pressProgramButton: pressProgramButton)
+                                    : (pressProgramButton == 6)
+                                        ? SellCallFormat(
+                                            pressProgramButton:
+                                                pressProgramButton,
                                           )
-                                        : showFirstMenu
-                                            ? const MenuOption()
-                                            : showIdentification
-                                                ? Identification(
-                                                    identificationIndex:
-                                                        identificationIndex,
-                                                  )
-                                                : showSecondMenu
-                                                    ? const SecondMenuOption()
-                                                    : showGeneralOption
-                                                        ? const GeneralOption()
-                                                        : showIoSetting
-                                                            ? const IoSetting()
-                                                            : showAntennaType
-                                                                ? AntennaType(
-                                                                    success:
-                                                                        selectAntenna)
-                                                                : showCall
-                                                                    ? const CallOption()
-                                                                    : showCallingNumberTaker
-                                                                        ? const CallingNumberTaker()
-                                                                        : BlocBuilder<
-                                                                            BarretSetupCubit,
-                                                                            BarretSetupState>(
-                                                                            builder:
-                                                                                (context, state) {
-                                                                              return Column(
-                                                                                crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                children: [
-                                                                                  Row(
+                                        : (pressProgramButton == 7)
+                                            ? SuccessProgram(
+                                                back: () {
+                                                  setState(() {
+                                                    pressProgramButton += 1;
+                                                  });
+                                                },
+                                              )
+                                            : showFirstMenu
+                                                ? const MenuOption()
+                                                : showIdentification
+                                                    ? Identification(
+                                                        identificationIndex:
+                                                            identificationIndex,
+                                                      )
+                                                    : showSecondMenu
+                                                        ? const SecondMenuOption()
+                                                        : showGeneralOption
+                                                            ? const GeneralOption()
+                                                            : showIoSetting
+                                                                ? const IoSetting()
+                                                                : showAntennaType
+                                                                    ? AntennaType(
+                                                                        success:
+                                                                            selectAntenna)
+                                                                    : showCall
+                                                                        ? const CallOption()
+                                                                        : showCallingNumberTaker
+                                                                            ? const CallingNumberTaker()
+                                                                            : BlocBuilder<BarretSetupCubit,
+                                                                                BarretSetupState>(
+                                                                                builder: (context, state) {
+                                                                                  return Column(
+                                                                                    crossAxisAlignment: CrossAxisAlignment.start,
                                                                                     children: [
-                                                                                      const Text(
-                                                                                        "Channel:",
-                                                                                        style: TextStyle(
-                                                                                          fontWeight: FontWeight.bold,
-                                                                                          fontSize: 25,
-                                                                                        ),
-                                                                                      ),
-                                                                                      const SizedBox(
-                                                                                        width: 8,
-                                                                                      ),
-                                                                                      Text(
-                                                                                        state.channelNumber,
-                                                                                        style: const TextStyle(
-                                                                                          fontSize: 24,
-                                                                                          fontWeight: FontWeight.bold,
-                                                                                        ),
-                                                                                      ),
-                                                                                      setChannel
-                                                                                          ? const BlinkText(
-                                                                                              "_",
-                                                                                              style: TextStyle(
-                                                                                                fontSize: 24,
-                                                                                                fontWeight: FontWeight.bold,
-                                                                                              ),
-                                                                                            )
-                                                                                          : const Text(""),
-                                                                                    ],
-                                                                                  ),
-                                                                                  Expanded(
-                                                                                    child: Row(
-                                                                                      children: [
-                                                                                        Image.asset(
-                                                                                          "images/rx.gif",
-                                                                                          height: 100,
-                                                                                          width: 100,
-                                                                                        ),
-                                                                                        const SizedBox(width: 8),
-                                                                                        Expanded(
-                                                                                          child: Column(
-                                                                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                                                                            children: [
-                                                                                              const SizedBox(height: 12),
-                                                                                              Text(
-                                                                                                state.rxFrequency.isEmpty ? "00000.000 KHz" : "${state.rxFrequency} KHz",
-                                                                                                style: const TextStyle(
-                                                                                                  fontSize: 24,
-                                                                                                  fontWeight: FontWeight.bold,
-                                                                                                ),
-                                                                                              ),
-                                                                                              const SizedBox(
-                                                                                                height: 12,
-                                                                                              ),
-                                                                                              Text(
-                                                                                                state.channelName,
-                                                                                                style: const TextStyle(
-                                                                                                  fontSize: 26,
-                                                                                                  fontWeight: FontWeight.bold,
-                                                                                                ),
-                                                                                              ),
-                                                                                              const SizedBox(
-                                                                                                height: 8,
-                                                                                              ),
-                                                                                              Row(
-                                                                                                children: [
-                                                                                                  TextContainer(
-                                                                                                    title: state.operatingMode,
-                                                                                                  ),
-                                                                                                  const SizedBox(
-                                                                                                    width: 8,
-                                                                                                  ),
-                                                                                                  TextContainer(
-                                                                                                    title: state.powerSetting,
-                                                                                                  ),
-                                                                                                  const SizedBox(
-                                                                                                    width: 8,
-                                                                                                  ),
-                                                                                                  TextContainer(
-                                                                                                    title: state.cellCallFormat,
-                                                                                                  ),
-                                                                                                ],
-                                                                                              )
-                                                                                            ],
+                                                                                      Row(
+                                                                                        children: [
+                                                                                          const Text(
+                                                                                            "Channel:",
+                                                                                            style: TextStyle(
+                                                                                              fontWeight: FontWeight.bold,
+                                                                                              fontSize: 25,
+                                                                                            ),
                                                                                           ),
+                                                                                          const SizedBox(
+                                                                                            width: 8,
+                                                                                          ),
+                                                                                          Text(
+                                                                                            state.channelNumber,
+                                                                                            style: const TextStyle(
+                                                                                              fontSize: 24,
+                                                                                              fontWeight: FontWeight.bold,
+                                                                                            ),
+                                                                                          ),
+                                                                                          setChannel
+                                                                                              ? const BlinkText(
+                                                                                                  "_",
+                                                                                                  style: TextStyle(
+                                                                                                    fontSize: 24,
+                                                                                                    fontWeight: FontWeight.bold,
+                                                                                                  ),
+                                                                                                )
+                                                                                              : const Text(""),
+                                                                                        ],
+                                                                                      ),
+                                                                                      Expanded(
+                                                                                        child: Row(
+                                                                                          children: [
+                                                                                            Image.asset(
+                                                                                              "images/rx.gif",
+                                                                                              height: 100,
+                                                                                              width: 100,
+                                                                                            ),
+                                                                                            const SizedBox(width: 8),
+                                                                                            Expanded(
+                                                                                              child: Column(
+                                                                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                                                                children: [
+                                                                                                  const SizedBox(height: 12),
+                                                                                                  Text(
+                                                                                                    state.rxFrequency.isEmpty ? "00000.000 KHz" : "${state.rxFrequency} KHz",
+                                                                                                    style: const TextStyle(
+                                                                                                      fontSize: 24,
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  const SizedBox(
+                                                                                                    height: 12,
+                                                                                                  ),
+                                                                                                  Text(
+                                                                                                    state.channelName,
+                                                                                                    style: const TextStyle(
+                                                                                                      fontSize: 26,
+                                                                                                      fontWeight: FontWeight.bold,
+                                                                                                    ),
+                                                                                                  ),
+                                                                                                  const SizedBox(
+                                                                                                    height: 8,
+                                                                                                  ),
+                                                                                                  Row(
+                                                                                                    children: [
+                                                                                                      TextContainer(
+                                                                                                        title: state.operatingMode,
+                                                                                                      ),
+                                                                                                      const SizedBox(
+                                                                                                        width: 8,
+                                                                                                      ),
+                                                                                                      TextContainer(
+                                                                                                        title: state.powerSetting,
+                                                                                                      ),
+                                                                                                      const SizedBox(
+                                                                                                        width: 8,
+                                                                                                      ),
+                                                                                                      TextContainer(
+                                                                                                        title: state.cellCallFormat,
+                                                                                                      ),
+                                                                                                    ],
+                                                                                                  )
+                                                                                                ],
+                                                                                              ),
+                                                                                            ),
+                                                                                          ],
                                                                                         ),
-                                                                                      ],
-                                                                                    ),
-                                                                                  ),
-                                                                                ],
-                                                                              );
-                                                                            },
-                                                                          ),
+                                                                                      ),
+                                                                                    ],
+                                                                                  );
+                                                                                },
+                                                                              ),
+              ),
+            ),
+          ),
+          Container(
+            color: const Color(0xffededed),
+            height: 20,
           ),
           Expanded(
             child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white30,
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(16),
-                    bottomRight: Radius.circular(16)),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  const SizedBox(height: 8),
-                  BarretButtonRow(
-                    firstButtonImageUrl: "images/menu.PNG",
-                    secondButtonImageUrl: 'images/clear.PNG',
-                    thirdButtonImageUrl: 'images/prog.PNG',
+              color: Colors.black54,
+              padding: const EdgeInsets.all(12),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white30,
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(16),
+                      bottomRight: Radius.circular(16)),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const SizedBox(height: 8),
+                    BarretButtonRow(
+                      firstButtonImageUrl: "images/menu.PNG",
+                      secondButtonImageUrl: 'images/clear.PNG',
+                      thirdButtonImageUrl: 'images/prog.PNG',
 
-                    /// menu long press
-                    onLongTapFirstButton: () {
-                      barretCubit.clearMenu();
-                      setState(() {
-                        showSecondMenu = true;
-                        showFirstMenu = false;
-                      });
-                    },
-
-                    ///menu
-                    onTapFirstButton: () {
-                      barretCubit.clearMenu();
-                      setState(() {
-                        showFirstMenu = true;
-                        showSecondMenu = false;
-                      });
-                    },
-
-                    ///clear
-                    onTapSecondButton: () {
-                      if (selectAntenna) {
-                        setState(() {
-                          selectAntenna = false;
-                        });
-                      }
-                      if (showAntennaType) {
-                        setState(() {
-                          showAntennaType = false;
-                          showIoSetting = true;
-                        });
-                      }
-                      if (showGeneralOption) {
-                        setState(() {
-                          showGeneralOption = false;
-                          showSecondMenu = true;
-                        });
-                      }
-                      if (showIoSetting) {
+                      /// menu long press
+                      onLongTapFirstButton: () {
+                        barretCubit.clearMenu();
                         setState(() {
                           showSecondMenu = true;
-                        });
-                      }
-                      if (showCall) {
-                        setState(() {
-                          showCall = false;
-                        });
-                      }
-                      if (showCallingNumberTaker) {
-                        setState(() {
-                          showCallingNumberTaker = false;
-                          showCall = true;
-                        });
-                      }
-                      if (showIdentification) {
-                        setState(() {
-                          showIdentification = false;
-                          showFirstMenu = true;
-                        });
-                      }
-
-                      /// end of the button condition
-                      if (showSecondMenu || showFirstMenu) {
-                        setState(() {
                           showFirstMenu = false;
+                        });
+                      },
+
+                      ///menu
+                      onTapFirstButton: () {
+                        barretCubit.clearMenu();
+                        setState(() {
+                          showFirstMenu = true;
                           showSecondMenu = false;
-                          showIoSetting = false;
-                          isSettingIo = false;
-                          isGeneralOption = false;
-                          showGeneralOption = false;
-                          showAntennaType = false;
-                          isAntennaType = false;
-                          selectAntenna = false;
-                          showCallingNumberTaker = false;
-                          showCall = false;
-                          showIdentification = false;
-                          isIdentification = false;
                         });
-                      }
-                    },
+                      },
 
-                    ///prog
-                    onTapThirdButton: () {
-                      final state = context.read<BarretSetupCubit>().state;
-                      setState(() {
-                        pressProgramButton += 1;
-                      });
-                      if (pressProgramButton == 2) {
-                        final String r =
-                            barretCubit.frequencyConversion(state.rxFrequency);
-                        //converted freq
-                        barretCubit.setRxConvertedFrequency(freq: r);
-                        barretCubit.setTxFrequency(tx: r);
-                      }
-                      print("Rx: ${state.rxFrequency}");
-                      print("Tx: ${state.txFrequency}");
-                    },
-                  ),
-                  BarretButtonRow(
-                    firstButtonImageUrl: "images/one.PNG",
-                    secondButtonImageUrl: 'images/two.PNG',
-                    thirdButtonImageUrl: 'images/three.PNG',
-
-                    ///one
-                    onTapFirstButton: () {
-                      if (setChannel) {
-                        barretCubit.setChannelNumber(channelNumber: "1");
-                      }
-                      //rx
-                      if (pressProgramButton == 1) {
-                        barretCubit.setRxFrequency(rx: "1");
-                      }
-                      if (pressProgramButton == 1 && clearRxFrequency) {
-                        barretCubit.clearRxFrequency();
-                        barretCubit.setRxFrequency(rx: "1");
-                        setState(() {
-                          clearRxFrequency = false;
-                        });
-                      }
-
-                      // Tx frequency
-                      if (pressProgramButton == 2) {
-                        barretCubit.setTxFrequency(tx: "1");
-                      }
-                      if (pressProgramButton == 2 && clearTxFrequency) {
-                        barretCubit.clearTxFrequency();
-                        barretCubit.setTxFrequency(tx: "1");
-                        setState(() {
-                          clearTxFrequency = false;
-                        });
-                      }
-                      if (showIdentification) {
-                        if (identificationIndex > 0) {
+                      ///clear
+                      onTapSecondButton: () {
+                        if (selectAntenna) {
                           setState(() {
-                            identificationIndex -= 1;
+                            selectAntenna = false;
                           });
                         }
-                      }
-                    },
-
-                    ///two
-                    onTapSecondButton: () {
-                      if (setChannel) {
-                        barretCubit.setChannelNumber(channelNumber: "2");
-                      }
-                      if (pressProgramButton == 1 || pressProgramButton == 2) {
-                        barretCubit.setRxFrequency(rx: "2");
-                      }
-                      if (pressProgramButton == 2 && clearRxFrequency) {
-                        barretCubit.clearRxFrequency();
-                        barretCubit.setRxFrequency(rx: "2");
-                        setState(() {
-                          clearRxFrequency = false;
-                        });
-                      }
-                      // Tx frequency
-                      if (pressProgramButton == 2) {
-                        barretCubit.setTxFrequency(tx: "2");
-                      }
-                      if (pressProgramButton == 2 && clearTxFrequency) {
-                        barretCubit.clearTxFrequency();
-                        barretCubit.setTxFrequency(tx: "2");
-                        setState(() {
-                          clearTxFrequency = false;
-                        });
-                      }
-                    },
-
-                    ///three
-                    onTapThirdButton: () {
-                      if (setChannel) {
-                        barretCubit.setChannelNumber(channelNumber: "3");
-                      }
-                      if (pressProgramButton == 1 || pressProgramButton == 2) {
-                        barretCubit.setRxFrequency(rx: "3");
-                      }
-                      if (pressProgramButton == 2 && clearRxFrequency) {
-                        barretCubit.clearRxFrequency();
-                        barretCubit.setRxFrequency(rx: "3");
-                        setState(() {
-                          clearRxFrequency = false;
-                        });
-                      }
-                      // Tx frequency
-                      if (pressProgramButton == 2) {
-                        barretCubit.setTxFrequency(tx: "3");
-                      }
-                      if (pressProgramButton == 2 && clearTxFrequency) {
-                        barretCubit.clearTxFrequency();
-                        barretCubit.setTxFrequency(tx: "3");
-                        setState(() {
-                          clearTxFrequency = false;
-                        });
-                      }
-                      if (showIdentification) {
-                        if (identificationIndex < 6) {
+                        if (showAntennaType) {
                           setState(() {
-                            identificationIndex += 1;
+                            showAntennaType = false;
+                            showIoSetting = true;
                           });
                         }
-                      }
-                    },
-                  ),
-                  BarretButtonRow(
-                    firstButtonImageUrl: "images/four.png",
-                    secondButtonImageUrl: 'images/five.png',
-                    thirdButtonImageUrl: 'images/six.png',
-
-                    ///four
-                    onTapFirstButton: () {
-                      if (setChannel) {
-                        barretCubit.setChannelNumber(channelNumber: "4");
-                      }
-                      if (pressProgramButton == 1 || pressProgramButton == 2) {
-                        barretCubit.setRxFrequency(rx: "4");
-                      }
-                      if (pressProgramButton == 2 && clearRxFrequency) {
-                        barretCubit.clearRxFrequency();
-                        barretCubit.setRxFrequency(rx: "4");
-                        setState(() {
-                          clearRxFrequency = false;
-                        });
-                      }
-                      // Tx frequency
-                      if (pressProgramButton == 2) {
-                        barretCubit.setTxFrequency(tx: "4");
-                      }
-                      if (pressProgramButton == 2 && clearTxFrequency) {
-                        barretCubit.clearTxFrequency();
-                        barretCubit.setTxFrequency(tx: "4");
-                        setState(() {
-                          clearTxFrequency = false;
-                        });
-                      }
-                    },
-
-                    ///five
-                    onTapSecondButton: () {
-                      if (setChannel) {
-                        barretCubit.setChannelNumber(channelNumber: "5");
-                      }
-                      if (pressProgramButton == 1 || pressProgramButton == 2) {
-                        barretCubit.setRxFrequency(rx: "5");
-                      }
-                      if (pressProgramButton == 2 && clearRxFrequency) {
-                        barretCubit.clearRxFrequency();
-                        barretCubit.setRxFrequency(rx: "5");
-                        setState(() {
-                          clearRxFrequency = false;
-                        });
-                      }
-                      // Tx frequency
-                      if (pressProgramButton == 2) {
-                        barretCubit.setTxFrequency(tx: "5");
-                      }
-                      if (pressProgramButton == 2 && clearTxFrequency) {
-                        barretCubit.clearTxFrequency();
-                        barretCubit.setTxFrequency(tx: "5");
-                        setState(() {
-                          clearTxFrequency = false;
-                        });
-                      }
-                    },
-
-                    ///six
-                    onTapThirdButton: () {
-                      if (setChannel) {
-                        barretCubit.setChannelNumber(channelNumber: "6");
-                      }
-                      if (pressProgramButton == 1 || pressProgramButton == 2) {
-                        barretCubit.setRxFrequency(rx: "6");
-                      }
-                      if (pressProgramButton == 2 && clearRxFrequency) {
-                        barretCubit.clearRxFrequency();
-                        barretCubit.setRxFrequency(rx: "6");
-                        setState(() {
-                          clearRxFrequency = false;
-                        });
-                      }
-
-                      // Tx frequency
-                      if (pressProgramButton == 2) {
-                        barretCubit.setTxFrequency(tx: "6");
-                      }
-                      if (pressProgramButton == 2 && clearTxFrequency) {
-                        barretCubit.clearTxFrequency();
-                        barretCubit.setTxFrequency(tx: "6");
-                        setState(() {
-                          clearTxFrequency = false;
-                        });
-                      }
-                    },
-                  ),
-                  BarretButtonRow(
-                    firstButtonImageUrl: "images/seven.png",
-                    secondButtonImageUrl: 'images/eight.png',
-                    thirdButtonImageUrl: 'images/nine.png',
-
-                    ///seven
-                    onTapFirstButton: () {
-                      if (setChannel) {
-                        barretCubit.setChannelNumber(channelNumber: "7");
-                      }
-                      if (pressProgramButton == 1 || pressProgramButton == 2) {
-                        barretCubit.setRxFrequency(rx: "7");
-                      }
-                      if (pressProgramButton == 2 && clearRxFrequency) {
-                        barretCubit.clearRxFrequency();
-                        barretCubit.setRxFrequency(rx: "7");
-                        setState(() {
-                          clearRxFrequency = false;
-                        });
-                      }
-                      // Tx frequency
-                      // Tx frequency
-                      if (pressProgramButton == 2) {
-                        barretCubit.setTxFrequency(tx: "7");
-                      }
-                      if (pressProgramButton == 2 && clearTxFrequency) {
-                        barretCubit.clearTxFrequency();
-                        barretCubit.setTxFrequency(tx: "7");
-                        setState(() {
-                          clearTxFrequency = false;
-                        });
-                      }
-                    },
-
-                    ///eight
-                    onTapSecondButton: () {
-                      if (setChannel) {
-                        barretCubit.setChannelNumber(channelNumber: "8");
-                      }
-                      if (pressProgramButton == 1 || pressProgramButton == 2) {
-                        barretCubit.setRxFrequency(rx: "8");
-                      }
-                      if (pressProgramButton == 2 && clearRxFrequency) {
-                        barretCubit.clearRxFrequency();
-                        barretCubit.setRxFrequency(rx: "8");
-                        setState(() {
-                          clearRxFrequency = false;
-                        });
-                      }
-                      // Tx frequency
-                      if (pressProgramButton == 2) {
-                        barretCubit.setTxFrequency(tx: "8");
-                      }
-                      if (pressProgramButton == 2 && clearTxFrequency) {
-                        barretCubit.clearTxFrequency();
-                        barretCubit.setTxFrequency(tx: "8");
-                        setState(() {
-                          clearTxFrequency = false;
-                        });
-                      }
-                    },
-
-                    ///nine
-                    onTapThirdButton: () {
-                      if (setChannel) {
-                        barretCubit.setChannelNumber(channelNumber: "9");
-                      }
-                      if (pressProgramButton == 1 || pressProgramButton == 2) {
-                        barretCubit.setRxFrequency(rx: "9");
-                      }
-                      if (pressProgramButton == 2 && clearRxFrequency) {
-                        barretCubit.clearRxFrequency();
-                        barretCubit.setRxFrequency(rx: "9");
-                        setState(() {
-                          clearRxFrequency = false;
-                        });
-                      }
-                      // Tx frequency
-                      if (pressProgramButton == 2) {
-                        barretCubit.setTxFrequency(tx: "9");
-                      }
-                      if (pressProgramButton == 2 && clearTxFrequency) {
-                        barretCubit.clearTxFrequency();
-                        barretCubit.setTxFrequency(tx: "9");
-                        setState(() {
-                          clearTxFrequency = false;
-                        });
-                      }
-                    },
-                  ),
-                  BarretButtonRow(
-                    firstButtonImageUrl: "images/tune.png",
-                    secondButtonImageUrl: 'images/zero.png',
-                    thirdButtonImageUrl: 'images/chan.png',
-
-                    ///tune
-                    onTapFirstButton: () {},
-
-                    ///zero
-                    onTapSecondButton: () {
-                      if (setChannel) {
-                        barretCubit.setChannelNumber(channelNumber: "0");
-                      }
-                      if (pressProgramButton == 1 || pressProgramButton == 2) {
-                        barretCubit.setRxFrequency(rx: "0");
-                      }
-                      if (pressProgramButton == 2 && clearRxFrequency) {
-                        barretCubit.clearRxFrequency();
-                        barretCubit.setRxFrequency(rx: "0");
-                        setState(() {
-                          clearRxFrequency = false;
-                        });
-                      }
-                      // Tx frequency
-                      if (pressProgramButton == 2) {
-                        barretCubit.setTxFrequency(tx: "0");
-                      }
-                      if (pressProgramButton == 2 && clearTxFrequency) {
-                        barretCubit.clearTxFrequency();
-                        barretCubit.setTxFrequency(tx: "0");
-                        setState(() {
-                          clearTxFrequency = false;
-                        });
-                      }
-                    },
-
-                    ///channnel
-                    onTapThirdButton: () {
-                      setState(() {
-                        setChannel = !setChannel;
-                      });
-                      if (setChannel) {
-                        barretCubit.clearChannelNumber();
-                      }
-                    },
-                  ),
-                  BarretButtonRow(
-                    firstButtonImageUrl: "images/lside.png",
-                    secondButtonImageUrl: 'images/danger.png',
-                    thirdButtonImageUrl: 'images/rside.png',
-                    onTapFirstButton: () {},
-                    onTapSecondButton: () {},
-                    onTapThirdButton: () {},
-                  ),
-                  BarretButtonRow(
-                    firstButtonImageUrl: "images/upper.png",
-                    secondButtonImageUrl: 'images/call.png',
-                    thirdButtonImageUrl: 'images/volplus.png',
-
-                    // up
-                    onTapFirstButton: () {
-                      if (pressProgramButton == 3) {
-                        channelIndex += 1;
-                        if (channelIndex >=
-                            AppConstant.barretChannelNameList.length) {
+                        if (showGeneralOption) {
                           setState(() {
-                            channelIndex = 0;
+                            showGeneralOption = false;
+                            showSecondMenu = true;
                           });
                         }
-                        barretCubit.setChannelName(
-                            channelName: AppConstant
-                                .barretChannelNameList[channelIndex]);
-                      }
-                      // operating mode
-                      if (pressProgramButton == 4) {
-                        operatingModeIndex += 1;
-                        if (operatingModeIndex >=
-                            AppConstant.operatingMode.length) {
+                        if (showIoSetting) {
                           setState(() {
-                            operatingModeIndex = 0;
+                            showSecondMenu = true;
                           });
                         }
-                        barretCubit.setOperatingMode(
-                            operatingMode:
-                                AppConstant.operatingMode[operatingModeIndex]);
-                      }
-                      if (pressProgramButton == 5) {
-                        powerSettingIndex += 1;
-                        if (powerSettingIndex >=
-                            AppConstant.powerSetting.length) {
+                        if (showCall) {
                           setState(() {
-                            powerSettingIndex = 0;
+                            showCall = false;
                           });
                         }
-                        barretCubit.setPowerSettingMode(
-                            pwr: AppConstant.powerSetting[powerSettingIndex]);
-                      }
+                        if (showCallingNumberTaker) {
+                          setState(() {
+                            showCallingNumberTaker = false;
+                            showCall = true;
+                          });
+                        }
+                        if (showIdentification) {
+                          setState(() {
+                            showIdentification = false;
+                            showFirstMenu = true;
+                          });
+                        }
 
-                      if (pressProgramButton == 6) {
-                        sellCallFormatIndex += 1;
-                        if (sellCallFormatIndex >=
-                            AppConstant.cellCallFormat.length) {
+                        /// end of the button condition
+                        if (showSecondMenu || showFirstMenu) {
                           setState(() {
-                            sellCallFormatIndex = 0;
+                            showFirstMenu = false;
+                            showSecondMenu = false;
+                            showIoSetting = false;
+                            isSettingIo = false;
+                            isGeneralOption = false;
+                            showGeneralOption = false;
+                            showAntennaType = false;
+                            isAntennaType = false;
+                            selectAntenna = false;
+                            showCallingNumberTaker = false;
+                            showCall = false;
+                            showIdentification = false;
+                            isIdentification = false;
                           });
                         }
-                        barretCubit.setSellCallFormat(
-                            fmt: AppConstant
-                                .cellCallFormat[sellCallFormatIndex]);
-                      }
-                      if (showFirstMenu) {
-                        firstMenuIndex += 1;
-                        if (firstMenuIndex >= AppConstant.standardMenu.length) {
-                          setState(() {
-                            firstMenuIndex = 0;
-                          });
-                        }
-                        barretCubit.setStandardMenu(
-                            menu: AppConstant.standardMenu[firstMenuIndex]);
-                      }
-                      if (showSecondMenu) {
-                        secondMenuIndex += 1;
-                        if (secondMenuIndex >= AppConstant.secondMenu.length) {
-                          setState(() {
-                            secondMenuIndex = 0;
-                          });
-                        }
-                        barretCubit.setSecondMenu(
-                            menu: AppConstant.secondMenu[secondMenuIndex]);
-                      }
+                      },
 
-                      if (showIoSetting) {
-                        ioSettingIndex += 1;
-                        if (ioSettingIndex >=
-                            AppConstant.ioSettingOptions.length) {
-                          setState(() {
-                            ioSettingIndex = 0;
-                          });
+                      ///prog
+                      onTapThirdButton: () {
+                        final state = context.read<BarretSetupCubit>().state;
+                        setState(() {
+                          pressProgramButton += 1;
+                        });
+                        if (pressProgramButton == 2) {
+                          final String r = barretCubit
+                              .frequencyConversion(state.rxFrequency);
+                          //converted freq
+                          barretCubit.setRxConvertedFrequency(freq: r);
+                          print("Rx: ${state.rxFrequency}");
+                          barretCubit.setTxFrequency(tx: r);
                         }
-                        barretCubit.setIoSetting(
-                            io: AppConstant.ioSettingOptions[ioSettingIndex]);
-                      }
-                      if (showAntennaType) {
-                        antennaTypeIndex += 1;
-                        if (antennaTypeIndex >=
-                            AppConstant.antennaType.length) {
-                          setState(() {
-                            antennaTypeIndex = 0;
-                          });
-                        }
-                        barretCubit.setAntennaType(
-                            antenna: AppConstant.antennaType[antennaTypeIndex]);
-                      }
+                        print("Rx: ${state.rxFrequency}");
+                        print("Tx: ${state.txFrequency}");
+                      },
+                    ),
+                    BarretButtonRow(
+                      firstButtonImageUrl: "images/one.PNG",
+                      secondButtonImageUrl: 'images/two.PNG',
+                      thirdButtonImageUrl: 'images/three.PNG',
 
-                      if (showGeneralOption) {
-                        generalOptionIndex += 1;
-                        if (generalOptionIndex >=
-                            AppConstant.generalOption.length) {
-                          setState(() {
-                            generalOptionIndex = 0;
-                          });
-                        }
-                        barretCubit.setGeneralOption(
-                            general:
-                                AppConstant.generalOption[generalOptionIndex]);
-                      }
-                      if (showCall) {
-                        callOptionIndex += 1;
-                        if (callOptionIndex >= AppConstant.callOptions.length) {
-                          setState(() {
-                            callOptionIndex = 0;
-                          });
-                        }
-                        barretCubit.setCallOption(
-                            call: AppConstant.callOptions[callOptionIndex]);
-                      }
-                    },
+                      ///one
+                      onTapFirstButton: () {
+                        final state = context.read<BarretSetupCubit>().state;
 
-                    /// call button
-                    onTapSecondButton: () {
-                      if (!showCall) {
+                        if (setChannel) {
+                          barretCubit.setChannelNumber(channelNumber: "1");
+                        }
+                        //rx
+                        if (pressProgramButton == 1) {
+                          barretCubit.setRxFrequency(rx: "1");
+                        }
+                        if (pressProgramButton == 1 && clearRxFrequency) {
+                          barretCubit.clearRxFrequency();
+                          barretCubit.setRxFrequency(rx: "1");
+                          setState(() {
+                            clearRxFrequency = false;
+                          });
+                        }
+
+                        // Tx frequency
+                        if (pressProgramButton == 2) {
+                          barretCubit.setTxFrequency(tx: "1");
+                        }
+                        if (pressProgramButton == 2 && clearTxFrequency) {
+                          barretCubit.clearTxFrequency();
+                          barretCubit.setTxFrequency(tx: "1");
+                          setState(() {
+                            clearTxFrequency = false;
+                          });
+                        }
+                        print(state.rxFrequency);
+                        print(state.txFrequency);
+                        if (showIdentification) {
+                          if (identificationIndex > 0) {
+                            setState(() {
+                              identificationIndex -= 1;
+                            });
+                          }
+                        }
+                      },
+
+                      ///two
+                      onTapSecondButton: () {
+                        if (setChannel) {
+                          barretCubit.setChannelNumber(channelNumber: "2");
+                        }
+                        if (pressProgramButton == 1 ||
+                            pressProgramButton == 2) {
+                          barretCubit.setRxFrequency(rx: "2");
+                        }
+                        if (pressProgramButton == 2 && clearRxFrequency) {
+                          barretCubit.clearRxFrequency();
+                          barretCubit.setRxFrequency(rx: "2");
+                          setState(() {
+                            clearRxFrequency = false;
+                          });
+                        }
+                        // Tx frequency
+                        if (pressProgramButton == 2) {
+                          barretCubit.setTxFrequency(tx: "2");
+                        }
+                        if (pressProgramButton == 2 && clearTxFrequency) {
+                          barretCubit.clearTxFrequency();
+                          barretCubit.setTxFrequency(tx: "2");
+                          setState(() {
+                            clearTxFrequency = false;
+                          });
+                        }
+                      },
+
+                      ///three
+                      onTapThirdButton: () {
+                        if (setChannel) {
+                          barretCubit.setChannelNumber(channelNumber: "3");
+                        }
+                        if (pressProgramButton == 1 ||
+                            pressProgramButton == 2) {
+                          barretCubit.setRxFrequency(rx: "3");
+                        }
+                        if (pressProgramButton == 2 && clearRxFrequency) {
+                          barretCubit.clearRxFrequency();
+                          barretCubit.setRxFrequency(rx: "3");
+                          setState(() {
+                            clearRxFrequency = false;
+                          });
+                        }
+                        // Tx frequency
+                        if (pressProgramButton == 2) {
+                          barretCubit.setTxFrequency(tx: "3");
+                        }
+                        if (pressProgramButton == 2 && clearTxFrequency) {
+                          barretCubit.clearTxFrequency();
+                          barretCubit.setTxFrequency(tx: "3");
+                          setState(() {
+                            clearTxFrequency = false;
+                          });
+                        }
+                        if (showIdentification) {
+                          if (identificationIndex < 6) {
+                            setState(() {
+                              identificationIndex += 1;
+                            });
+                          }
+                        }
+                      },
+                    ),
+                    BarretButtonRow(
+                      firstButtonImageUrl: "images/four.png",
+                      secondButtonImageUrl: 'images/five.png',
+                      thirdButtonImageUrl: 'images/six.png',
+
+                      ///four
+                      onTapFirstButton: () {
+                        if (setChannel) {
+                          barretCubit.setChannelNumber(channelNumber: "4");
+                        }
+                        if (pressProgramButton == 1 ||
+                            pressProgramButton == 2) {
+                          barretCubit.setRxFrequency(rx: "4");
+                        }
+                        if (pressProgramButton == 2 && clearRxFrequency) {
+                          barretCubit.clearRxFrequency();
+                          barretCubit.setRxFrequency(rx: "4");
+                          setState(() {
+                            clearRxFrequency = false;
+                          });
+                        }
+                        // Tx frequency
+                        if (pressProgramButton == 2) {
+                          barretCubit.setTxFrequency(tx: "4");
+                        }
+                        if (pressProgramButton == 2 && clearTxFrequency) {
+                          barretCubit.clearTxFrequency();
+                          barretCubit.setTxFrequency(tx: "4");
+                          setState(() {
+                            clearTxFrequency = false;
+                          });
+                        }
+                      },
+
+                      ///five
+                      onTapSecondButton: () {
+                        if (setChannel) {
+                          barretCubit.setChannelNumber(channelNumber: "5");
+                        }
+                        if (pressProgramButton == 1 ||
+                            pressProgramButton == 2) {
+                          barretCubit.setRxFrequency(rx: "5");
+                        }
+                        if (pressProgramButton == 2 && clearRxFrequency) {
+                          barretCubit.clearRxFrequency();
+                          barretCubit.setRxFrequency(rx: "5");
+                          setState(() {
+                            clearRxFrequency = false;
+                          });
+                        }
+                        // Tx frequency
+                        if (pressProgramButton == 2) {
+                          barretCubit.setTxFrequency(tx: "5");
+                        }
+                        if (pressProgramButton == 2 && clearTxFrequency) {
+                          barretCubit.clearTxFrequency();
+                          barretCubit.setTxFrequency(tx: "5");
+                          setState(() {
+                            clearTxFrequency = false;
+                          });
+                        }
+                      },
+
+                      ///six
+                      onTapThirdButton: () {
+                        if (setChannel) {
+                          barretCubit.setChannelNumber(channelNumber: "6");
+                        }
+                        if (pressProgramButton == 1 ||
+                            pressProgramButton == 2) {
+                          barretCubit.setRxFrequency(rx: "6");
+                        }
+                        if (pressProgramButton == 2 && clearRxFrequency) {
+                          barretCubit.clearRxFrequency();
+                          barretCubit.setRxFrequency(rx: "6");
+                          setState(() {
+                            clearRxFrequency = false;
+                          });
+                        }
+
+                        // Tx frequency
+                        if (pressProgramButton == 2) {
+                          barretCubit.setTxFrequency(tx: "6");
+                        }
+                        if (pressProgramButton == 2 && clearTxFrequency) {
+                          barretCubit.clearTxFrequency();
+                          barretCubit.setTxFrequency(tx: "6");
+                          setState(() {
+                            clearTxFrequency = false;
+                          });
+                        }
+                      },
+                    ),
+                    BarretButtonRow(
+                      firstButtonImageUrl: "images/seven.png",
+                      secondButtonImageUrl: 'images/eight.png',
+                      thirdButtonImageUrl: 'images/nine.png',
+
+                      ///seven
+                      onTapFirstButton: () {
+                        if (setChannel) {
+                          barretCubit.setChannelNumber(channelNumber: "7");
+                        }
+                        if (pressProgramButton == 1 ||
+                            pressProgramButton == 2) {
+                          barretCubit.setRxFrequency(rx: "7");
+                        }
+                        if (pressProgramButton == 2 && clearRxFrequency) {
+                          barretCubit.clearRxFrequency();
+                          barretCubit.setRxFrequency(rx: "7");
+                          setState(() {
+                            clearRxFrequency = false;
+                          });
+                        }
+                        // Tx frequency
+                        // Tx frequency
+                        if (pressProgramButton == 2) {
+                          barretCubit.setTxFrequency(tx: "7");
+                        }
+                        if (pressProgramButton == 2 && clearTxFrequency) {
+                          barretCubit.clearTxFrequency();
+                          barretCubit.setTxFrequency(tx: "7");
+                          setState(() {
+                            clearTxFrequency = false;
+                          });
+                        }
+                      },
+
+                      ///eight
+                      onTapSecondButton: () {
+                        if (setChannel) {
+                          barretCubit.setChannelNumber(channelNumber: "8");
+                        }
+                        if (pressProgramButton == 1 ||
+                            pressProgramButton == 2) {
+                          barretCubit.setRxFrequency(rx: "8");
+                        }
+                        if (pressProgramButton == 2 && clearRxFrequency) {
+                          barretCubit.clearRxFrequency();
+                          barretCubit.setRxFrequency(rx: "8");
+                          setState(() {
+                            clearRxFrequency = false;
+                          });
+                        }
+                        // Tx frequency
+                        if (pressProgramButton == 2) {
+                          barretCubit.setTxFrequency(tx: "8");
+                        }
+                        if (pressProgramButton == 2 && clearTxFrequency) {
+                          barretCubit.clearTxFrequency();
+                          barretCubit.setTxFrequency(tx: "8");
+                          setState(() {
+                            clearTxFrequency = false;
+                          });
+                        }
+                      },
+
+                      ///nine
+                      onTapThirdButton: () {
+                        if (setChannel) {
+                          barretCubit.setChannelNumber(channelNumber: "9");
+                        }
+                        if (pressProgramButton == 1 ||
+                            pressProgramButton == 2) {
+                          barretCubit.setRxFrequency(rx: "9");
+                        }
+                        if (pressProgramButton == 2 && clearRxFrequency) {
+                          barretCubit.clearRxFrequency();
+                          barretCubit.setRxFrequency(rx: "9");
+                          setState(() {
+                            clearRxFrequency = false;
+                          });
+                        }
+                        // Tx frequency
+                        if (pressProgramButton == 2) {
+                          barretCubit.setTxFrequency(tx: "9");
+                        }
+                        if (pressProgramButton == 2 && clearTxFrequency) {
+                          barretCubit.clearTxFrequency();
+                          barretCubit.setTxFrequency(tx: "9");
+                          setState(() {
+                            clearTxFrequency = false;
+                          });
+                        }
+                      },
+                    ),
+                    BarretButtonRow(
+                      firstButtonImageUrl: "images/tune.png",
+                      secondButtonImageUrl: 'images/zero.png',
+                      thirdButtonImageUrl: 'images/chan.png',
+
+                      ///tune
+                      onTapFirstButton: () {},
+
+                      ///zero
+                      onTapSecondButton: () {
+                        if (setChannel) {
+                          barretCubit.setChannelNumber(channelNumber: "0");
+                        }
+                        if (pressProgramButton == 1 ||
+                            pressProgramButton == 2) {
+                          barretCubit.setRxFrequency(rx: "0");
+                        }
+                        if (pressProgramButton == 2 && clearRxFrequency) {
+                          barretCubit.clearRxFrequency();
+                          barretCubit.setRxFrequency(rx: "0");
+                          setState(() {
+                            clearRxFrequency = false;
+                          });
+                        }
+                        // Tx frequency
+                        if (pressProgramButton == 2) {
+                          barretCubit.setTxFrequency(tx: "0");
+                        }
+                        if (pressProgramButton == 2 && clearTxFrequency) {
+                          barretCubit.clearTxFrequency();
+                          barretCubit.setTxFrequency(tx: "0");
+                          setState(() {
+                            clearTxFrequency = false;
+                          });
+                        }
+                      },
+
+                      ///channnel
+                      onTapThirdButton: () {
                         setState(() {
-                          showIoSetting = false;
-                          isSettingIo = false;
-                          isGeneralOption = false;
-                          showGeneralOption = false;
-                          showAntennaType = false;
-                          isAntennaType = false;
-                          selectAntenna = false;
-                          showCall = true;
+                          setChannel = !setChannel;
                         });
-                      }
-                    },
-                    onTapThirdButton: () {},
-                  ),
-                  BlocListener<BarretSetupCubit, BarretSetupState>(
-                    listener: (context, state) {
-                      // TODO: implement listener}
-                      if (state.standardMenu == "Identification") {
-                        setState(() {
-                          isIdentification = true;
-                        });
-                      }
-                      if (state.secondMenu == "I/O Setting") {
-                        setState(() {
-                          isSettingIo = true;
-                          isGeneralOption = false;
-                          isAntennaType = false;
-                          isIdentification = false;
-                        });
-                      }
-                      if (state.ioSetting == "Antenna Type") {
-                        setState(() {
-                          isAntennaType = true;
-                          isGeneralOption = false;
-                        });
-                      } else if (state.secondMenu == "General") {
-                        setState(() {
-                          isGeneralOption = true;
-                          isSettingIo = false;
-                          isAntennaType = false;
-                          isIdentification = false;
-                        });
-                      }
-                    },
-                    child: BarretButtonRow(
-                      firstButtonImageUrl: "images/lower.png",
-                      secondButtonImageUrl: 'images/enter.png',
-                      thirdButtonImageUrl: 'images/volminus.png',
-                      // down
+                        if (setChannel) {
+                          barretCubit.clearChannelNumber();
+                        }
+                      },
+                    ),
+                    BarretButtonRow(
+                      firstButtonImageUrl: "images/lside.png",
+                      secondButtonImageUrl: 'images/danger.png',
+                      thirdButtonImageUrl: 'images/rside.png',
+                      onTapFirstButton: () {},
+                      onTapSecondButton: () {},
+                      onTapThirdButton: () {},
+                    ),
+                    BarretButtonRow(
+                      firstButtonImageUrl: "images/upper.png",
+                      secondButtonImageUrl: 'images/call.png',
+                      thirdButtonImageUrl: 'images/volplus.png',
+
+                      // up
                       onTapFirstButton: () {
                         if (pressProgramButton == 3) {
                           channelIndex += 1;
@@ -895,7 +751,6 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                               operatingMode: AppConstant
                                   .operatingMode[operatingModeIndex]);
                         }
-                        // power setting
                         if (pressProgramButton == 5) {
                           powerSettingIndex += 1;
                           if (powerSettingIndex >=
@@ -907,6 +762,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                           barretCubit.setPowerSettingMode(
                               pwr: AppConstant.powerSetting[powerSettingIndex]);
                         }
+
                         if (pressProgramButton == 6) {
                           sellCallFormatIndex += 1;
                           if (sellCallFormatIndex >=
@@ -941,6 +797,7 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                           barretCubit.setSecondMenu(
                               menu: AppConstant.secondMenu[secondMenuIndex]);
                         }
+
                         if (showIoSetting) {
                           ioSettingIndex += 1;
                           if (ioSettingIndex >=
@@ -952,7 +809,6 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                           barretCubit.setIoSetting(
                               io: AppConstant.ioSettingOptions[ioSettingIndex]);
                         }
-
                         if (showAntennaType) {
                           antennaTypeIndex += 1;
                           if (antennaTypeIndex >=
@@ -978,7 +834,6 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                               general: AppConstant
                                   .generalOption[generalOptionIndex]);
                         }
-
                         if (showCall) {
                           callOptionIndex += 1;
                           if (callOptionIndex >=
@@ -992,59 +847,237 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         }
                       },
 
-                      ///enter button
+                      /// call button
                       onTapSecondButton: () {
-                        setState(() {
-                          selectAntenna = false;
-                        });
-                        if (isSettingIo) {
-                          setState(() {
-                            showIoSetting = true;
-                            showSecondMenu = false;
-                            showGeneralOption = false;
-                            showIdentification = false;
-                          });
-                        }
-                        if (showAntennaType) {
-                          setState(() {
-                            selectAntenna = true;
-                          });
-                        }
-                        if (isAntennaType) {
+                        if (!showCall) {
                           setState(() {
                             showIoSetting = false;
-                            showAntennaType = true;
+                            isSettingIo = false;
+                            isGeneralOption = false;
                             showGeneralOption = false;
-                            showIdentification = false;
+                            showAntennaType = false;
+                            isAntennaType = false;
+                            selectAntenna = false;
+                            showCall = true;
                           });
                         }
-
-                        if (isGeneralOption) {
-                          setState(() {
-                            showGeneralOption = true;
-                            showSecondMenu = false;
-                            showIoSetting = false;
-                            showIdentification = false;
-                          });
-                        }
-                        if (showCall) {
-                          setState(() {
-                            showCall = false;
-                            showCallingNumberTaker = true;
-                          });
-                        }
-                        if (isIdentification) {
-                          setState(() {
-                            showIdentification = true;
-                            showFirstMenu = false;
-                          });
-                        }
-                        print("press enter");
                       },
                       onTapThirdButton: () {},
                     ),
-                  ),
-                ],
+                    BlocListener<BarretSetupCubit, BarretSetupState>(
+                      listener: (context, state) {
+                        // TODO: implement listener}
+                        if (state.standardMenu == "Identification") {
+                          setState(() {
+                            isIdentification = true;
+                          });
+                        }
+                        if (state.secondMenu == "I/O Setting") {
+                          setState(() {
+                            isSettingIo = true;
+                            isGeneralOption = false;
+                            isAntennaType = false;
+                            isIdentification = false;
+                          });
+                        }
+                        if (state.ioSetting == "Antenna Type") {
+                          setState(() {
+                            isAntennaType = true;
+                            isGeneralOption = false;
+                          });
+                        } else if (state.secondMenu == "General") {
+                          setState(() {
+                            isGeneralOption = true;
+                            isSettingIo = false;
+                            isAntennaType = false;
+                            isIdentification = false;
+                          });
+                        }
+                      },
+                      child: BarretButtonRow(
+                        firstButtonImageUrl: "images/lower.png",
+                        secondButtonImageUrl: 'images/enter.png',
+                        thirdButtonImageUrl: 'images/volminus.png',
+                        // down
+                        onTapFirstButton: () {
+                          if (pressProgramButton == 3) {
+                            channelIndex += 1;
+                            if (channelIndex >=
+                                AppConstant.barretChannelNameList.length) {
+                              setState(() {
+                                channelIndex = 0;
+                              });
+                            }
+                            barretCubit.setChannelName(
+                                channelName: AppConstant
+                                    .barretChannelNameList[channelIndex]);
+                          }
+                          // operating mode
+                          if (pressProgramButton == 4) {
+                            operatingModeIndex += 1;
+                            if (operatingModeIndex >=
+                                AppConstant.operatingMode.length) {
+                              setState(() {
+                                operatingModeIndex = 0;
+                              });
+                            }
+                            barretCubit.setOperatingMode(
+                                operatingMode: AppConstant
+                                    .operatingMode[operatingModeIndex]);
+                          }
+                          // power setting
+                          if (pressProgramButton == 5) {
+                            powerSettingIndex += 1;
+                            if (powerSettingIndex >=
+                                AppConstant.powerSetting.length) {
+                              setState(() {
+                                powerSettingIndex = 0;
+                              });
+                            }
+                            barretCubit.setPowerSettingMode(
+                                pwr: AppConstant
+                                    .powerSetting[powerSettingIndex]);
+                          }
+                          if (pressProgramButton == 6) {
+                            sellCallFormatIndex += 1;
+                            if (sellCallFormatIndex >=
+                                AppConstant.cellCallFormat.length) {
+                              setState(() {
+                                sellCallFormatIndex = 0;
+                              });
+                            }
+                            barretCubit.setSellCallFormat(
+                                fmt: AppConstant
+                                    .cellCallFormat[sellCallFormatIndex]);
+                          }
+                          if (showFirstMenu) {
+                            firstMenuIndex += 1;
+                            if (firstMenuIndex >=
+                                AppConstant.standardMenu.length) {
+                              setState(() {
+                                firstMenuIndex = 0;
+                              });
+                            }
+                            barretCubit.setStandardMenu(
+                                menu: AppConstant.standardMenu[firstMenuIndex]);
+                          }
+                          if (showSecondMenu) {
+                            secondMenuIndex += 1;
+                            if (secondMenuIndex >=
+                                AppConstant.secondMenu.length) {
+                              setState(() {
+                                secondMenuIndex = 0;
+                              });
+                            }
+                            barretCubit.setSecondMenu(
+                                menu: AppConstant.secondMenu[secondMenuIndex]);
+                          }
+                          if (showIoSetting) {
+                            ioSettingIndex += 1;
+                            if (ioSettingIndex >=
+                                AppConstant.ioSettingOptions.length) {
+                              setState(() {
+                                ioSettingIndex = 0;
+                              });
+                            }
+                            barretCubit.setIoSetting(
+                                io: AppConstant
+                                    .ioSettingOptions[ioSettingIndex]);
+                          }
+
+                          if (showAntennaType) {
+                            antennaTypeIndex += 1;
+                            if (antennaTypeIndex >=
+                                AppConstant.antennaType.length) {
+                              setState(() {
+                                antennaTypeIndex = 0;
+                              });
+                            }
+                            barretCubit.setAntennaType(
+                                antenna:
+                                    AppConstant.antennaType[antennaTypeIndex]);
+                          }
+
+                          if (showGeneralOption) {
+                            generalOptionIndex += 1;
+                            if (generalOptionIndex >=
+                                AppConstant.generalOption.length) {
+                              setState(() {
+                                generalOptionIndex = 0;
+                              });
+                            }
+                            barretCubit.setGeneralOption(
+                                general: AppConstant
+                                    .generalOption[generalOptionIndex]);
+                          }
+
+                          if (showCall) {
+                            callOptionIndex += 1;
+                            if (callOptionIndex >=
+                                AppConstant.callOptions.length) {
+                              setState(() {
+                                callOptionIndex = 0;
+                              });
+                            }
+                            barretCubit.setCallOption(
+                                call: AppConstant.callOptions[callOptionIndex]);
+                          }
+                        },
+
+                        ///enter button
+                        onTapSecondButton: () {
+                          setState(() {
+                            selectAntenna = false;
+                          });
+                          if (isSettingIo) {
+                            setState(() {
+                              showIoSetting = true;
+                              showSecondMenu = false;
+                              showGeneralOption = false;
+                              showIdentification = false;
+                            });
+                          }
+                          if (showAntennaType) {
+                            setState(() {
+                              selectAntenna = true;
+                            });
+                          }
+                          if (isAntennaType) {
+                            setState(() {
+                              showIoSetting = false;
+                              showAntennaType = true;
+                              showGeneralOption = false;
+                              showIdentification = false;
+                            });
+                          }
+
+                          if (isGeneralOption) {
+                            setState(() {
+                              showGeneralOption = true;
+                              showSecondMenu = false;
+                              showIoSetting = false;
+                              showIdentification = false;
+                            });
+                          }
+                          if (showCall) {
+                            setState(() {
+                              showCall = false;
+                              showCallingNumberTaker = true;
+                            });
+                          }
+                          if (isIdentification) {
+                            setState(() {
+                              showIdentification = true;
+                              showFirstMenu = false;
+                            });
+                          }
+                          print("press enter");
+                        },
+                        onTapThirdButton: () {},
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
