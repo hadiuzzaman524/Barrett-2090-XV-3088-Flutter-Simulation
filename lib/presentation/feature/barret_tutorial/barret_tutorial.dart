@@ -49,7 +49,7 @@ class BarretTutorialScreen extends StatelessWidget {
                             });
                       }),
                   CardButton(
-                      title: "SEL Call",
+                      title: "Call",
                       imageUrl: "images/sell.png",
                       onTap: () {
                         showModalBottomSheet(
@@ -66,7 +66,7 @@ class BarretTutorialScreen extends StatelessWidget {
                             });
                       }),
                   CardButton(
-                      title: "Power Setup",
+                      title: "Different Setup",
                       imageUrl: "images/settings.png",
                       onTap: () {
                         showModalBottomSheet(

@@ -60,6 +60,7 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
   bool setProg = false;
   bool pressCallButton = false;
   bool deviceOn = false;
+  bool isAntennaTap=false;
 
   @override
   Widget build(BuildContext context) {
@@ -76,8 +77,13 @@ class _XvSetupScreenState extends State<XvSetupScreen> {
                   deviceOn = !deviceOn;
                 });
               },
+              onAntenaTap: (){
+                setState(() {
+                  isAntennaTap=!isAntennaTap;
+                });
+              },
             ),
-            XVLight(deviceOn: deviceOn),
+            XVLight(deviceOn: deviceOn, antennaOn: isAntennaTap,),
             Expanded(
               child: Container(
                 color: const Color(0xff9EA79E),

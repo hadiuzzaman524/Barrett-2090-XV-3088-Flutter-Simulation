@@ -2,6 +2,7 @@
 class Assets {
   Assets._();
 
+  static const String imagesAntenabutton = 'images/antenabutton.jpeg';
   static const String imagesAppicon = 'images/appicon.png';
   static const String imagesBarret = 'images/barret.jpg';
   static const String imagesBarret1 = 'images/barret1.jpg';
@@ -27,12 +28,16 @@ class Assets {
   static const String imagesMenu = 'images/menu.PNG';
   static const String imagesNine = 'images/nine.png';
   static const String imagesOne = 'images/one.PNG';
+  static const String imagesPowerbutton = 'images/powerbutton.jpeg';
   static const String imagesProg = 'images/prog.PNG';
   static const String imagesRadio = 'images/radio.PNG';
   static const String imagesRight = 'images/right.jpeg';
   static const String imagesRside = 'images/rside.png';
   static const String imagesRx = 'images/rx.gif';
   static const String imagesSell = 'images/sell.png';
+  static const String imagesSetting1 = 'images/setting1.png';
+  static const String imagesSetting2 = 'images/setting2.png';
+  static const String imagesSetting3 = 'images/setting3.png';
   static const String imagesSettings = 'images/settings.png';
   static const String imagesSeven = 'images/seven.png';
   static const String imagesSimulate = 'images/simulate.png';

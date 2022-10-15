@@ -21,14 +21,14 @@ class AppConstant {
   (২)	Rx Freq দেই।
   (৩)	Program বাটন 2 বার প্রেস করি।
   (৪)	Tx Freq দেই(Ts  এবং Rx Freq  যদি একই হয় তাহলে ফ্রিকয়েন্সি দেয়ার প্রয়োজন নাই)
-  (৫) 	Program বাটন প্রেস করি।
+  (৫) Program বাটন প্রেস করি।
   (৬)	Up/Down বাটন দিয়ে Channel Label (চ্যানেলের নাম) সিলেক্ট করি 
-  (৭) 	Program বাটন প্রেস করি।
-  (৮)	Up/Down বাটন দিয়ে Operating Mode USB/LSB?AM/CW/FSK দিয়ে সিলেক্ট করি। 
+  (৭) Program বাটন প্রেস করি।
+  (৮) Up/Down বাটন দিয়ে Operating Mode USB/LSB?AM/CW/FSK দিয়ে সিলেক্ট করি। 
   (৯)	Program বাটন প্রেস করি।
-  (১০)	Up/Down বাটন দিয়ে Power Setting- High/Medium/Low Power  সিলেক্ট করি।
-  (১১)	Program বাটন প্রেস করি এবং Up/Down বাটন দিয়ে International সিলেক্ট করি।
-  (১২)	Program বাটন প্রেস করি।
+  (১০) Up/Down বাটন দিয়ে Power Setting- High/Medium/Low Power  সিলেক্ট করি।
+  (১১) Program বাটন প্রেস করি এবং Up/Down বাটন দিয়ে International সিলেক্ট করি।
+  (১২) Program বাটন প্রেস করি।
 খ.	এই ভাবে Step by Step Freq/Level/Mode/Power Setting/SellCall Format     (International) ইত্যাদি সম্পন্ন করি।
 
 নোটঃ Tx Freq যদি ভিন্ন হয়, তাহলে Tx Freq দেওয়ার পর program বাটন ২ বার প্রেস করতে হবে।
@@ -52,7 +52,7 @@ class AppConstant {
 ঙ.	Up/Dawn বাটন দিয়ে Antenna Type অপশনে যাই
 চ. 	Enter বাটন প্রেস করি
 ছ. 	Up/Dawn বাটন দিয়ে 2019 Mobile Antenna Select করি
-জ. 	Enter বাটন প্রেস করি
+জ. Enter বাটন প্রেস করি
 ঝ. 	Clear বাটন দুইবার প্রেস করে বেরিয়ে আসি
 Note: গারিতে রেডিও শুধুমাত্র ১২ ভোল্ট সেকেন্ডারি ব্যাটারি দ্বারা চলবে
 
@@ -140,7 +140,7 @@ Note: এ পদ্ধতিতে কোন মিটার ছাড়াই 
     TutorialModel(details: """
 ক. 	Menu বাটন দুই সেকেন্ড চাপ দিয়ে ধরে রাখি। 
 খ. 	Display তে  General অপশন দেখাবে।
-গ. 	 Enter বাটন একবার প্রেস করি 
+গ. 	Enter বাটন একবার প্রেস করি 
 ঘ. 	Up/Dawn বাটন দিয়ে BITE অপশনে যাই
 ঙ. 	Enter বাটন একবার প্রেস করি
 চ. 	BITE Test Passed না আসা পর্যন্ত অপেক্ষা করি
@@ -149,14 +149,16 @@ Note: এ পদ্ধতিতে কোন মিটার ছাড়াই 
 """, title: "Built-in Test Equipment (BITE) পরীক্ষা করার নিয়ম ।"),
   ];
 
-  static final List<TutorialModel> xvFrequency = [
+  static final List<TutorialModel> xvFrequencySimplex = [
     TutorialModel(details: """
 ১| সেট অন করা।
 ২| Prog Key প্রেস করে ডিসপ্লেতে "F" কাঁপানো।
 ৩| মনোনীত ফ্রিকোয়েন্সী টাইপ করা।
 ৪| Yes Key প্রেস করতে হবে যতক্ষণ পর্যন্ত ডিসপ্লেতে Prog লেখা না কাঁপবে।
 ৫| No Key একবার প্রেস করলে ফ্রিকোয়েন্সী সেট হবে।
-    """, title: "    Simplex পদ্ধতিতে ফ্রিকোয়েন্সী লাগানোর নিয়মঃ"),
+    """, title: "Simplex পদ্ধতিতে ফ্রিকোয়েন্সী লাগানোর নিয়মঃ"),
+  ];
+  static final List<TutorialModel> xvFrequencySdx = [
     TutorialModel(details: """
 ১| সেট অন করা।
 ২| Prog Key প্রেস করে ডিসপ্লেতে "F" কাঁপানো।
@@ -167,6 +169,8 @@ Note: এ পদ্ধতিতে কোন মিটার ছাড়াই 
 ৭| No Key তে প্রেস করে বের হয়ে আসি।
 ৮| হ্যান্ডসেট প্রেস করলে SDX হবে।
     """, title: "SDX পদ্ধতিতে ফ্রিকোয়েন্সী লাগানোর নিয়মঃ"),
+  ];
+  static final List<TutorialModel> xvFrequencyNew = [
     TutorialModel(details: """
 ১। Prog Key এর উপর চাপ দিয়ে এবং  নির্ধারিত চ্যানেল নম্বরসহ Key চাপ দিতে হবে। নিশ্চিত  হবার জন্য Yes Key ক্লিক করতে হবে।
 ২। যথাযথ ও প্রয়োজনীয় ফ্রিকোয়েন্সী দিয়ে Key চাপা। 

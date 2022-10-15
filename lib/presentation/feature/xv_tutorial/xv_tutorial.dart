@@ -31,8 +31,8 @@ class XvTutorialScreen extends StatelessWidget {
                 childAspectRatio: 2 / 2.1,
                 children: [
                   CardButton(
-                      title: "Frequency Setting",
-                      imageUrl: "images/tower.png",
+                      title: "Simplex Mode",
+                      imageUrl: "images/setting1.png",
                       onTap: () {
                         showModalBottomSheet(
                             isScrollControlled: true,
@@ -43,15 +43,15 @@ class XvTutorialScreen extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return AppBottomSheet(
-                                tutorialList: AppConstant.xvFrequency,
+                                tutorialList: AppConstant.xvFrequencySimplex,
                               );
                             });
                       }),
                   CardButton(
-                      title: "SEL Call",
-                      imageUrl: "images/sell.png",
+                      title: "SDX Mode",
+                      imageUrl: "images/setting2.png",
                       onTap: () {
-                        /* showModalBottomSheet(
+                         showModalBottomSheet(
                             isScrollControlled: true,
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.vertical(
@@ -60,15 +60,15 @@ class XvTutorialScreen extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return AppBottomSheet(
-                                tutorialList: AppConstant.xvFrequency,
+                                tutorialList: AppConstant.xvFrequencySdx,
                               );
-                            });*/
+                            });
                       }),
                   CardButton(
-                      title: "Power Setup",
-                      imageUrl: "images/settings.png",
+                      title: "New Channel",
+                      imageUrl: "images/setting3.png",
                       onTap: () {
-                        /*  showModalBottomSheet(
+                          showModalBottomSheet(
                             isScrollControlled: true,
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.vertical(
@@ -77,9 +77,9 @@ class XvTutorialScreen extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return AppBottomSheet(
-                                tutorialList: AppConstant.xvFrequency,
+                                tutorialList: AppConstant.xvFrequencyNew,
                               );
-                            });*/
+                            });
                       }),
                 ],
               ),
