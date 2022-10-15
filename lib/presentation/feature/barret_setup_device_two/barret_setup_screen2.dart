@@ -368,14 +368,19 @@ class _BarretSetupDeviceTwoScreenState
                               .frequencyConversion(state.rxFrequency);
                           //converted freq
                           barretCubit.setRxConvertedFrequency(freq: r);
-                          print("Rx: ${state.rxFrequency}");
                           barretCubit.setTxFrequency(tx: r);
                         }
-                        if(pressProgramButton==3){
-                          print("Converted");
+                        if (pressProgramButton == 3) {
+                          print("Rx: ${state.rxFrequency}");
+                          final String r = barretCubit
+                              .frequencyConversion(state.txFrequency);
+                          print("........$r");
+                          barretCubit.setTxConvertedFrequency(freq: r);
+                          final state2 =
+                              context.read<BarretSetupDeviceTwoCubit>().state;
+                          print("Tx: ${state2.txFrequency}");
                         }
-                        print("Rx: ${state.rxFrequency}");
-                        print("Tx: ${state.txFrequency}");
+
                         if (pressProgramButton == 7) {
                           final state =
                               context.read<BarretSetupDeviceTwoCubit>().state;
@@ -514,7 +519,7 @@ class _BarretSetupDeviceTwoScreenState
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "4");
                         }
-                        if (pressProgramButton == 1 ) {
+                        if (pressProgramButton == 1) {
                           barretCubit.setRxFrequency(rx: "4");
                         }
                         if (pressProgramButton == 1 && clearRxFrequency) {
@@ -570,7 +575,7 @@ class _BarretSetupDeviceTwoScreenState
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "6");
                         }
-                        if (pressProgramButton == 1 ) {
+                        if (pressProgramButton == 1) {
                           barretCubit.setRxFrequency(rx: "6");
                         }
                         if (pressProgramButton == 1 && clearRxFrequency) {
@@ -604,7 +609,7 @@ class _BarretSetupDeviceTwoScreenState
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "7");
                         }
-                        if (pressProgramButton == 1 ) {
+                        if (pressProgramButton == 1) {
                           barretCubit.setRxFrequency(rx: "7");
                         }
                         if (pressProgramButton == 1 && clearRxFrequency) {

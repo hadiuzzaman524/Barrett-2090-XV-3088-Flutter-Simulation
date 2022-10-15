@@ -24,6 +24,10 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
     final list = AppConstant.barretSetupList;
     debugPrint(AppConstant.barretSetupList[0].toString());
     debugPrint(AppConstant.barretSetupList[1].toString());
+    print(list[0].rxFrequency);
+    print(list[1].rxFrequency);
+    print(list[0].txFrequency);
+    print(list[1].txFrequency);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Simulate"),

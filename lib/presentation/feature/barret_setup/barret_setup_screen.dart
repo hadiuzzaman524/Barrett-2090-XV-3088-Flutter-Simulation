@@ -367,8 +367,16 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                           print("Rx: ${state.rxFrequency}");
                           barretCubit.setTxFrequency(tx: r);
                         }
-                        print("Rx: ${state.rxFrequency}");
-                        print("Tx: ${state.txFrequency}");
+                        if (pressProgramButton == 3) {
+                          print("Rx: ${state.rxFrequency}");
+                          final String r = barretCubit
+                              .frequencyConversion(state.txFrequency);
+                          print("........$r");
+                          barretCubit.setTxConvertedFrequency(freq: r);
+                          final state2 =
+                              context.read<BarretSetupCubit>().state;
+                          print("Tx: ${state2.txFrequency}");
+                        }
 
                         if (pressProgramButton == 7) {
                           final state = context.read<BarretSetupCubit>().state;

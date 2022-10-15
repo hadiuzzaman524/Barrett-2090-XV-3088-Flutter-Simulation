@@ -180,6 +180,7 @@ class BarretSetupDeviceTwoCubit extends Cubit<BarretSetupDeviceTwoState> {
       generalOption: state.generalOption,
       callOption: state.callOption,
     ));
+    print("Success: $freq");
   }
 
   void clearRxFrequency() {
