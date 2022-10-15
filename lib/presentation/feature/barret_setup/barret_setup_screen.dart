@@ -436,11 +436,10 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "2");
                         }
-                        if (pressProgramButton == 1 ||
-                            pressProgramButton == 2) {
+                        if (pressProgramButton == 1 ) {
                           barretCubit.setRxFrequency(rx: "2");
                         }
-                        if (pressProgramButton == 2 && clearRxFrequency) {
+                        if (pressProgramButton == 1 && clearRxFrequency) {
                           barretCubit.clearRxFrequency();
                           barretCubit.setRxFrequency(rx: "2");
                           setState(() {
@@ -465,11 +464,10 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "3");
                         }
-                        if (pressProgramButton == 1 ||
-                            pressProgramButton == 2) {
+                        if (pressProgramButton == 1) {
                           barretCubit.setRxFrequency(rx: "3");
                         }
-                        if (pressProgramButton == 2 && clearRxFrequency) {
+                        if (pressProgramButton == 1 && clearRxFrequency) {
                           barretCubit.clearRxFrequency();
                           barretCubit.setRxFrequency(rx: "3");
                           setState(() {
@@ -506,11 +504,10 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "4");
                         }
-                        if (pressProgramButton == 1 ||
-                            pressProgramButton == 2) {
+                        if (pressProgramButton == 1 ) {
                           barretCubit.setRxFrequency(rx: "4");
                         }
-                        if (pressProgramButton == 2 && clearRxFrequency) {
+                        if (pressProgramButton == 1 && clearRxFrequency) {
                           barretCubit.clearRxFrequency();
                           barretCubit.setRxFrequency(rx: "4");
                           setState(() {
@@ -535,11 +532,10 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "5");
                         }
-                        if (pressProgramButton == 1 ||
-                            pressProgramButton == 2) {
+                        if (pressProgramButton == 1 ) {
                           barretCubit.setRxFrequency(rx: "5");
                         }
-                        if (pressProgramButton == 2 && clearRxFrequency) {
+                        if (pressProgramButton == 1 && clearRxFrequency) {
                           barretCubit.clearRxFrequency();
                           barretCubit.setRxFrequency(rx: "5");
                           setState(() {
@@ -564,11 +560,10 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "6");
                         }
-                        if (pressProgramButton == 1 ||
-                            pressProgramButton == 2) {
+                        if (pressProgramButton == 1 ) {
                           barretCubit.setRxFrequency(rx: "6");
                         }
-                        if (pressProgramButton == 2 && clearRxFrequency) {
+                        if (pressProgramButton == 1 && clearRxFrequency) {
                           barretCubit.clearRxFrequency();
                           barretCubit.setRxFrequency(rx: "6");
                           setState(() {
@@ -599,11 +594,10 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "7");
                         }
-                        if (pressProgramButton == 1 ||
-                            pressProgramButton == 2) {
+                        if (pressProgramButton == 1) {
                           barretCubit.setRxFrequency(rx: "7");
                         }
-                        if (pressProgramButton == 2 && clearRxFrequency) {
+                        if (pressProgramButton == 1 && clearRxFrequency) {
                           barretCubit.clearRxFrequency();
                           barretCubit.setRxFrequency(rx: "7");
                           setState(() {
@@ -629,11 +623,10 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "8");
                         }
-                        if (pressProgramButton == 1 ||
-                            pressProgramButton == 2) {
+                        if (pressProgramButton == 1) {
                           barretCubit.setRxFrequency(rx: "8");
                         }
-                        if (pressProgramButton == 2 && clearRxFrequency) {
+                        if (pressProgramButton == 1 && clearRxFrequency) {
                           barretCubit.clearRxFrequency();
                           barretCubit.setRxFrequency(rx: "8");
                           setState(() {
@@ -658,11 +651,10 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "9");
                         }
-                        if (pressProgramButton == 1 ||
-                            pressProgramButton == 2) {
+                        if (pressProgramButton == 1) {
                           barretCubit.setRxFrequency(rx: "9");
                         }
-                        if (pressProgramButton == 2 && clearRxFrequency) {
+                        if (pressProgramButton == 1 && clearRxFrequency) {
                           barretCubit.clearRxFrequency();
                           barretCubit.setRxFrequency(rx: "9");
                           setState(() {
@@ -695,11 +687,10 @@ class _BarretSetupScreenState extends State<BarretSetupScreen> {
                         if (setChannel) {
                           barretCubit.setChannelNumber(channelNumber: "0");
                         }
-                        if (pressProgramButton == 1 ||
-                            pressProgramButton == 2) {
+                        if (pressProgramButton == 1 ) {
                           barretCubit.setRxFrequency(rx: "0");
                         }
-                        if (pressProgramButton == 2 && clearRxFrequency) {
+                        if (pressProgramButton == 1 && clearRxFrequency) {
                           barretCubit.clearRxFrequency();
                           barretCubit.setRxFrequency(rx: "0");
                           setState(() {

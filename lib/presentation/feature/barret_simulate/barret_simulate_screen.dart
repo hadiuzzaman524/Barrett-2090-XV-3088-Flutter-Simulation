@@ -21,6 +21,7 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final list = AppConstant.barretSetupList;
     debugPrint(AppConstant.barretSetupList[0].toString());
     debugPrint(AppConstant.barretSetupList[1].toString());
     return Scaffold(
@@ -44,11 +45,11 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                       title: "Add",
                       onTap: () {
                         final String result =
-                        AppConstant.addBarretDevice(title: "hello");
+                            AppConstant.addBarretDevice(title: "hello");
                         debugPrint(result);
                         setState(() {});
                       },
-                      imageUrl: "images/xv30.jpeg"),
+                      imageUrl: "images/barret.jpg"),
                   if (AppConstant.barretList.isNotEmpty)
                     AppIconButton(
                         title: "Delete",
@@ -67,20 +68,20 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                   AppConstant.barretList.length < 2
                       ? Container()
                       : AppIconButton(
-                      title: "Transmit",
-                      onTap: () {
-                        setState(() {
-                          startTransmit = true;
-                        });
-                        if (!isConfiguredFirstDevice ||
-                            !isConfiguredSecondDevice) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text(
-                                      "Please Configure those device first")));
-                        }
-                      },
-                      imageUrl: "images/email.png"),
+                          title: "Transmit",
+                          onTap: () {
+                            setState(() {
+                              startTransmit = true;
+                            });
+                            if (!isConfiguredFirstDevice ||
+                                !isConfiguredSecondDevice) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          "Please Configure those device first")));
+                            }
+                          },
+                          imageUrl: "images/email.png"),
                 ],
               ),
             ),
@@ -94,27 +95,27 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                       if (AppConstant.barretList.isNotEmpty)
                         DeviceButton(
                           borderColor: startTransmit &&
-                              AppConstant.barretList.length > 1 &&
-                              isConfiguredFirstDevice &&
-                              isConfiguredSecondDevice &&
-                              (AppConstant.barretSetupList[0] !=
-                                  AppConstant.barretSetupList[1])
+                                  AppConstant.barretList.length > 1 &&
+                                  isConfiguredFirstDevice &&
+                                  isConfiguredSecondDevice &&
+                                  (AppConstant.barretSetupList[0] !=
+                                      AppConstant.barretSetupList[1])
                               ? Colors.red
                               : Colors.blue,
                           key: Key(DateTime.now().toString()),
-                          imageUrl: "images/xv30.jpeg",
+                          imageUrl: "images/barret.jpg",
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (ctx) => BarretSetupScreen(
-                                      isConfigured: () {
-                                        setState(() {
-                                          isConfiguredFirstDevice = true;
-                                          startTransmit = false;
-                                        });
-                                      },
-                                    )));
+                                          isConfigured: () {
+                                            setState(() {
+                                              isConfiguredFirstDevice = true;
+                                              startTransmit = false;
+                                            });
+                                          },
+                                        )));
                           },
                           onLogPress: (bool value) {
                             if (value) {
@@ -130,57 +131,63 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                   ),
                   Expanded(
                       child: Container(
-                        margin: const EdgeInsets.only(left: 60, right: 15),
-                        decoration: BoxDecoration(
-                          border: startTransmit &&
+                    margin: const EdgeInsets.only(left: 60, right: 15),
+                    decoration: BoxDecoration(
+                      border: startTransmit &&
                               AppConstant.barretList.length > 1 &&
                               isConfiguredFirstDevice &&
                               isConfiguredSecondDevice
-                              ? Border(
-                            left: BorderSide(
-                                width: 2.0,
-                                color: (AppConstant.barretSetupList[0] ==
-                                    AppConstant.barretSetupList[1])
-                                    ? Colors.lightBlue
-                                    : Colors.red),
-                            bottom: BorderSide(
-                                width: 2.0,
-                                color: (AppConstant.barretSetupList[0] ==
-                                    AppConstant.barretSetupList[1])
-                                    ? Colors.lightBlue
-                                    : Colors.red),
-                          )
-                              : null,
-                        ),
-                      )),
+                          ? Border(
+                              left: BorderSide(
+                                  width: 2.0,
+                                  color: (AppConstant.barretSetupList[0] ==
+                                          AppConstant.barretSetupList[1])
+                                      ? Colors.lightBlue
+                                      : Colors.red),
+                              bottom: BorderSide(
+                                  width: 2.0,
+                                  color: (AppConstant.barretSetupList[0] ==
+                                          AppConstant.barretSetupList[1])
+                                      ? Colors.lightBlue
+                                      : Colors.red),
+                            )
+                          : null,
+                    ),
+                  )),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       if (AppConstant.barretList.length > 1)
                         DeviceButton(
                           borderColor: startTransmit &&
-                              AppConstant.barretList.length > 1 &&
-                              isConfiguredFirstDevice &&
-                              isConfiguredSecondDevice &&
-                              (AppConstant.barretSetupList[0] !=
-                                  AppConstant.barretSetupList[1])
+                                  AppConstant.barretList.length > 1 &&
+                                  isConfiguredFirstDevice &&
+                                  isConfiguredSecondDevice &&
+                                  (list[0].rxFrequency == list[1].txFrequency &&
+                                      list[0].txFrequency ==
+                                          list[1].rxFrequency &&
+                                      list[0].operatingMode ==
+                                          list[1].operatingMode &&
+                                      list[0].callFormat == "International" &&
+                                      list[1].callFormat == "International")
                               ? Colors.red
                               : Colors.blue,
                           key: Key(DateTime.now().toString()),
-                          imageUrl: "images/xv30.jpeg",
+                          imageUrl: "images/barret.jpg",
                           deviceNumber: "2",
                           onTap: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (ctx) => BarretSetupDeviceTwoScreen(
-                                      isConfigured: () {
-                                        setState(() {
-                                          startTransmit = false;
-                                          isConfiguredSecondDevice = true;
-                                        });
-                                      },
-                                    )));
+                                    builder: (ctx) =>
+                                        BarretSetupDeviceTwoScreen(
+                                          isConfigured: () {
+                                            setState(() {
+                                              startTransmit = false;
+                                              isConfiguredSecondDevice = true;
+                                            });
+                                          },
+                                        )));
                           },
                           onLogPress: (bool value) {
                             if (value) {

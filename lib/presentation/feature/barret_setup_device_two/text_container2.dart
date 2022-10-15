@@ -10,7 +10,7 @@ class TextContainer extends StatelessWidget {
   Widget build(BuildContext context) {
 
     String newName= "";
-    for(int i=0; i<2; i++){
+    for(int i=0; i<3; i++){
       newName+=title[i];
     }
     return Container(
