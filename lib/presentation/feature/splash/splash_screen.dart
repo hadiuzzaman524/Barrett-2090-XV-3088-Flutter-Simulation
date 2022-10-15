@@ -34,7 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
               flex: 4,
               child: Center(
                 child: Image.asset(
-                  "images/logo.png",
+                  "images/appicon.png",
                   height: 220,
                   width: 220,
                 ),
@@ -53,7 +53,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                   Text(
-                    "Your Team Name",
+                    "Hadi",
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18,

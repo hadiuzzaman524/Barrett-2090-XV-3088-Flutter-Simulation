@@ -51,7 +51,7 @@ class XvTutorialScreen extends StatelessWidget {
                       title: "SEL Call",
                       imageUrl: "images/sell.png",
                       onTap: () {
-                       /* showModalBottomSheet(
+                        /* showModalBottomSheet(
                             isScrollControlled: true,
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.vertical(
@@ -68,7 +68,7 @@ class XvTutorialScreen extends StatelessWidget {
                       title: "Power Setup",
                       imageUrl: "images/settings.png",
                       onTap: () {
-                      /*  showModalBottomSheet(
+                        /*  showModalBottomSheet(
                             isScrollControlled: true,
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.vertical(

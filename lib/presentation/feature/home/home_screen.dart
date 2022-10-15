@@ -51,7 +51,7 @@ class HomeScreen extends StatelessWidget {
             SizedBox(
               height: 200,
               child: Image.asset(
-                "images/logo.png",
+                "images/appicon.png",
                 height: 180,
                 width: 180,
               ),
