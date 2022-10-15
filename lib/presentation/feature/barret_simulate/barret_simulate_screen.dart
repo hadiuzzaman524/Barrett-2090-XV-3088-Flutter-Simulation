@@ -102,8 +102,13 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                                   AppConstant.barretList.length > 1 &&
                                   isConfiguredFirstDevice &&
                                   isConfiguredSecondDevice &&
-                                  (AppConstant.barretSetupList[0] !=
-                                      AppConstant.barretSetupList[1])
+                              !(list[0].rxFrequency == list[1].txFrequency &&
+                                  list[0].txFrequency ==
+                                      list[1].rxFrequency &&
+                                  list[0].operatingMode ==
+                                      list[1].operatingMode &&
+                                  list[0].callFormat == "International" &&
+                                  list[1].callFormat == "International")
                               ? Colors.red
                               : Colors.blue,
                           key: Key(DateTime.now().toString()),
@@ -144,14 +149,24 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                           ? Border(
                               left: BorderSide(
                                   width: 2.0,
-                                  color: (AppConstant.barretSetupList[0] ==
-                                          AppConstant.barretSetupList[1])
+                                  color: (list[0].rxFrequency == list[1].txFrequency &&
+                                      list[0].txFrequency ==
+                                          list[1].rxFrequency &&
+                                      list[0].operatingMode ==
+                                          list[1].operatingMode &&
+                                      list[0].callFormat == "International" &&
+                                      list[1].callFormat == "International")
                                       ? Colors.lightBlue
                                       : Colors.red),
                               bottom: BorderSide(
                                   width: 2.0,
-                                  color: (AppConstant.barretSetupList[0] ==
-                                          AppConstant.barretSetupList[1])
+                                  color: (list[0].rxFrequency == list[1].txFrequency &&
+                                      list[0].txFrequency ==
+                                          list[1].rxFrequency &&
+                                      list[0].operatingMode ==
+                                          list[1].operatingMode &&
+                                      list[0].callFormat == "International" &&
+                                      list[1].callFormat == "International")
                                       ? Colors.lightBlue
                                       : Colors.red),
                             )
@@ -167,7 +182,7 @@ class _BarretSimulateScreenState extends State<BarretSimulateScreen> {
                                   AppConstant.barretList.length > 1 &&
                                   isConfiguredFirstDevice &&
                                   isConfiguredSecondDevice &&
-                                  (list[0].rxFrequency == list[1].txFrequency &&
+                                  !(list[0].rxFrequency == list[1].txFrequency &&
                                       list[0].txFrequency ==
                                           list[1].rxFrequency &&
                                       list[0].operatingMode ==
