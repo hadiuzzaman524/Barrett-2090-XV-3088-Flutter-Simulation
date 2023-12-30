@@ -1,4 +1,8 @@
-# RadioGram - A Simulation App
+# Barrett 2090 & XV 3088 Flutter Simulation
+
+## Overview
+This Flutter project simulates the operation of the Barrett 2090 and XV 3088 communication systems. It provides a user-friendly interface to experience the functionalities of these systems in a virtual environment. The simulation includes key features and controls to mimic real-world scenarios and interactions.
+
 
 <p float='left'>
 <img src="https://github.com/hadiuzzaman524/RadioGram-BD-Army/assets/52348628/89fc39a3-3d2c-4ab1-b7e5-a38075a2ece3" width="700" />
